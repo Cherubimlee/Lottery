@@ -97,14 +97,22 @@
     </Compile>
     <Compile Include="Common\NullToVisibilityConverter.cs" />
     <Compile Include="Common\OppositeVisibilityConverter.cs" />
-    <Compile Include="ContentPane.xaml.cs">
+    <Compile Include="Common\SettingItemDataTemplateSelector.cs" />
+    <Compile Include="Common\WidthToVisibilityConverter.cs" />
+    <Compile Include="Controls\WinnerControl.xaml.cs">
+      <DependentUpon>WinnerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DrawItem.cs" />
+    <Compile Include="DataModel\SettingItem.cs" />
+    <Compile Include="DataModel\SettingItemGroup.cs" />
+    <Compile Include="Panes\ContentPane.xaml.cs">
       <DependentUpon>ContentPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingPane.xaml.cs">
+    <Compile Include="Panes\SettingPane.xaml.cs">
       <DependentUpon>SettingPane.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -130,7 +138,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ContentPane.xaml">
+    <Page Include="Controls\WinnerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panes\ContentPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +150,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingPane.xaml">
+    <Page Include="Panes\SettingPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +159,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.4</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

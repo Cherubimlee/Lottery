@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <common:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <common:OppositeVisibilityConverter x:Key="OppositeVisibilityConverter"/>
+            <common:WidthToVisibilityConverter x:Key="WidthToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

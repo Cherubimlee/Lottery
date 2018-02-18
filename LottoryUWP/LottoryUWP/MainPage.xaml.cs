@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -30,6 +31,7 @@ namespace LottoryUWP
             this.InitializeComponent();
 
             this.Loaded += MainPage_Loaded;
+
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -41,9 +43,20 @@ namespace LottoryUWP
             coreTitleBar.ExtendViewIntoTitleBar = true;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private  void Button_Click(object sender, RoutedEventArgs e)
         {
-            Menu.Visibility = Menu.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+
+            if (Menu.Visibility == Visibility.Collapsed)
+            {
+                Menu.Visibility = Visibility.Visible;
+                VisualStateManager.GoToState(this, "MenuShow", true);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "MenuHide", false);
+                Menu.Visibility = Visibility.Collapsed;
+            }
+               
         }
     }
 }

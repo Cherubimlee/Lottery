@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="LottoryUWP.Panes.SettingPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LottoryUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls ="using:LottoryUWP.Controls"
+    xmlns:data="using:LottoryUWP.DataModel"
+    xmlns:wuxdata="using:Windows.UI.Xaml.Data"
+    xmlns:comm ="using:LottoryUWP.Common"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    x:Name="local">
+
+    <UserControl.Resources>
+      
+        <CollectionViewSource x:Name="cvsGroups" Source="{x:Bind Groups}" IsSourceGrouped="True" ItemsPath="Items"
+                              d:Source="{Binding Groups, ElementName=local}"/>
+
+        <DataTemplate x:Key="ZoomedInGeneralTemplate" x:DataType="data:SettingItem">
+            <StackPanel Margin="20,0,0,0" Width="300">
+                <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedInWinnerTemplate" x:DataType="data:SettingItem">
+            <StackPanel Margin="20,0,0,0" Width="300">
+                <controls:WinnerControl  MajorValue="[Major]" SecondaryValue="[Secondary]" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="data:SettingItemGroup">
+            <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
+            <TextBlock Text="{x:Bind Group.(data:SettingItemGroup.Title)}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
+        </DataTemplate>
+
+        <comm:SettingItemDataTemplateSelector x:Key="SettingItemSelector" 
+                                              GeneralSettingTemplate="{StaticResource ZoomedInGeneralTemplate}"
+                                              WinnerStyleTemplate="{StaticResource ZoomedInWinnerTemplate}"
+                                              />
+
+    </UserControl.Resources>
+
+    <Grid>
+        <!--<StackPanel>
+                        <controls:WinnerControl  MajorValue="[Major]" SecondaryValue="[Secondary]" HorizontalAlignment="Center"/>
+        </StackPanel>-->
+
+        <SemanticZoom x:Name="ZoomControl" VerticalAlignment="Top">
+            <SemanticZoom.ZoomedInView>
+                <GridView ItemsSource="{x:Bind cvsGroups.View}" ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" GotFocus="List_GotFocus"
+                        ItemTemplateSelector="{StaticResource SettingItemSelector}">
+                    <GridView.GroupStyle>
+                        <GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" />
+                    </GridView.GroupStyle>
+                </GridView>
+            </SemanticZoom.ZoomedInView>
+
+            <SemanticZoom.ZoomedOutView>
+                <ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" GotFocus="List_GotFocus" />
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+    </Grid>
+</UserControl>

@@ -3,32 +3,92 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LottoryUWP"
+    xmlns:panes="using:LottoryUWP.Panes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}" >
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="MenuState">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="MenuHide">
+                    <Storyboard>
+                        <DoubleAnimation  Storyboard.TargetName="Menu"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="0">
+                        </DoubleAnimation>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="MenuShow">
+                    <Storyboard>
+                        <DoubleAnimation  Storyboard.TargetName="Menu"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="1">
+                        </DoubleAnimation>
+
+                        <DoubleAnimation  Storyboard.TargetName="MenuTrans"
+                                                         Storyboard.TargetProperty="Y"                                                                                             
+                                                         Duration="0:0:0" To="0">
+                        </DoubleAnimation>
+
+                    </Storyboard>
+                </VisualState>
+
+                <VisualStateGroup.Transitions>
+                  
+                    <VisualTransition To="MenuShow">
+                        <Storyboard>
+                            <DoubleAnimation  Storyboard.TargetName="Menu"
+                                                         Storyboard.TargetProperty="Opacity"                                                                                             
+                                                         Duration="0:0:0.3" To="1">
+                                
+
+                            </DoubleAnimation>
+
+                            <DoubleAnimation  Storyboard.TargetName="MenuTrans"
+                                                         Storyboard.TargetProperty="Y"                                                                                             
+                                                         Duration="0:0:0.3" From="20" To="0">
+
+
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+
+            </VisualStateGroup>
+
+
+        </VisualStateManager.VisualStateGroups>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="MenuColumn" Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="Menu" Grid.Column="0" Width="300" Visibility="Collapsed">
+
+        <Grid  x:Name="Menu" Grid.Column="0" Width="300" Visibility="Collapsed" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button VerticalAlignment="Top" Grid.Column="0" Margin="0,32,0,0"
+            <Button VerticalAlignment="Top" Grid.Column="0" Margin="0,32,0,0" x:Name="MenuButton"
                      Background="Transparent"
                      Click="Button_Click" 
                      Visibility="{Binding Visibility, ElementName=Menu}">
                 <Image Source="/Assets/MenuIcon.png" Width="24" Height="24" />
             </Button>
-            <local:SettingPane Grid.Row="1">
-                
-            </local:SettingPane>
+            <panes:SettingPane Grid.Row="1">
+                <panes:SettingPane.RenderTransform>
+                    <TranslateTransform x:Name="MenuTrans"/>
+                </panes:SettingPane.RenderTransform>
+            </panes:SettingPane>
+
+
         </Grid>
+
 
         <Grid x:Name="MainFrame" Grid.Column="1" Background="{ThemeResource AppBarBackgroundThemeBrush}" >
 
@@ -47,7 +107,7 @@
                 <Button VerticalAlignment="Top" Grid.Column="0" Margin="0,8"
                      Background="Transparent"
                      Click="Button_Click" 
-                     Visibility="{Binding Visibility, ElementName=Menu, Converter={StaticResource OppositeVisibilityConverter}}">
+                     Visibility="{Binding Visibility, ElementName=MenuButton, Converter={StaticResource OppositeVisibilityConverter}}">
                     <Image Source="/Assets/MenuIcon.png" Width="24" Height="24" />
                 </Button>
 
@@ -59,9 +119,9 @@
                 
             </Grid>
 
-            <local:ContentPane Grid.Row="1">
+            <panes:ContentPane Grid.Row="1">
                 
-            </local:ContentPane>
+            </panes:ContentPane>
         </Grid>
 
     </Grid>
