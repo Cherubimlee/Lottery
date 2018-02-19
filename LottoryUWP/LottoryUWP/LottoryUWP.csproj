@@ -102,7 +102,9 @@
     <Compile Include="Controls\WinnerControl.xaml.cs">
       <DependentUpon>WinnerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Data.cs" />
     <Compile Include="DataModel\DrawItem.cs" />
+    <Compile Include="DataModel\DrawItemGroup.cs" />
     <Compile Include="DataModel\SettingItem.cs" />
     <Compile Include="DataModel\SettingItemGroup.cs" />
     <Compile Include="Panes\ContentPane.xaml.cs">
@@ -115,6 +117,7 @@
     <Compile Include="Panes\SettingPane.xaml.cs">
       <DependentUpon>SettingPane.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RandomUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -159,10 +162,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.4</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>2.1.1</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

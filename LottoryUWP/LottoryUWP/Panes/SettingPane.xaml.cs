@@ -23,7 +23,7 @@ namespace LottoryUWP.Panes
         public SettingPane()
         {
             this.InitializeComponent();
-            Groups = getSettingItems();
+            Groups = DataModel.Data.Instance.SettingGroups;
         }
       
         public IEnumerable<SettingItemGroup> Groups
@@ -37,23 +37,6 @@ namespace LottoryUWP.Panes
             ZoomControl.StartBringIntoView();
         }
 
-        private IEnumerable<SettingItemGroup> getSettingItems()
-        {
-            List<SettingItemGroup> group = new List<SettingItemGroup>();
-
-            List<SettingItem> items = new List<SettingItem>();
-            items.Add(new WinnerStyleSettingItem() { Title = "Winner Style" });
-           
-
-            group.Add(new SettingItemGroup()
-            {
-                Title = "Winner Display Style",
-                Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
-            });
-
-         
-
-            return group;
-        }
+       
     }
 }

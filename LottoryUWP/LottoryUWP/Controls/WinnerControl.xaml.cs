@@ -1,4 +1,5 @@
 ﻿using LottoryUWP.DataModel;
+using LottoryUWP.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,14 +26,10 @@ namespace LottoryUWP.Controls
         {
             InitializeComponent();
 
-            Random random = new Random();
-
-            byte r = (byte)(random.Next(128) + 128);
-            byte g = (byte)(random.Next(256));
-            byte b = (byte)(random.Next(256));
-
-            this.borader.Background = new SolidColorBrush(Color.FromArgb(0x80, r, g, b));
-            this.borader.BorderBrush = new SolidColorBrush(Color.FromArgb(0xFF, r, g, b));
+            var color = RandomUtil.Instance.RandomColor();
+           
+            this.borader.Background = new SolidColorBrush(Color.FromArgb(0x80, color.R, color.G, color.B));
+            this.borader.BorderBrush = new SolidColorBrush(color);
         }
 
         public WinnerControl(DrawItem item) : this()

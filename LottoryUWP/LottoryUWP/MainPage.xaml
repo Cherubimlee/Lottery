@@ -113,7 +113,7 @@
 
                 <TextBlock x:Name="Header"  Grid.Column="1" 
                            TextAlignment="Center"  FontSize="36" 
-                           Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" HorizontalAlignment="Left">
+                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}" HorizontalAlignment="Left">
                     Title
                 </TextBlock>
                 

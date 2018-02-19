@@ -5,11 +5,161 @@
     xmlns:local="using:LottoryUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    x:Name="local">
 
     <Grid>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="NameTextState">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="Hide">
+                    <Storyboard>
+                        <DoubleAnimation  Storyboard.TargetName="NameBlock"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="0">
+                        </DoubleAnimation>
+                        <DoubleAnimation  Storyboard.TargetName="NameTrans"
+                                                         Storyboard.TargetProperty="X"                                                                                             
+                                                         Duration="0:0:0" To="-100">
+                        </DoubleAnimation>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Show">
+                    <Storyboard>
+                        <DoubleAnimation  Storyboard.TargetName="NameBlock"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="1">
+                        </DoubleAnimation>
+
+                        <DoubleAnimation  Storyboard.TargetName="NameTrans"
+                                                         Storyboard.TargetProperty="X"                                                                                             
+                                                         Duration="0:0:0" To="0">
+                        </DoubleAnimation>
+
+                    </Storyboard>
+                </VisualState>
+
+                <VisualStateGroup.Transitions>
+
+                    <VisualTransition To="Show">
+                        <Storyboard>
+                            <DoubleAnimation  Storyboard.TargetName="NameBlock"
+                                                         Storyboard.TargetProperty="Opacity"                                                                                             
+                                                         Duration="{Binding ElementName=local, Path=Interval}" From="0"  To="1">
+
+
+                            </DoubleAnimation>
+
+                            <DoubleAnimation  Storyboard.TargetName="NameTrans"
+                                                         Storyboard.TargetProperty="X"                                                                                             
+                                                         Duration="{Binding ElementName=local, Path=Interval}" From="100" To="0">
+
+
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </VisualTransition>
+
+                    <VisualTransition To="Hide">
+                        <Storyboard>
+                            <DoubleAnimation  Storyboard.TargetName="NameBlock"
+                                                         Storyboard.TargetProperty="Opacity"                                                                                             
+                                                         Duration="{Binding ElementName=local, Path=Interval}" From="1"  To="0">
+
+
+                            </DoubleAnimation>
+
+                            <DoubleAnimation  Storyboard.TargetName="NameTrans"
+                                                         Storyboard.TargetProperty="X"                                                                                             
+                                                         Duration="{Binding ElementName=local, Path=Interval}" From="0" To="-100">
+
+
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+
+            </VisualStateGroup>
+
+
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!--<ParallaxView Source="{x:Bind ForegroundElement}" VerticalShift="50" Grid.RowSpan="3">
+
+            --><!-- Background element --><!--
+            <Image x:Name="BackgroundImage" Source="Assets/turntable.png"
+               Stretch="UniformToFill"/>
+        </ParallaxView>-->
+
+
+        <Border  BorderBrush="{StaticResource TextBoxBorderThemeBrush}" 
+                     BorderThickness="0,5,0,5"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                     Width="400" 
+                    >
+            <TextBlock Foreground="{StaticResource TextBoxPlaceholderTextThemeBrush}"
+                           FontSize="30"
+                           Margin="20,10"
+                           TextAlignment="Center"
+                           Name="NameBlock">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="NameTrans"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Border>
+
+        <ScrollViewer  x:Name="ForegroundElement"  Grid.Row="1">
+            <StackPanel Margin="20">
+                <controls:Expander x:Name="Expander2" VerticalAlignment="Top" Margin="0,2"
+                          Header="Round 1"
+                          HorizontalContentAlignment="Stretch"
+                          Foreground="White"
+                          Background="Black"
+                          IsExpanded="True"
+                          ExpandDirection="Up">
+                    <Grid Height="250">
+                        <TextBlock HorizontalAlignment="Center"
+                      TextWrapping="Wrap"
+                      Text="This is the expanded content without a content overlay"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource HeaderTextBlockStyle}" />
+                    </Grid>
+                </controls:Expander>
+            </StackPanel>
+        </ScrollViewer>
+
+        <CommandBar Grid.Row="2" VerticalAlignment="Bottom"  >
+            <AppBarButton Icon="Filter"  Label="Round Capacity" >
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <ToggleSwitch OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
+                            <Slider  Minimum="1" Maximum="100" TickFrequency="10" TickPlacement="Outside" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged"/>
+                        </StackPanel>
+                 </Flyout>
+            </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
+            <AppBarButton Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" />
+            <AppBarButton Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
+
+            <CommandBar.Content>
+                <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14"/>
+            </CommandBar.Content>
+            </CommandBar>
+        
     </Grid>
 </UserControl>
