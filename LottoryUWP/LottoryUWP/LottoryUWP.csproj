@@ -118,6 +118,7 @@
       <DependentUpon>SettingPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\RandomUtil.cs" />
+    <Compile Include="Utils\VisualTreeHelperUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -69,6 +69,16 @@ namespace LottoryUWP.Utils
                 }
             }
         }
+
+        public Random RandomCore { get { return random; } }
+
+        public void Reset()
+        {
+            lock(listLock)
+            {
+                nonRepeatRandomList.Clear();
+            }
+        }
        
         public Color RandomColor(byte alpha = 0xff)
         {

@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:localctrl="using:LottoryUWP.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -93,14 +95,6 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <!--<ParallaxView Source="{x:Bind ForegroundElement}" VerticalShift="50" Grid.RowSpan="3">
-
-            --><!-- Background element --><!--
-            <Image x:Name="BackgroundImage" Source="Assets/turntable.png"
-               Stretch="UniformToFill"/>
-        </ParallaxView>-->
-
-
         <Border  BorderBrush="{StaticResource TextBoxBorderThemeBrush}" 
                      BorderThickness="0,5,0,5"
                         VerticalAlignment="Center"
@@ -118,46 +112,83 @@
             </TextBlock>
         </Border>
 
-        <ScrollViewer  x:Name="ForegroundElement"  Grid.Row="1">
-            <StackPanel Margin="20">
-                <controls:Expander x:Name="Expander2" VerticalAlignment="Top" Margin="0,2"
-                          Header="Round 1"
-                          HorizontalContentAlignment="Stretch"
-                          Foreground="White"
-                          Background="Black"
+
+        <Rectangle Fill="Red" Width="100" Height="200" VerticalAlignment="Center" Grid.Row="1"/>
+        <ListView ItemsSource="{Binding DrawHistory}" Grid.Row="1"  x:Name="listview"
+        IsItemClickEnabled="False"
+        IsSwipeEnabled="False"
+        CanDragItems="False"
+        SelectionMode="None" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:Expander  Margin="0,2"
+                          Header="{Binding GroupTitle}"
+                          Foreground="{StaticResource TextBoxForegroundHeaderThemeBrush}"
+                          Background="{StaticResource SystemControlBaseLowAcrylicElementBrush}"
                           IsExpanded="True"
+                          BorderBrush="{StaticResource ButtonBorderThemeBrush}"
+                          BorderThickness="1"             
                           ExpandDirection="Up">
-                    <Grid Height="250">
-                        <TextBlock HorizontalAlignment="Center"
-                      TextWrapping="Wrap"
-                      Text="This is the expanded content without a content overlay"
-                      VerticalAlignment="Center"
-                      Style="{StaticResource HeaderTextBlockStyle}" />
-                    </Grid>
-                </controls:Expander>
-            </StackPanel>
-        </ScrollViewer>
+                        <Grid MinHeight="250">
+                            <GridView ItemsSource="{Binding Items}"               
+                                IsItemClickEnabled="False"
+                                IsSwipeEnabled="False"
+                                CanDragItems="False"
+                                SelectionMode="None" 
+                                animations:ReorderGridAnimation.Duration="300">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <localctrl:WinnerControl MajorValue="{Binding MajorColumnValue}" 
+                                                                 SecondaryValue="{Binding SecondaryColumnValue}"
+                                                                 />
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                               
+                            </GridView>
+                        </Grid>
+                    </controls:Expander>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+
+
 
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom"  >
-            <AppBarButton Icon="Filter"  Label="Round Capacity" >
-                <AppBarButton.Flyout>
-                    <Flyout>
-                        <StackPanel>
-                            <ToggleSwitch OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
-                            <Slider  Minimum="1" Maximum="100" TickFrequency="10" TickPlacement="Outside" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged"/>
-                        </StackPanel>
-                 </Flyout>
-            </AppBarButton.Flyout>
-            </AppBarButton>
-            <AppBarSeparator/>
-            <AppBarButton Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
-            <AppBarSeparator/>
+
             <AppBarButton Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
             <AppBarButton Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" />
             <AppBarButton Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
 
+            <AppBarSeparator/>
+            <AppBarButton Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" >
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <ToggleSwitch OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
+                            <Slider  Minimum="1" Maximum="100" TickPlacement="Outside" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+            <AppBarSeparator/>
+            <AppBarButton Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
+            
             <CommandBar.Content>
-                <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14"/>
+                <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14" Tapped="Element_Tapped">
+                     <FlyoutBase.AttachedFlyout>
+                                <Flyout>
+                                    <TextBox x:Name="RoundTitleText" Text="Round 1" Header="Customize Round Title" IsTextPredictionEnabled="True" LostFocus="RoundTitleText_LostFocus"/>
+                                </Flyout>
+                                </FlyoutBase.AttachedFlyout>
+                </TextBlock>
             </CommandBar.Content>
             </CommandBar>
         

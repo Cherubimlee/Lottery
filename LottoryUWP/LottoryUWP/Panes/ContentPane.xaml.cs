@@ -1,7 +1,9 @@
 ﻿using LottoryUWP.DataModel;
 using LottoryUWP.Utils;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -61,18 +63,21 @@ namespace LottoryUWP.Panes
                     OnPropertyChanged("IsStopEnabled");
                     OnPropertyChanged("IsStartEnabled");
                     OnPropertyChanged("IsNextEnabled");
+                    OnPropertyChanged("RoundInfo");
                 }
             }
         }
 
         private DrawItem LastPickedDrawItem;
 
-        private List<DrawItem> DrawHistory = new List<DrawItem>();
+       
+
 
         public ContentPane()
         {
             this.InitializeComponent();
 
+            this.DataContext = Data.Instance;
 
             this.Loaded += ContentPane_Loaded;
         }
@@ -83,6 +88,9 @@ namespace LottoryUWP.Panes
             var firstItem =  DataModel.Data.Instance.DrawItems.FirstOrDefault();
 
             this.NameBlock.Text = firstItem != null ? firstItem.DisplayName : string.Empty;
+
+            NextRoundSetup();
+         
         }
 
 
@@ -114,19 +122,44 @@ namespace LottoryUWP.Panes
         {
             get
             {
-                string groupTitle = "Round 1", capacity;
+                string capacity;
 
                 if (CapacityToggle.IsOn)
                     capacity = "Applied Group Capacity " + CapacitySilder.Value;
                 else
                     capacity = "Free Draw";
+               
 
+                switch(DrawRunningState)
+                {
+                    case RunningState.Stopped:
+                        return string.Format("Next: {0} | {1}", this.RoundTitleText.Text, capacity);
+                    case RunningState.Starting:
+                        return string.Format("Starting {0} | {1}", this.RoundTitleText.Text, capacity);                  
+                    case RunningState.Running:
+                        {
+                            var group = Data.Instance.RecentGroup;
 
-                return string.Format("{0} | {1}", groupTitle, capacity);
+                            var drawInfo = CapacityToggle.IsOn ? String.Format("{0} out of {1} Lucky Winner(s)", group?.Items.Count, CapacitySilder.Value):
+                                String.Format("{0} Lucky Winner(s)", group?.Items.Count);
+                            return string.Format("{0} | {1} | {2}", this.RoundTitleText.Text, capacity, drawInfo);
+                        }
+                    default:
+                        return string.Format("{0} | {1}", this.RoundTitleText.Text, capacity);
+                      
+                }
             }
         }
 
-      
+        public string RoundTitle
+        {
+            get { return this.RoundTitleText.Text; }
+            set
+            {
+                this.RoundTitleText.Text = value;
+                OnPropertyChanged("RoundInfo");
+            }
+        }
         private async void shuffle(RunningState state)
         {
             Interval = new Duration(TimeSpan.FromMilliseconds(500));
@@ -150,6 +183,10 @@ namespace LottoryUWP.Panes
 
                     this.NameBlock.Text = LastPickedDrawItem.DisplayName;
                 }
+                else
+                {
+                    Stop();
+                }
                
                 VisualStateManager.GoToState(this, "Show", this.DrawRunningState != RunningState.Stopped);
                 await Task.Delay(Interval.TimeSpan);
@@ -160,6 +197,7 @@ namespace LottoryUWP.Panes
                 }
                 else
                 {
+                    RandomUtil.Instance.Reset();
                     this.DrawRunningState = RunningState.Running;
                 }
             }
@@ -176,27 +214,24 @@ namespace LottoryUWP.Panes
 
         #endregion
 
-        private async void AppBarButtonStart_Click(object sender, RoutedEventArgs e)
+        private  void AppBarButtonStart_Click(object sender, RoutedEventArgs e)
         {
             if (this.DrawRunningState == RunningState.Stopped)
-                shuffle(RunningState.Starting);
+            {
+                Start();
+            }
             else
             {
                 if (this.DrawRunningState == RunningState.Running)
-                {
-                    await Task.Delay(RandomUtil.Instance.Next(1000));
-
-                    var item = LastPickedDrawItem;
-
-                    if (!DrawHistory.Contains(item))
-                        DrawHistory.Add(item);
+                { 
+                    NextDraw();
                 }
             }
         }
 
         private void AppBarButtonStop_Click(object sender, RoutedEventArgs e)
         {
-          shuffle(RunningState.Stopped);
+            Stop();
         }
 
         private void CapacitySilder_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -212,8 +247,99 @@ namespace LottoryUWP.Panes
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (DrawRunningState != RunningState.Stopped)
+                Stop();
 
+            Data.Instance.ResetDrawData();
+            NextRoundSetup();
         }
+
+        private void Element_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (DrawRunningState == RunningState.Stopped)
+            {
+                FrameworkElement element = sender as FrameworkElement;
+                if (element != null)
+                {
+                    FlyoutBase.ShowAttachedFlyout(element);
+                }
+            }
+        }
+
+        private void RoundTitleText_LostFocus(object sender, RoutedEventArgs e)
+        {
+            OnPropertyChanged("RoundInfo");
+        }
+
+        private void Start()
+        {
+
+            var r = Data.Instance.StartNewRound(new DrawItemGroup() { GroupTitle = RoundTitle, GroupCapacity = CapacityToggle.IsOn ? new int?((int)CapacitySilder.Value) : null });
+
+            if (r)
+            {
+                RearrangeHistoryControls();
+                shuffle(RunningState.Starting);
+            }
+        }
+
+        private async void NextDraw()
+        {
+            await Task.Delay(RandomUtil.Instance.RandomCore.Next(1000));
+
+            bool r = Data.Instance.UpdateDrawData(LastPickedDrawItem);
+
+            if (r)
+            {
+                OnPropertyChanged("RoundInfo");
+
+                var group = Data.Instance.RecentGroup;
+
+                if (group.GroupCapacity.HasValue && group.Items.Count >= group.GroupCapacity.Value)
+                {
+                    Stop();
+                }
+            }
+        }
+
+        private void Stop()
+        {
+            shuffle(RunningState.Stopped);
+
+            var group = Data.Instance.RecentGroup;
+
+            if(group != null && group.Items.Count == 0)
+            {
+                Data.Instance.DeleteGroupRecord(group);
+            }
+
+            //Setup for next round
+            NextRoundSetup();
+        }
+
+        private void NextRoundSetup()
+        {
+            RoundTitle = String.Format("Round {0}", Data.Instance.RecentRoundIndex + 1);
+            CapacitySilder.Maximum = DataModel.Data.Instance.DrawItems.Count;
+        }
+       
+
+        private void RearrangeHistoryControls()
+        {
+            foreach(var item in listview.Items)
+            {
+                ListViewItem lvItem = listview.ContainerFromItem(item) as ListViewItem;
+
+                if(lvItem != null)
+                {
+                    Expander expander =  VisualTreeHelperUtil.GetFrameworkElementByName<Expander>(lvItem);
+
+                    expander.IsExpanded = false;
+                }
+            }
+        }
+
+        
     }
 }
 
