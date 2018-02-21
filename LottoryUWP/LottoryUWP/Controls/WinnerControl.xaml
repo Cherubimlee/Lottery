@@ -11,7 +11,7 @@
     x:Name="local">
 
     <Grid>
-        <Border Name="borader" BorderThickness="2,2,2,2" CornerRadius="30" Margin="5,8" MinWidth="200" MinHeight="100">
+        <Border Name="borader" BorderThickness="2,2,2,2" CornerRadius="30" Margin="5,8" MinWidth="240" MinHeight="80">
             <TextBlock Foreground="{StaticResource TextBoxForegroundThemeBrush}" FontSize="26" Margin="10" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Run x:Name="R1" Text="{Binding MajorValue, ElementName=local}"/>
                 <Run x:Name="R2" Text="{Binding SecondaryValue, ElementName=local}" FontFamily="Segoe UI"/>

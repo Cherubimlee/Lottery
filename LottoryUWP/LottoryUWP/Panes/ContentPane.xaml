@@ -177,7 +177,8 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-
+            <AppBarSeparator/>
+            <AppBarButton Icon="Share" Label="Report" Click="AppBarButtonReport_Click"/>
             <AppBarSeparator/>
             <AppBarButton Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
             

@@ -14,5 +14,7 @@ namespace LottoryUWP.DataModel
         public int? GroupCapacity { get; set; }
 
         public string GroupTitle { get; set; }
+
+        public int groupIndex { get; set; }
     }
 }

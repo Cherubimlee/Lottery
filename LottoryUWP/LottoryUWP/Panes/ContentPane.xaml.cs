@@ -162,7 +162,7 @@ namespace LottoryUWP.Panes
         }
         private async void shuffle(RunningState state)
         {
-            Interval = new Duration(TimeSpan.FromMilliseconds(500));
+            Interval = new Duration(TimeSpan.FromMilliseconds(600));
 
             this.DrawRunningState = state;
            
@@ -193,7 +193,7 @@ namespace LottoryUWP.Panes
 
                 if(Interval.TimeSpan.TotalMilliseconds > 200)
                 {
-                    Interval = new Duration(Interval.TimeSpan - TimeSpan.FromMilliseconds(50));
+                    Interval = new Duration(Interval.TimeSpan - TimeSpan.FromMilliseconds(100));
                 }
                 else
                 {
@@ -252,6 +252,18 @@ namespace LottoryUWP.Panes
 
             Data.Instance.ResetDrawData();
             NextRoundSetup();
+        }
+        private async void AppBarButtonReport_Click(object sender, RoutedEventArgs e)
+        {
+           var htmlstring =  Utils.HTMLPageUtil.DataToHTMLCode(Data.Instance);
+           var file = await Utils.FileUtil.OpenFileForSave();
+
+           if( await file.WriteTextAsync(htmlstring))
+            {
+                await Windows.System.Launcher.LaunchFileAsync(file);
+            }
+
+           
         }
 
         private void Element_Tapped(object sender, TappedRoutedEventArgs e)

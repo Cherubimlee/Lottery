@@ -9,7 +9,9 @@ namespace LottoryUWP.DataModel
 {
     public class Data
     {
-
+        public String EventTitle { get; set; } = "New Event";
+        public String MajorColumnTitle { get; set; } = "Major Column";
+        public String SecondaryColumnTitle { get; set; } = "Secondary Column";
         private object listLock = new object();
         public Data()
         {
@@ -40,7 +42,7 @@ namespace LottoryUWP.DataModel
 
         static public Data Instance { get { return instance; } }
 
-        private List<DrawItem> OrignalDrawItems { get; set; } = new List<DrawItem>();
+        public List<DrawItem> OrignalDrawItems { get; set; } = new List<DrawItem>();
         public List<DrawItem> DrawItems { get; set; } = new List<DrawItem>();
 
         public List<SettingItemGroup> SettingGroups { get; set; } = new List<SettingItemGroup>();
@@ -52,6 +54,7 @@ namespace LottoryUWP.DataModel
             if (DrawItems.Count == 0)
                 return false;
 
+            newGroup.groupIndex = DrawHistory.Count + 1;
             DrawHistory.Insert(0, newGroup);
 
             return true;
@@ -79,7 +82,7 @@ namespace LottoryUWP.DataModel
                 {
                     if ((!group.Items.Contains(item))&& DrawItems.Contains(item))
                     {
-                        group.Items.Insert(0, item);
+                        group.Items.Insert(0, item.ToWinnerItem(group.groupIndex));
                         DrawItems.Remove(item);
                         return true;
                     }

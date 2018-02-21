@@ -82,11 +82,15 @@ namespace LottoryUWP.Utils
        
         public Color RandomColor(byte alpha = 0xff)
         {
-            byte r = (byte)(random.Next(128) + 128);
-            byte g = (byte)(random.Next(256));
-            byte b = (byte)(random.Next(256));
+            var golden_ratio_conjugate = 0.618033988749895;
 
-            return new Color() { R = r, G = g, B = b, A = alpha };
+            double H = random.NextDouble()*360;
+
+            H += golden_ratio_conjugate;
+
+            H %= 1;
+
+            return Utils.ColorUtil.HsvToRgb(H*360.0, 0.5, 0.9);
         }
     }
 }
