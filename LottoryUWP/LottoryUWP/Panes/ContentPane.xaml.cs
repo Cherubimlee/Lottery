@@ -1,4 +1,5 @@
 ﻿using LottoryUWP.DataModel;
+using LottoryUWP.Enum;
 using LottoryUWP.Utils;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
@@ -25,12 +26,7 @@ namespace LottoryUWP.Panes
 {
     public sealed partial class ContentPane : UserControl, INotifyPropertyChanged
     {
-        public enum RunningState
-        {
-            Stopped,
-            Running,
-            Starting
-        }
+
 
         public Duration interval;
         public Duration Interval
@@ -70,27 +66,25 @@ namespace LottoryUWP.Panes
 
         private DrawItem LastPickedDrawItem;
 
-       
-
 
         public ContentPane()
         {
             this.InitializeComponent();
 
-            this.DataContext = Data.Instance;
+            this.DataContext = DrawData.Instance;
 
             this.Loaded += ContentPane_Loaded;
         }
 
-       
+
         private void ContentPane_Loaded(object sender, RoutedEventArgs e)
         {
-            var firstItem =  DataModel.Data.Instance.DrawItems.FirstOrDefault();
+            var firstItem = DataModel.DrawData.Instance.DrawItems.FirstOrDefault();
 
             this.NameBlock.Text = firstItem != null ? firstItem.DisplayName : string.Empty;
 
             NextRoundSetup();
-         
+
         }
 
 
@@ -128,25 +122,25 @@ namespace LottoryUWP.Panes
                     capacity = "Applied Group Capacity " + CapacitySilder.Value;
                 else
                     capacity = "Free Draw";
-               
 
-                switch(DrawRunningState)
+
+                switch (DrawRunningState)
                 {
                     case RunningState.Stopped:
                         return string.Format("Next: {0} | {1}", this.RoundTitleText.Text, capacity);
                     case RunningState.Starting:
-                        return string.Format("Starting {0} | {1}", this.RoundTitleText.Text, capacity);                  
+                        return string.Format("Starting {0} | {1}", this.RoundTitleText.Text, capacity);
                     case RunningState.Running:
                         {
-                            var group = Data.Instance.RecentGroup;
+                            var group = DrawData.Instance.RecentGroup;
 
-                            var drawInfo = CapacityToggle.IsOn ? String.Format("{0} out of {1} Lucky Winner(s)", group?.Items.Count, CapacitySilder.Value):
+                            var drawInfo = CapacityToggle.IsOn ? String.Format("{0} out of {1} Lucky Winner(s)", group?.Items.Count, CapacitySilder.Value) :
                                 String.Format("{0} Lucky Winner(s)", group?.Items.Count);
                             return string.Format("{0} | {1} | {2}", this.RoundTitleText.Text, capacity, drawInfo);
                         }
                     default:
                         return string.Format("{0} | {1}", this.RoundTitleText.Text, capacity);
-                      
+
                 }
             }
         }
@@ -165,15 +159,15 @@ namespace LottoryUWP.Panes
             Interval = new Duration(TimeSpan.FromMilliseconds(600));
 
             this.DrawRunningState = state;
-           
+
 
             while (this.DrawRunningState != RunningState.Stopped)
             {
-                
-                VisualStateManager.GoToState(this, "Hide", this.DrawRunningState !=  RunningState.Stopped);
+
+                VisualStateManager.GoToState(this, "Hide", this.DrawRunningState != RunningState.Stopped);
                 await Task.Delay(Interval.TimeSpan);
 
-                var list = DataModel.Data.Instance.DrawItems;
+                var list = DataModel.DrawData.Instance.DrawItems;
 
                 if (list.Count > 0)
                 {
@@ -187,11 +181,11 @@ namespace LottoryUWP.Panes
                 {
                     Stop();
                 }
-               
+
                 VisualStateManager.GoToState(this, "Show", this.DrawRunningState != RunningState.Stopped);
                 await Task.Delay(Interval.TimeSpan);
 
-                if(Interval.TimeSpan.TotalMilliseconds > 200)
+                if (Interval.TimeSpan.TotalMilliseconds > 200)
                 {
                     Interval = new Duration(Interval.TimeSpan - TimeSpan.FromMilliseconds(100));
                 }
@@ -214,7 +208,7 @@ namespace LottoryUWP.Panes
 
         #endregion
 
-        private  void AppBarButtonStart_Click(object sender, RoutedEventArgs e)
+        private void AppBarButtonStart_Click(object sender, RoutedEventArgs e)
         {
             if (this.DrawRunningState == RunningState.Stopped)
             {
@@ -223,7 +217,7 @@ namespace LottoryUWP.Panes
             else
             {
                 if (this.DrawRunningState == RunningState.Running)
-                { 
+                {
                     NextDraw();
                 }
             }
@@ -250,20 +244,20 @@ namespace LottoryUWP.Panes
             if (DrawRunningState != RunningState.Stopped)
                 Stop();
 
-            Data.Instance.ResetDrawData();
+            DrawData.Instance.ResetDrawData();
             NextRoundSetup();
         }
         private async void AppBarButtonReport_Click(object sender, RoutedEventArgs e)
         {
-           var htmlstring =  Utils.HTMLPageUtil.DataToHTMLCode(Data.Instance);
-           var file = await Utils.FileUtil.OpenFileForSave();
+            var htmlstring = Utils.HTMLPageUtil.DataToHTMLCode(DrawData.Instance, SettingData.Instance);
+            var file = await Utils.FileUtil.OpenFileForSave();
 
-           if( await file.WriteTextAsync(htmlstring))
+            if (await file.WriteTextAsync(htmlstring))
             {
                 await Windows.System.Launcher.LaunchFileAsync(file);
             }
 
-           
+
         }
 
         private void Element_Tapped(object sender, TappedRoutedEventArgs e)
@@ -286,7 +280,7 @@ namespace LottoryUWP.Panes
         private void Start()
         {
 
-            var r = Data.Instance.StartNewRound(new DrawItemGroup() { GroupTitle = RoundTitle, GroupCapacity = CapacityToggle.IsOn ? new int?((int)CapacitySilder.Value) : null });
+            var r = DrawData.Instance.StartNewRound(new DrawItemGroup() { GroupTitle = RoundTitle, GroupCapacity = CapacityToggle.IsOn ? new int?((int)CapacitySilder.Value) : null });
 
             if (r)
             {
@@ -299,13 +293,13 @@ namespace LottoryUWP.Panes
         {
             await Task.Delay(RandomUtil.Instance.RandomCore.Next(1000));
 
-            bool r = Data.Instance.UpdateDrawData(LastPickedDrawItem);
+            bool r = DrawData.Instance.UpdateDrawData(LastPickedDrawItem);
 
             if (r)
             {
                 OnPropertyChanged("RoundInfo");
 
-                var group = Data.Instance.RecentGroup;
+                var group = DrawData.Instance.RecentGroup;
 
                 if (group.GroupCapacity.HasValue && group.Items.Count >= group.GroupCapacity.Value)
                 {
@@ -318,11 +312,11 @@ namespace LottoryUWP.Panes
         {
             shuffle(RunningState.Stopped);
 
-            var group = Data.Instance.RecentGroup;
+            var group = DrawData.Instance.RecentGroup;
 
-            if(group != null && group.Items.Count == 0)
+            if (group != null && group.Items.Count == 0)
             {
-                Data.Instance.DeleteGroupRecord(group);
+                DrawData.Instance.DeleteGroupRecord(group);
             }
 
             //Setup for next round
@@ -331,27 +325,27 @@ namespace LottoryUWP.Panes
 
         private void NextRoundSetup()
         {
-            RoundTitle = String.Format("Round {0}", Data.Instance.RecentRoundIndex + 1);
-            CapacitySilder.Maximum = DataModel.Data.Instance.DrawItems.Count;
+            RoundTitle = String.Format("Round {0}", DrawData.Instance.RecentRoundIndex + 1);
+            CapacitySilder.Maximum = DataModel.DrawData.Instance.DrawItems.Count;
         }
-       
+
 
         private void RearrangeHistoryControls()
         {
-            foreach(var item in listview.Items)
+            foreach (var item in listview.Items)
             {
                 ListViewItem lvItem = listview.ContainerFromItem(item) as ListViewItem;
 
-                if(lvItem != null)
+                if (lvItem != null)
                 {
-                    Expander expander =  VisualTreeHelperUtil.GetFrameworkElementByName<Expander>(lvItem);
+                    Expander expander = VisualTreeHelperUtil.GetFrameworkElementByName<Expander>(lvItem);
 
                     expander.IsExpanded = false;
                 }
             }
         }
 
-        
+
     }
 }
 

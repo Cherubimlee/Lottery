@@ -7,26 +7,13 @@ using System.Threading.Tasks;
 
 namespace LottoryUWP.DataModel
 {
-    public class Data
+    public class DrawData
     {
-        public String EventTitle { get; set; } = "New Event";
-        public String MajorColumnTitle { get; set; } = "Major Column";
-        public String SecondaryColumnTitle { get; set; } = "Secondary Column";
+       
+        private static DrawData instance = new DrawData();
         private object listLock = new object();
-        public Data()
+        public DrawData()
         {
-
-                
-                List<SettingItem> items = new List<SettingItem>();
-                items.Add(new WinnerStyleSettingItem() { Title = "Winner Style" });
-
-
-                SettingGroups.Add(new SettingItemGroup()
-                {
-                    Title = "Winner Display Style",
-                    Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
-                });
-
 
             for (int i = 0; i < 100; i++)
             {
@@ -38,16 +25,21 @@ namespace LottoryUWP.DataModel
             ResetDrawData();
         }
 
-        private static Data instance = new Data();
-
-        static public Data Instance { get { return instance; } }
-
         public List<DrawItem> OrignalDrawItems { get; set; } = new List<DrawItem>();
         public List<DrawItem> DrawItems { get; set; } = new List<DrawItem>();
-
-        public List<SettingItemGroup> SettingGroups { get; set; } = new List<SettingItemGroup>();
-
         public ObservableCollection<DrawItemGroup> DrawHistory { get; set; } = new ObservableCollection<DrawItemGroup>();
+        public DrawItemGroup RecentGroup
+        {
+            get
+            {
+                return DrawHistory.FirstOrDefault();
+            }
+        }
+        public int RecentRoundIndex
+        {
+            get { return DrawHistory.Count; }
+        }
+
 
         public bool StartNewRound(DrawItemGroup newGroup)
         {
@@ -58,14 +50,6 @@ namespace LottoryUWP.DataModel
             DrawHistory.Insert(0, newGroup);
 
             return true;
-        }
-
-        public DrawItemGroup RecentGroup
-        {
-            get
-            {
-                return DrawHistory.FirstOrDefault();
-            }
         }
 
         public void DeleteGroupRecord(DrawItemGroup group)
@@ -92,11 +76,6 @@ namespace LottoryUWP.DataModel
             }
         }
 
-        public int RecentRoundIndex
-        {
-            get { return DrawHistory.Count; }
-        }
-
         public void ResetDrawData()
         {
             lock (listLock)
@@ -107,5 +86,6 @@ namespace LottoryUWP.DataModel
             }
         }
 
+        public static DrawData Instance { get { return instance; } }
     }
 }

@@ -102,11 +102,13 @@
     <Compile Include="Controls\WinnerControl.xaml.cs">
       <DependentUpon>WinnerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Data.cs" />
+    <Compile Include="DataModel\DrawData.cs" />
     <Compile Include="DataModel\DrawItem.cs" />
     <Compile Include="DataModel\DrawItemGroup.cs" />
+    <Compile Include="DataModel\SettingData.cs" />
     <Compile Include="DataModel\SettingItem.cs" />
     <Compile Include="DataModel\SettingItemGroup.cs" />
+    <Compile Include="Enum\Enums.cs" />
     <Compile Include="Panes\ContentPane.xaml.cs">
       <DependentUpon>ContentPane.xaml</DependentUpon>
     </Compile>
@@ -169,6 +171,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

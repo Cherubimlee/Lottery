@@ -9,7 +9,7 @@ namespace LottoryUWP.DataModel
 {
     public class SettingItemGroup
     {
-        public string UniqueId { get; set; }
+       
         public string Title { get; set; }
         public string ImagePath { get; set; }
 

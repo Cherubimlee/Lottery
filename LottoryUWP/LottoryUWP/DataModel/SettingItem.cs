@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LottoryUWP.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,21 +9,18 @@ namespace LottoryUWP.DataModel
 {
     public class SettingItem
     {
-
-        public string UniqueId { get; set; }
+       
         public string Title { get; set; }
         public string ImagePath { get; set; }
+
+        public SettingData DataContext { get { return SettingData.Instance; } }
+
+        public SettingType StyleType { get; set; }
 
         public override string ToString()
         {
             return this.Title;
         }
-    }
-
-    public class WinnerStyleSettingItem : SettingItem
-    {
-        public DrawItem SampleWinner { get; set; } = new DrawItem() { MajorColumnValue = "Major", SecondaryColumnValue = "Secondary" };
-
     }
 
 }

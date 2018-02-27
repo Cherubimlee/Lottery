@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LottoryUWP.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -58,5 +59,7 @@ namespace LottoryUWP
             }
                
         }
+
+        public SettingData Settings { get { return SettingData.Instance; } }
     }
 }

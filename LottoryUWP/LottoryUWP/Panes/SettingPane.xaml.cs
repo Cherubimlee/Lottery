@@ -23,7 +23,7 @@ namespace LottoryUWP.Panes
         public SettingPane()
         {
             this.InitializeComponent();
-            Groups = DataModel.Data.Instance.SettingGroups;
+            Groups = DataModel.SettingData.BuildSettingList();
         }
       
         public IEnumerable<SettingItemGroup> Groups

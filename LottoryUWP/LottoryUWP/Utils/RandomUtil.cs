@@ -11,7 +11,7 @@ namespace LottoryUWP.Utils
     {
         public static RandomUtil Instance { get; private set; } = new RandomUtil();
 
-        private const int maxRangeforNonRepeatRandom = 500;
+        private const int maxRangeforNonRepeatRandom = 1000;
         private const int reasonableMaxValueDiffeRange = 10;
 
         private Random random = new Random();

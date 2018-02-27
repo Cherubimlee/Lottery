@@ -10,18 +10,18 @@ namespace LottoryUWP.Utils
     public class HTMLPageUtil
     {
 
-        public static string DataToHTMLCode(DataModel.Data data)
+        public static string DataToHTMLCode(DataModel.DrawData drawData, DataModel.SettingData settingData)
         {
             StringBuilder sb = new StringBuilder();
 
             String tables = "";
 
-            foreach(var group in data.DrawHistory)
+            foreach(var group in drawData.DrawHistory)
             {
-                tables = buildWinnerTable(group, data.MajorColumnTitle, data.SecondaryColumnTitle) + tables;
+                tables = buildWinnerTable(group, settingData.MajorColumnTitle, settingData.SecondaryColumnTitle) + tables;
             }
 
-            var totalWinner = data.DrawHistory.Sum((x) => x.Items.Count);
+            var totalWinner = drawData.DrawHistory.Sum((x) => x.Items.Count);
 
             sb.Append("<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">" +
                 "<head>" +
@@ -29,11 +29,11 @@ namespace LottoryUWP.Utils
                 "   <title>Report</title>" +
                 "</head>" +
                 "<body>" +
-                " <h1>" + data.EventTitle + "</h1>" +
-                "<p>Total Audiance:" + data.OrignalDrawItems.Count + "</p>" +
-                "<p>Total Round:" + data.DrawHistory.Count + "</p>" +
+                " <h1>" + settingData.EventTitle + "</h1>" +
+                "<p>Total Audiance:" + drawData.OrignalDrawItems.Count + "</p>" +
+                "<p>Total Round:" + drawData.DrawHistory.Count + "</p>" +
                 "<p>Total Winner:"+ totalWinner + "</p>" +
-                "<p>Winner Ratio:" + (int)((double)totalWinner/data.OrignalDrawItems.Count * 100.0) + "%</p>" +
+                "<p>Winner Ratio:" + (int)((double)totalWinner/drawData.OrignalDrawItems.Count * 100.0) + "%</p>" +
                 "<p>Report Data:" + DateTime.Now.ToString() + "</p>" +
                 " <br />" +
                 tables +

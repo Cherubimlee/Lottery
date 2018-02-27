@@ -68,7 +68,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid  x:Name="Menu" Grid.Column="0" Width="300" Visibility="Collapsed" >
+        <Grid  x:Name="Menu" Grid.Column="0" Width="320" Visibility="Collapsed" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -113,10 +113,12 @@
 
                 <TextBlock x:Name="Header"  Grid.Column="1" 
                            TextAlignment="Center"  FontSize="36" 
-                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}" HorizontalAlignment="Left">
-                    Title
-                </TextBlock>
-                
+                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}" HorizontalAlignment="Left"
+                           Text="{x:Bind Settings.EventTitle, Mode=OneWay}"
+                           />
+
+
+
             </Grid>
 
             <panes:ContentPane Grid.Row="1">

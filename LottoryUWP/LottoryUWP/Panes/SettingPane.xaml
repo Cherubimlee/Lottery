@@ -12,7 +12,8 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
-    x:Name="local">
+    x:Name="local"
+    Width="320">
 
     <UserControl.Resources>
       
@@ -20,14 +21,15 @@
                               d:Source="{Binding Groups, ElementName=local}"/>
 
         <DataTemplate x:Key="ZoomedInGeneralTemplate" x:DataType="data:SettingItem">
-            <StackPanel Margin="20,0,0,0" Width="300">
+            <StackPanel Margin="20,0,0,0" >
                 <TextBlock Text="{x:Bind Title}" Style="{StaticResource BaseTextBlockStyle}"/>
             </StackPanel>
         </DataTemplate>
 
         <DataTemplate x:Key="ZoomedInWinnerTemplate" x:DataType="data:SettingItem">
-            <StackPanel Margin="20,0,0,0" Width="300">
-                <controls:WinnerControl  MajorValue="[Major]" SecondaryValue="[Secondary]" HorizontalAlignment="Center"/>
+            <StackPanel  Margin="20,0,0,0" >
+                <controls:WinnerControl  MajorValue="{Binding DataContext.MajorColumnTitle}" SecondaryValue="{Binding DataContext.SecondaryColumnTitle}" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding DataContext.EventTitle, Mode=TwoWay}"/>
             </StackPanel>
         </DataTemplate>
 
