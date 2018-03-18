@@ -112,8 +112,6 @@
             </TextBlock>
         </Border>
 
-
-        <Rectangle Fill="Red" Width="100" Height="200" VerticalAlignment="Center" Grid.Row="1"/>
         <ListView ItemsSource="{Binding DrawHistory}" Grid.Row="1"  x:Name="listview"
         IsItemClickEnabled="False"
         IsSwipeEnabled="False"
@@ -162,31 +160,31 @@
 
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom"  >
 
-            <AppBarButton Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
-            <AppBarButton Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" />
-            <AppBarButton Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
+            <AppBarButton x:Uid="CommandBarStop" Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
+            <AppBarButton x:Uid="CommandBarPlay" Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" />
+            <AppBarButton x:Uid="CommandBarNext" Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
 
             <AppBarSeparator/>
-            <AppBarButton Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" >
+            <AppBarButton x:Uid="CommandBarCapacity" Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" >
                 <AppBarButton.Flyout>
                     <Flyout>
                         <StackPanel>
-                            <ToggleSwitch OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
+                            <ToggleSwitch  x:Uid="CommandBarCapacitySwitch" OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
                             <Slider  Minimum="1" Maximum="100" TickPlacement="Outside" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged"/>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
             <AppBarSeparator/>
-            <AppBarButton Icon="Share" Label="Report" Click="AppBarButtonReport_Click"/>
+            <AppBarButton x:Uid="CommandBarShare" Icon="Share" Label="Report" Click="AppBarButtonReport_Click"/>
             <AppBarSeparator/>
-            <AppBarButton Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
+            <AppBarButton x:Uid="CommandBarReset" Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
             
             <CommandBar.Content>
                 <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14" Tapped="Element_Tapped">
                      <FlyoutBase.AttachedFlyout>
                                 <Flyout>
-                                    <TextBox x:Name="RoundTitleText" Text="Round 1" Header="Customize Round Title" IsTextPredictionEnabled="True" LostFocus="RoundTitleText_LostFocus"/>
+                                    <TextBox x:Uid="RoundTitleText" x:Name="RoundTitleText" Text="Round 1" Header="Customize Round Title" IsTextPredictionEnabled="True" LostFocus="RoundTitleText_LostFocus"/>
                                 </Flyout>
                                 </FlyoutBase.AttachedFlyout>
                 </TextBlock>

@@ -119,27 +119,27 @@ namespace LottoryUWP.Panes
                 string capacity;
 
                 if (CapacityToggle.IsOn)
-                    capacity = "Applied Group Capacity " + CapacitySilder.Value;
+                    capacity = string.Format(LottoryUWP.Strings.Resources.InfoBar_Capacity_Applied, CapacitySilder.Value);
                 else
-                    capacity = "Free Draw";
+                    capacity = Strings.Resources.InfoBar_Capacity_FreeDraw;
 
 
                 switch (DrawRunningState)
                 {
                     case RunningState.Stopped:
-                        return string.Format("Next: {0} | {1}", this.RoundTitleText.Text, capacity);
+                        return string.Format(Strings.Resources.InfoBar_Stopped, this.RoundTitleText.Text, capacity);
                     case RunningState.Starting:
-                        return string.Format("Starting {0} | {1}", this.RoundTitleText.Text, capacity);
+                        return string.Format(Strings.Resources.InfoBaar_Starting, this.RoundTitleText.Text, capacity);
                     case RunningState.Running:
                         {
                             var group = DrawData.Instance.RecentGroup;
 
-                            var drawInfo = CapacityToggle.IsOn ? String.Format("{0} out of {1} Lucky Winner(s)", group?.Items.Count, CapacitySilder.Value) :
-                                String.Format("{0} Lucky Winner(s)", group?.Items.Count);
-                            return string.Format("{0} | {1} | {2}", this.RoundTitleText.Text, capacity, drawInfo);
+                            var drawInfo = CapacityToggle.IsOn ? String.Format(Strings.Resources.InfoBar_DrawInfo_Capacity, group?.Items.Count, CapacitySilder.Value) :
+                                String.Format(Strings.Resources.InfoBar_DrawInfo_FreeDraw, group?.Items.Count);
+                            return string.Format(Strings.Resources.InfoBar_Running, this.RoundTitleText.Text, capacity, drawInfo);
                         }
                     default:
-                        return string.Format("{0} | {1}", this.RoundTitleText.Text, capacity);
+                        return string.Format(Strings.Resources.InfoBar_Default, this.RoundTitleText.Text, capacity);
 
                 }
             }
