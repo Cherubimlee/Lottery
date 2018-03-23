@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 03/18/2018 13:53:42
+// 	Generated: 03/23/2018 21:50:53
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -53,7 +53,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "一起来抽奖, 谁是下一个幸运儿？"
+        /// Localized resource similar to "Let‘s Lucky Draw, who is the next winner?"
         /// </summary>
         public static string AppDescription
         {
@@ -64,7 +64,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "一起来抽奖"
+        /// Localized resource similar to "Let‘s Lucky Draw"
         /// </summary>
         public static string AppName
         {
@@ -75,7 +75,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "正在准备：{0} | {1}"
+        /// Localized resource similar to "Starting {0} | {1}"
         /// </summary>
         public static string InfoBaar_Starting
         {
@@ -86,7 +86,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "即将选取{0}个幸运儿"
+        /// Localized resource similar to "Applied Group Capacity {0}"
         /// </summary>
         public static string InfoBar_Capacity_Applied
         {
@@ -97,7 +97,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "随意选取"
+        /// Localized resource similar to "Free Draw"
         /// </summary>
         public static string InfoBar_Capacity_FreeDraw
         {
@@ -119,7 +119,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "已选取{0}个幸运儿，共{1}位"
+        /// Localized resource similar to "{0} out of {1} Lucky Winner(s)"
         /// </summary>
         public static string InfoBar_DrawInfo_Capacity
         {
@@ -130,7 +130,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "已选取{0}个幸运儿"
+        /// Localized resource similar to "{0} Lucky Winner(s)"
         /// </summary>
         public static string InfoBar_DrawInfo_FreeDraw
         {
@@ -152,7 +152,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "接下来: {0} | {1}"
+        /// Localized resource similar to "Next: {0} | {1}"
         /// </summary>
         public static string InfoBar_Stopped
         {

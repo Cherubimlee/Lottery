@@ -118,55 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>一起来抽奖, 谁是下一个幸运儿？</value>
+    <value>Let‘s Lucky Draw, who is the next winner?</value>
     <comment>Let‘s Lucky Draw, who is the next winner?</comment>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>一起来抽奖</value>
+    <value>Let‘s Lucky Draw</value>
     <comment>Let‘s Lucky Draw</comment>
   </data>
   <data name="CommandBarCapacity.Label" xml:space="preserve">
-    <value>每轮选取数量限制</value>
+    <value>Round Capacity</value>
     <comment>Round Capacity</comment>
   </data>
   <data name="CommandBarCapacitySwitch.OffContent" xml:space="preserve">
-    <value>取消选取数量限制</value>
+    <value>Don't Apply Round Capacity</value>
     <comment>Don't Apply Round Capacity</comment>
   </data>
   <data name="CommandBarCapacitySwitch.OnContent" xml:space="preserve">
-    <value>开启选取数量限制</value>
+    <value>Apply Round Capacity</value>
     <comment>Apply Round Capacity</comment>
   </data>
   <data name="CommandBarNext.Label" xml:space="preserve">
-    <value>下一个</value>
+    <value>Next</value>
     <comment>Next</comment>
   </data>
   <data name="CommandBarPlay.Label" xml:space="preserve">
-    <value>开始</value>
+    <value>Start</value>
     <comment>Start</comment>
   </data>
   <data name="CommandBarReset.Label" xml:space="preserve">
-    <value>重置</value>
+    <value>Reset</value>
     <comment>Reset</comment>
   </data>
   <data name="CommandBarShare.Label" xml:space="preserve">
-    <value>导出结果</value>
+    <value>Report</value>
     <comment>Report</comment>
   </data>
   <data name="CommandBarStop.Label" xml:space="preserve">
-    <value>停止</value>
+    <value>Stop</value>
     <comment>Stop</comment>
   </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
-    <value>正在准备：{0} | {1}</value>
+    <value>Starting {0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
   </data>
   <data name="InfoBar_Capacity_Applied" xml:space="preserve">
-    <value>即将选取{0}个幸运儿</value>
+    <value>Applied Group Capacity {0}</value>
     <comment>Applied Group Capacity {0}</comment>
   </data>
   <data name="InfoBar_Capacity_FreeDraw" xml:space="preserve">
-    <value>随意选取</value>
+    <value>Free Draw</value>
     <comment>Free Draw</comment>
   </data>
   <data name="InfoBar_Default" xml:space="preserve">
@@ -174,11 +174,11 @@
     <comment>{0} | {1}</comment>
   </data>
   <data name="InfoBar_DrawInfo_Capacity" xml:space="preserve">
-    <value>已选取{0}个幸运儿，共{1}位</value>
+    <value>{0} out of {1} Lucky Winner(s)</value>
     <comment>{0} out of {1} Lucky Winner(s)</comment>
   </data>
   <data name="InfoBar_DrawInfo_FreeDraw" xml:space="preserve">
-    <value>已选取{0}个幸运儿</value>
+    <value>{0} Lucky Winner(s)</value>
     <comment>{0} Lucky Winner(s)</comment>
   </data>
   <data name="InfoBar_Running" xml:space="preserve">
@@ -186,11 +186,11 @@
     <comment>{0} | {1} | {2}</comment>
   </data>
   <data name="InfoBar_Stopped" xml:space="preserve">
-    <value>接下来: {0} | {1}</value>
+    <value>Next: {0} | {1}</value>
     <comment>Next: {0} | {1}</comment>
   </data>
   <data name="RoundTitleText.Header" xml:space="preserve">
-    <value>自定义轮标题</value>
+    <value>Custom Round Title</value>
     <comment>Custom Round Title</comment>
   </data>
 </root>

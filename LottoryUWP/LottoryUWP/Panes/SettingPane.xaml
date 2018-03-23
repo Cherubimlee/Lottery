@@ -9,6 +9,7 @@
     xmlns:data="using:LottoryUWP.DataModel"
     xmlns:wuxdata="using:Windows.UI.Xaml.Data"
     xmlns:comm ="using:LottoryUWP.Common"
+    xmlns:ad ="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -49,6 +50,10 @@
     </UserControl.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <!--<StackPanel>
                         <controls:WinnerControl  MajorValue="[Major]" SecondaryValue="[Secondary]" HorizontalAlignment="Center"/>
         </StackPanel>-->
@@ -67,6 +72,11 @@
                 <ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" GotFocus="List_GotFocus" />
             </SemanticZoom.ZoomedOutView>
         </SemanticZoom>
+
+        <ad:AdControl Grid.Row="1"  
+              ApplicationId="9nppsdm8nddl"
+              AdUnitId="1100018414"
+              Height="100"/>
 
     </Grid>
 </UserControl>
