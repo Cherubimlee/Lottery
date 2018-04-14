@@ -5,7 +5,7 @@
     xmlns:local="using:LottoryUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls ="using:LottoryUWP.Controls"
+    xmlns:controls ="using:LottoryUWP.SettingWidgets"
     xmlns:data="using:LottoryUWP.DataModel"
     xmlns:wuxdata="using:Windows.UI.Xaml.Data"
     xmlns:comm ="using:LottoryUWP.Common"
@@ -27,10 +27,9 @@
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="ZoomedInWinnerTemplate" x:DataType="data:SettingItem">
-            <StackPanel  Margin="20,0,0,0" >
-                <controls:WinnerControl  MajorValue="{Binding DataContext.MajorColumnTitle}" SecondaryValue="{Binding DataContext.SecondaryColumnTitle}" HorizontalAlignment="Center"/>
-                <TextBox Text="{Binding DataContext.EventTitle, Mode=TwoWay}"/>
+        <DataTemplate x:Key="ZoomedInStyleSettingTemplate" x:DataType="data:SettingItem">
+            <StackPanel  Padding="20,0,20,0" Width="320">
+                <controls:AppearanceSettingPane DataContext="{Binding}"/>
             </StackPanel>
         </DataTemplate>
 
@@ -44,7 +43,7 @@
 
         <comm:SettingItemDataTemplateSelector x:Key="SettingItemSelector" 
                                               GeneralSettingTemplate="{StaticResource ZoomedInGeneralTemplate}"
-                                              WinnerStyleTemplate="{StaticResource ZoomedInWinnerTemplate}"
+                                              StyleSettingTemplate="{StaticResource ZoomedInStyleSettingTemplate}"
                                               />
 
     </UserControl.Resources>

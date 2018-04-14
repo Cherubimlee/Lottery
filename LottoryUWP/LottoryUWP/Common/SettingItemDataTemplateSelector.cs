@@ -11,7 +11,7 @@ namespace LottoryUWP.Common
 {
     class SettingItemDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate WinnerStyleTemplate { get; set; }
+        public DataTemplate StyleSettingTemplate { get; set; }
         public DataTemplate GeneralSettingTemplate { get; set; }
        
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
@@ -20,8 +20,8 @@ namespace LottoryUWP.Common
             if (item is SettingItem settingItem)
              switch(settingItem.StyleType)
                 {
-                    case Enum.SettingType.WinnerItemStyleDemo:
-                        return WinnerStyleTemplate;
+                    case Enum.SettingType.DisplayStyleSetting:
+                        return StyleSettingTemplate;
                     case Enum.SettingType.General:
                     default:
                         return GeneralSettingTemplate;

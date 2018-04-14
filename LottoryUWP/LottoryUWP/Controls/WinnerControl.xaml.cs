@@ -26,10 +26,10 @@ namespace LottoryUWP.Controls
         {
             InitializeComponent();
 
-            var color = RandomUtil.Instance.RandomColor();
-           
-            this.borader.Background = new SolidColorBrush(Color.FromArgb(0x80, color.R, color.G, color.B));
-            this.borader.BorderBrush = new SolidColorBrush(color);
+            if (SettingData.Instance.IsWinnerColorRandom)
+                this.ControlColor = RandomUtil.Instance.RandomColor();
+            else
+                this.ControlColor = SettingData.Instance.WinnerColor;
         }
 
         public WinnerControl(DrawItem item) : this()
@@ -38,7 +38,10 @@ namespace LottoryUWP.Controls
             this.MajorValue = item.MajorColumnValue;
         }
 
-      
+        public WinnerControl (DrawItem item, Color color) : this(item)
+        {
+            this.controlColor = color;
+        }
 
         public string MajorValue
         {
@@ -49,9 +52,6 @@ namespace LottoryUWP.Controls
         // Using a DependencyProperty as the backing store for PrimayValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MajorValueProperty =
             DependencyProperty.Register("MajorValue", typeof(string), typeof(WinnerControl), new PropertyMetadata(string.Empty));
-
-
-
 
         public string SecondaryValue
         {
@@ -64,6 +64,21 @@ namespace LottoryUWP.Controls
             DependencyProperty.Register("SecondaryValue", typeof(string), typeof(WinnerControl), new PropertyMetadata(string.Empty));
 
 
+        private Color controlColor;
+        public Color ControlColor
+        {
+            get
+            {
+                return controlColor;
+            }
+            set
+            {
+                var color = value;
+                this.borader.Background = new SolidColorBrush(Color.FromArgb(0x80, color.R, color.G, color.B));
+                this.borader.BorderBrush = new SolidColorBrush(color);
+                controlColor = color;
+            }
+        }
 
     }
 }

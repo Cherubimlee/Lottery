@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 03/23/2018 21:50:53
+// 	Generated: 03/28/2018 21:57:45
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings

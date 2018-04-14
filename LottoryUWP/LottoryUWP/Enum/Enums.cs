@@ -16,6 +16,6 @@ namespace LottoryUWP.Enum
     public enum SettingType
     {
         General,
-        WinnerItemStyleDemo
+        DisplayStyleSetting
     }
 }

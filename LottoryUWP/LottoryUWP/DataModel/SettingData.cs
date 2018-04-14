@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 
 namespace LottoryUWP.DataModel
 {
@@ -57,6 +58,37 @@ namespace LottoryUWP.DataModel
             }
         }
 
+        private Color winnerColor = Colors.Transparent;
+        [JsonProperty]
+        public Color WinnerColor
+        {
+            get
+            {
+                return winnerColor;
+            }
+            set
+            {
+                winnerColor = value;
+                OnPropertyChanged("WinnerColor");
+            }
+        }
+
+        private bool isWinnerColorRandom = true;
+        [JsonProperty]
+        public bool IsWinnerColorRandom
+        {
+            get
+            {
+                return isWinnerColorRandom;
+            }
+            set
+            {
+                isWinnerColorRandom = value;
+                OnPropertyChanged("IsWinnerColorRandom");
+            }
+        }
+
+
         public String Serialize()
         {
             return JsonConvert.SerializeObject(this);
@@ -66,12 +98,12 @@ namespace LottoryUWP.DataModel
         {
             List<SettingItemGroup> settingGroups  = new List<SettingItemGroup>();
             List<SettingItem> items = new List<SettingItem>();
-            items.Add(new SettingItem() { Title = "Winner Style", StyleType = Enum.SettingType.WinnerItemStyleDemo });
+            items.Add(new SettingItem() { Title = "Customize Style", StyleType = Enum.SettingType.DisplayStyleSetting });
 
 
             settingGroups.Add(new SettingItemGroup()
             {
-                Title = "Winner Display Style",
+                Title = "Customize Event Style",
                 Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
             });
             return settingGroups;

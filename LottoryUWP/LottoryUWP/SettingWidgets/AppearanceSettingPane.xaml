@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="LottoryUWP.SettingWidgets.AppearanceSettingPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LottoryUWP.SettingWidgets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls ="using:LottoryUWP.Controls"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <StackPanel>
+        <TextBox x:Uid="SettingPanel_EventTitle" Header="Event Title"  Text="{Binding DataContext.EventTitle, Mode=TwoWay}" PlaceholderText="Enter your event name" Height="60"/>
+
+        <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                <ToggleSwitch x:Name="RandomColorToggle" Header="Color of Winner" OffContent="Custom Color" OnContent="Random Color" IsOn="{Binding DataContext.IsWinnerColorRandom, Mode=TwoWay}" Toggled="RandomColorToggle_Toggled" />
+                <ComboBox  x:Name="ColorPicker" PlaceholderText="Pick a color"  Margin="0,8"  ItemsSource="{Binding ColorList}" Visibility="{Binding IsOn, ElementName=RandomColorToggle, Converter={StaticResource OppositeBooleanToVisibilityConverter}}" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle  Width="16" Height="16">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{Binding ColorObj}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <TextBlock Text="{Binding Name}" Margin="8,0" FontWeight="SemiBold"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                </StackPanel>
+
+                <Viewbox Grid.Column="2" >
+                    <controls:WinnerControl x:Name="SampleWinner"  MajorValue="Sample"  HorizontalAlignment="Center" Tapped="SampleWinner_Tapped"/>
+                </Viewbox>
+             
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

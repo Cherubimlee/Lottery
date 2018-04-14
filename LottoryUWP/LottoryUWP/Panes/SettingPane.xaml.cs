@@ -37,6 +37,5 @@ namespace LottoryUWP.Panes
             ZoomControl.StartBringIntoView();
         }
 
-       
     }
 }

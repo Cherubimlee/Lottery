@@ -11,6 +11,8 @@
             <common:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <common:OppositeVisibilityConverter x:Key="OppositeVisibilityConverter"/>
             <common:WidthToVisibilityConverter x:Key="WidthToVisibilityConverter"/>
+            <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <common:OppositeBooleanToVisibilityConverter x:Key="OppositeBooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

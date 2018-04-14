@@ -193,4 +193,8 @@
     <value>Custom Round Title</value>
     <comment>Custom Round Title</comment>
   </data>
+  <data name="SettingPanel_EventTitle.Header" xml:space="preserve">
+    <value>Event Title</value>
+    <comment>Event Title</comment>
+  </data>
 </root>
