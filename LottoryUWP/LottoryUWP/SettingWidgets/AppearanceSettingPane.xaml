@@ -14,7 +14,7 @@
         <StackPanel>
         <TextBox x:Uid="SettingPanel_EventTitle" Header="Event Title"  Text="{Binding DataContext.EventTitle, Mode=TwoWay}" PlaceholderText="Enter your event name" Height="60"/>
 
-        <Grid Margin="0,8">
+        <Grid Margin="0,8,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1"/>
@@ -43,6 +43,21 @@
                 </Viewbox>
              
             </Grid>
+
+            <TextBlock Text="Background" Margin="0,8"/>
+            <GridView x:Name="BackgroudSelectorView" ItemsSource="{Binding DataContext.BackgroundBrushes}" ItemClick="GridView_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border Height="48" Width="48" BorderBrush="{StaticResource AppBarBorderThemeBrush}" BorderThickness="1" Background="{Binding}" CornerRadius="4">
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+            
+
         </StackPanel>
     </Grid>
 </UserControl>

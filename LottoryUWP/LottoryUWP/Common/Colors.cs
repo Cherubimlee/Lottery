@@ -23,6 +23,8 @@ namespace LottoryUWP.Common
 
                 var colorlist = new List<Windows.UI.Color>();
 
+                colorlist.Add(Windows.UI.Colors.Black);
+                colorlist.Add(Windows.UI.Colors.White);
                 colorlist.Add(Windows.UI.Colors.Red);
                 colorlist.Add(Windows.UI.Colors.Pink);
                 colorlist.Add(Windows.UI.Colors.Orange);
@@ -35,8 +37,7 @@ namespace LottoryUWP.Common
                 colorlist.Add(Windows.UI.Colors.Violet);
                 colorlist.Add(Windows.UI.Colors.DarkViolet);
                 colorlist.Add(Windows.UI.Colors.Gray);
-                colorlist.Add(Windows.UI.Colors.Black);
-                colorlist.Add(Windows.UI.Colors.White);
+
 
                 colors = colorlist.Select(color => new Color() { Name = Windows.UI.ColorHelper.ToDisplayName(color), ColorObj = color });
                 return colors;

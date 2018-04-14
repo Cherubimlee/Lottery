@@ -90,14 +90,14 @@
         </Grid>
 
 
-        <Grid x:Name="MainFrame" Grid.Column="1" Background="{ThemeResource AppBarBackgroundThemeBrush}" >
+        <Grid x:Name="MainFrame" Grid.Column="1" Background="{x:Bind Settings.BackgroundBrush, Mode=OneWay}" >
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Column="0" Margin="0,24"   >
+            <Grid Grid.Column="0" Margin="0,24" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48"/>
                     <ColumnDefinition Width="*"/>
@@ -121,7 +121,7 @@
 
             </Grid>
 
-            <panes:ContentPane Grid.Row="1">
+            <panes:ContentPane Grid.Row="1" >
                 
             </panes:ContentPane>
         </Grid>

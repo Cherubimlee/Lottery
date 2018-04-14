@@ -1,21 +1,33 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace LottoryUWP.DataModel
 {
     public class SettingData : INotifyPropertyChanged
     {
+    
         private static SettingData instance = new SettingData();
+       
         public static SettingData Instance { get { return instance; } }
 
+        public SettingData()
+        {
+            BackgroundBrushes = new ObservableCollection<Brush>(this.BrushModels.Select(x=>x.ToBrush()));
+
+        }
+
+
         private String eventTitle = "New Event";
-        [JsonProperty]
+
         public String EventTitle
         {
             get { return eventTitle; }
@@ -30,7 +42,7 @@ namespace LottoryUWP.DataModel
         }
 
         private String majorColumnTitle = "Name";
-        [JsonProperty]
+ 
         public String MajorColumnTitle
         {
             get { return majorColumnTitle; }
@@ -44,7 +56,7 @@ namespace LottoryUWP.DataModel
             }
         }
         private String secondaryColumnTitle = "Id";
-        [JsonProperty]
+  
         public String SecondaryColumnTitle
         {
             get { return secondaryColumnTitle; }
@@ -59,7 +71,7 @@ namespace LottoryUWP.DataModel
         }
 
         private Color winnerColor = Colors.Transparent;
-        [JsonProperty]
+
         public Color WinnerColor
         {
             get
@@ -74,7 +86,7 @@ namespace LottoryUWP.DataModel
         }
 
         private bool isWinnerColorRandom = true;
-        [JsonProperty]
+
         public bool IsWinnerColorRandom
         {
             get
@@ -88,10 +100,50 @@ namespace LottoryUWP.DataModel
             }
         }
 
+        private List<BrushModel> brushModels;
+        public List<BrushModel> BrushModels { get
+            {
+                if (brushModels == null)
+                {
+                    brushModels = new List<BrushModel>((LottoryUWP.Common.Color.Colors.Select(x => new BrushModel() { SolidBrushColor = x.ColorObj})));
+
+                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg1.jpg" });
+                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg2.jpg" });
+                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg3.jpg" });
+                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg4.jpg" });
+                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Add.png" });
+                }
+
+                return brushModels;
+            }
+            set
+            {
+                brushModels = value;
+            }
+        }
+    
+        [JsonIgnore]
+        public ObservableCollection<Brush> BackgroundBrushes { get; set; }
+
+        [JsonIgnore]
+        public Brush BackgroundBrush { get { return BackgroundBrushes.FirstOrDefault(); } }
+
+        public void SelectBackgroundColor(Brush brush)
+        {
+            var index = BackgroundBrushes.IndexOf(brush);
+            var brushModel = this.BrushModels[index];
+
+            BackgroundBrushes.RemoveAt(index);
+            BrushModels.RemoveAt(index);
+            BackgroundBrushes.Insert(0, brush);
+            BrushModels.Insert(0,brushModel);
+
+            OnPropertyChanged("BackgroundBrush");
+        }
 
         public String Serialize()
         {
-            return JsonConvert.SerializeObject(this);
+                return JsonConvert.SerializeObject(this);
         }
 
         public static List<SettingItemGroup>  BuildSettingList()
@@ -108,6 +160,7 @@ namespace LottoryUWP.DataModel
             });
             return settingGroups;
         }
+
 
         public static SettingData CreateFromJson(string jsonString)
         {

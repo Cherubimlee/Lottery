@@ -108,6 +108,7 @@
     <Compile Include="Controls\WinnerControl.xaml.cs">
       <DependentUpon>WinnerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\BrushModel.cs" />
     <Compile Include="DataModel\DrawData.cs" />
     <Compile Include="DataModel\DrawItem.cs" />
     <Compile Include="DataModel\DrawItemGroup.cs" />
@@ -153,7 +154,12 @@
     </PRIResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Add.png" />
     <Content Include="Assets\FileTemplate\Report.html" />
+    <Content Include="Assets\Img\BingImg1.jpg" />
+    <Content Include="Assets\Img\BingImg2.jpg" />
+    <Content Include="Assets\Img\BingImg3.jpg" />
+    <Content Include="Assets\Img\BingImg4.jpg" />
     <Content Include="Assets\MenuIcon.png" />
     <None Include="Package.xml" />
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
@@ -200,7 +206,7 @@
       <Version>2.1.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.1</Version>
+      <Version>11.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,7 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
