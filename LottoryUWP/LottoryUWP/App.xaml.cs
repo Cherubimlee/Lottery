@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,7 @@ namespace LottoryUWP
         /// </summary>
         public App()
         {
+            this.RequestedTheme = this.AppTheme;
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -96,5 +98,29 @@ namespace LottoryUWP
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        public ApplicationTheme AppTheme
+        {
+            get
+            {
+                object oUseLightTheme = true;
+                // Read the value of theme preference, if set. This value gets set when user changes theme in Scenario 2.
+                if (ApplicationData.Current.LocalSettings.Values.TryGetValue("IsLightTheme", out oUseLightTheme))
+                {
+                    if ((bool)oUseLightTheme == true)
+                        return ApplicationTheme.Light;
+                    else
+                        return ApplicationTheme.Dark;
+                }
+                else
+                    return ApplicationTheme.Light;
+
+            }
+            set
+            {
+                ApplicationData.Current.LocalSettings.Values["IsLightTheme"] = value == ApplicationTheme.Light;
+            }
+        }
+
     }
 }

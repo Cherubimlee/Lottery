@@ -22,9 +22,9 @@ namespace LottoryUWP.Common
                 }
 
                 var colorlist = new List<Windows.UI.Color>();
-
-                colorlist.Add(Windows.UI.Colors.Black);
+           
                 colorlist.Add(Windows.UI.Colors.White);
+                colorlist.Add(Windows.UI.Colors.Black);
                 colorlist.Add(Windows.UI.Colors.Red);
                 colorlist.Add(Windows.UI.Colors.Pink);
                 colorlist.Add(Windows.UI.Colors.Orange);

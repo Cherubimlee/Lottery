@@ -27,7 +27,12 @@ namespace LottoryUWP.SettingWidgets
      
         public AppearanceSettingPane()
         {
-            this.InitializeComponent();      
+            this.InitializeComponent();
+
+            if (App.Current.RequestedTheme == ApplicationTheme.Light)
+                LightRadioBtn.IsChecked = true;
+            else
+                DarkRadioBtn.IsChecked = true;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,6 +78,21 @@ namespace LottoryUWP.SettingWidgets
                 SettingData.Instance.SelectBackgroundColor(brush);
             }
           
+        }
+
+        private void RadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+
+            App app = App.Current as App;
+
+            if (e.OriginalSource == LightRadioBtn)
+                app.AppTheme = ApplicationTheme.Light;
+
+            if (e.OriginalSource == DarkRadioBtn)
+                app.AppTheme = ApplicationTheme.Dark;
+
+            themeMsg.Visibility = (app.AppTheme != app.RequestedTheme) ? Visibility.Visible : Visibility.Collapsed;
+
         }
     }
 }

@@ -43,7 +43,20 @@
                 </Viewbox>
              
             </Grid>
-
+            <TextBlock Text="Foreground" Margin="0,8,0,0"/>
+            <Grid  Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton x:Name="LightRadioBtn"  Content="Light Theme" Checked="RadioBtn_Checked"/>
+                <RadioButton Grid.Column="1"  x:Name="DarkRadioBtn"  Content="Dark Theme" Checked="RadioBtn_Checked"/>
+            </Grid>
+            <TextBlock x:Name="themeMsg" Text="*Please restart the application to apply this theme!*" 
+                       TextWrapping="WrapWholeWords" Foreground="Red" 
+                       FontStyle="Italic" FontWeight="Light"
+                       Margin="0,8,0,0" Visibility="Collapsed"/>
+            
             <TextBlock Text="Background" Margin="0,8"/>
             <GridView x:Name="BackgroudSelectorView" ItemsSource="{Binding DataContext.BackgroundBrushes}" ItemClick="GridView_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
                 <GridView.ItemTemplate>
