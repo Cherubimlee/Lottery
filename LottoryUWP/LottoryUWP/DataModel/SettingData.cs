@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -18,13 +19,6 @@ namespace LottoryUWP.DataModel
         private static SettingData instance = new SettingData();
        
         public static SettingData Instance { get { return instance; } }
-
-        public SettingData()
-        {
-            BackgroundBrushes = new ObservableCollection<Brush>(this.BrushModels.Select(x=>x.ToBrush()));
-
-        }
-
 
         private String eventTitle = "New Event";
 
@@ -100,45 +94,85 @@ namespace LottoryUWP.DataModel
             }
         }
 
-        private List<BrushModel> brushModels;
-        public List<BrushModel> BrushModels { get
+        private ObservableCollection<BrushModel> backgroundBrushModels;
+        public ObservableCollection<BrushModel> BackgroundBrushModels { get
             {
-                if (brushModels == null)
+                if (backgroundBrushModels == null)
                 {
-                    brushModels = new List<BrushModel>((LottoryUWP.Common.Color.Colors.Select(x => new BrushModel() { SolidBrushColor = x.ColorObj})));
-
-                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg1.jpg" });
-                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg2.jpg" });
-                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg3.jpg" });
-                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg4.jpg" });
-                    brushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Add.png" });
+                    backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels());
                 }
 
-                return brushModels;
+                return backgroundBrushModels;
             }
             set
             {
-                brushModels = value;
+                if (backgroundBrushModels == null)
+                    backgroundBrushModels = new ObservableCollection<BrushModel>();
+                else
+                    backgroundBrushModels.Clear();
+
+                foreach(var item in value)
+                {
+                    backgroundBrushModels.Add(item);
+                }
             }
         }
     
-        [JsonIgnore]
-        public ObservableCollection<Brush> BackgroundBrushes { get; set; }
 
         [JsonIgnore]
-        public Brush BackgroundBrush { get { return BackgroundBrushes.FirstOrDefault(); } }
+        public Brush BackgroundBrush { get { return BackgroundBrushModels.FirstOrDefault()?.BrushObj; } }
 
-        public void SelectBackgroundColor(Brush brush)
+        public void SelectBackgroundColor(BrushModel brush)
         {
-            var index = BackgroundBrushes.IndexOf(brush);
-            var brushModel = this.BrushModels[index];
-
-            BackgroundBrushes.RemoveAt(index);
-            BrushModels.RemoveAt(index);
-            BackgroundBrushes.Insert(0, brush);
-            BrushModels.Insert(0,brushModel);
-
+            BackgroundBrushModels.Remove(brush);  
+            BackgroundBrushModels.Insert(0, brush);
+          
             OnPropertyChanged("BackgroundBrush");
+        }
+
+        public void RemoveBackgroundColor(BrushModel brush)
+        {
+            int index = BackgroundBrushModels.IndexOf(brush);
+
+            if (index >= 0)
+                BackgroundBrushModels.RemoveAt(index);
+
+            if(index == 0)
+                OnPropertyChanged("BackgroundBrush");
+
+            if(brush.IsAllowDelete)
+            {
+                Task.Run(async () =>
+                {
+                    var file = await StorageFile.GetFileFromPathAsync(brush.URIString);
+                    if (file != null)
+                        await file.DeleteAsync();
+                });
+            }
+        }
+
+        
+        public async Task InsertBackgroundColor(StorageFile file)
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFolder imgFolder = null;
+
+            try
+            {
+                imgFolder = await folder.GetFolderAsync("BackgroundImg");
+            }
+            catch { }
+
+            if(imgFolder == null)
+            {
+                imgFolder = await folder.CreateFolderAsync("BackgroundImg");
+            }
+
+            var copiedFile = await file.CopyAsync(imgFolder,file.Name,NameCollisionOption.GenerateUniqueName);
+
+            BrushModel brush = new BrushModel() { URIString = copiedFile.Path };
+            BackgroundBrushModels.Add(brush);
+
         }
 
         public String Serialize()

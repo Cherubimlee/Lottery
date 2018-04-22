@@ -56,13 +56,40 @@
                        TextWrapping="WrapWholeWords" Foreground="Red" 
                        FontStyle="Italic" FontWeight="Light"
                        Margin="0,8,0,0" Visibility="Collapsed"/>
-            
-            <TextBlock Text="Background" Margin="0,8"/>
-            <GridView x:Name="BackgroudSelectorView" ItemsSource="{Binding DataContext.BackgroundBrushes}" ItemClick="GridView_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+            <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Background" />
+
+                <Button  Grid.Column="1" Background="Transparent" Width="24" Height="24" Click="AddButton_Click">
+                    <Viewbox Margin="-8">
+                        
+                    <Border BorderThickness="2" BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"  CornerRadius="4" Width="32" Height="32">
+
+                        <SymbolIcon  Symbol="Add" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    </Border>
+                        </Viewbox >
+                </Button>
+
+
+            </Grid>
+          
+            <GridView x:Name="BackgroudSelectorView" ItemsSource="{Binding DataContext.BackgroundBrushModels}" ItemClick="GridView_ItemClick" IsItemClickEnabled="True" SelectionMode="None" >
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Border Height="48" Width="48" BorderBrush="{StaticResource AppBarBorderThemeBrush}" BorderThickness="1" Background="{Binding}" CornerRadius="4">
+                            <Border Height="48" Width="48" BorderBrush="{StaticResource AppBarBorderThemeBrush}" BorderThickness="1" Background="{Binding BrushObj}" CornerRadius="4" >
+                                <Border.ContextFlyout>
+                                    <Flyout>
+                                        <StackPanel Orientation="Horizontal">
+                                            <AppBarButton Icon="Accept" Label="Apply"  Click="ApplyAppBarButton_Click"/>
+                                            <AppBarButton Icon="Delete" Label="Delete"  Click="DeleteAppBarButton_Click" IsEnabled="{Binding IsAllowDelete}" />
+                                        </StackPanel>
+                                    </Flyout>
+                                </Border.ContextFlyout>
                             </Border>
                         </Grid>
                     </DataTemplate>

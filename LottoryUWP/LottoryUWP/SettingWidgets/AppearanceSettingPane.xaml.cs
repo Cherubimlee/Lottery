@@ -35,6 +35,8 @@ namespace LottoryUWP.SettingWidgets
                 DarkRadioBtn.IsChecked = true;
         }
 
+
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Color color = ColorPicker.SelectedItem as Color;
@@ -61,23 +63,9 @@ namespace LottoryUWP.SettingWidgets
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Brush brush = e.ClickedItem as Brush;
+            BrushModel brush = e.ClickedItem as BrushModel;
 
-            var Brushes = SettingData.Instance.BackgroundBrushes;
-
-            var index = Brushes.IndexOf(brush);
-
-            if (index == 0) return;
-
-            if(index == Brushes.Count - 1)
-            {
-           
-            }
-            else
-            {
-                SettingData.Instance.SelectBackgroundColor(brush);
-            }
-          
+            itemClick(brush);
         }
 
         private void RadioBtn_Checked(object sender, RoutedEventArgs e)
@@ -93,6 +81,54 @@ namespace LottoryUWP.SettingWidgets
 
             themeMsg.Visibility = (app.AppTheme != app.RequestedTheme) ? Visibility.Visible : Visibility.Collapsed;
 
+        }
+
+        private void ApplyAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Control uIElement = sender as Control;
+            var brush = uIElement?.DataContext as BrushModel;
+
+            itemClick(brush);
+
+        }
+
+        private void DeleteAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Control uIElement = sender as Control;
+            var brush = uIElement?.DataContext as BrushModel;
+
+            SettingData.Instance.RemoveBackgroundColor(brush);
+        }
+
+        private void itemClick(BrushModel brush)
+        {
+            var Brushes = SettingData.Instance.BackgroundBrushModels;
+
+            var index = Brushes.IndexOf(brush);
+
+            if (index == 0) return;
+
+
+            SettingData.Instance.SelectBackgroundColor(brush);
+
+        }
+
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".bmp");
+
+            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                await SettingData.Instance.InsertBackgroundColor(file);
+            }
+           
         }
     }
 }

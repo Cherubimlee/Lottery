@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,23 +16,40 @@ namespace LottoryUWP.DataModel
 
         public string URIString { get; set; }
 
-        public Brush ToBrush()
+        public bool IsAllowDelete { get; set; } = true;
+
+        [JsonIgnore]
+        public Brush BrushObj
         {
-            if (String.IsNullOrWhiteSpace(URIString))
+            get
             {
-                return new SolidColorBrush(SolidBrushColor);
-            }
-            else
-            {
-                if (Uri.IsWellFormedUriString(URIString, UriKind.RelativeOrAbsolute))
-                    return new ImageBrush()
-                    {
-                        ImageSource = new BitmapImage(new Uri(URIString)),
-                        Stretch = Stretch.UniformToFill
-                    };
-                else
+                if (String.IsNullOrWhiteSpace(URIString))
+                {
                     return new SolidColorBrush(SolidBrushColor);
+                }
+                else
+                {
+                      return new ImageBrush()
+                        {
+                            ImageSource = new BitmapImage(new Uri(URIString)),
+                            Stretch = Stretch.UniformToFill
+                        };
+                   
+                }
             }
         }
+
+        public static IEnumerable<BrushModel> GetBuiltInModels() {
+
+            List<BrushModel> backgroundBrushModels = new List<BrushModel>((LottoryUWP.Common.Color.Colors.Select(x => new BrushModel() { SolidBrushColor = x.ColorObj, IsAllowDelete = false })));
+
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg1.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg2.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg3.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg4.jpg", IsAllowDelete = false });
+
+            return backgroundBrushModels;
+        }
+
     }
 }
