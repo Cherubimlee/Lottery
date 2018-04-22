@@ -33,6 +33,8 @@ namespace LottoryUWP.SettingWidgets
                 LightRadioBtn.IsChecked = true;
             else
                 DarkRadioBtn.IsChecked = true;
+
+            
         }
 
 
@@ -115,6 +117,7 @@ namespace LottoryUWP.SettingWidgets
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
+
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
@@ -129,6 +132,11 @@ namespace LottoryUWP.SettingWidgets
                 await SettingData.Instance.InsertBackgroundColor(file);
             }
            
+        }
+
+        private void TitleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

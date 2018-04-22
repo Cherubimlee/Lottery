@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 03/28/2018 21:57:45
+// 	Generated: 04/22/2018 23:33:43
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -159,6 +159,17 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("InfoBar_Stopped");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Visual Appearance"
+        /// </summary>
+        public static string SettingTitle_Event_Appearance
+        {
+            get
+            {
+                return resourceLoader.GetString("SettingTitle_Event_Appearance");
             }
         }
     }

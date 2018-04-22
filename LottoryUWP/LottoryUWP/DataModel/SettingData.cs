@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LottoryUWP.Enum;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -94,6 +95,56 @@ namespace LottoryUWP.DataModel
             }
         }
 
+
+
+        private TextPositionState eventTitleState = TextPositionState.Left;
+        public TextPositionState EventTitleState
+        {
+            get
+            {
+                return eventTitleState;
+            }
+
+            set
+            {
+                if(eventTitleState != value)
+                {
+                    eventTitleState = value;
+
+                    if (value != TextPositionState.None)
+                        OnPropertyChanged("EventTitlePosition");
+                    else
+                        OnPropertyChanged("IsEventTitleEnable");
+
+                    OnPropertyChanged("IsEventTitleEnable");
+                }
+            }
+        }
+        [JsonIgnore]
+        public Windows.UI.Xaml.Visibility IsEventTitleEnable
+        {
+            get { return EventTitleState == TextPositionState.None ? Windows.UI.Xaml.Visibility.Collapsed : Windows.UI.Xaml.Visibility.Visible; }
+        }
+
+        [JsonIgnore]
+        public Windows.UI.Xaml.HorizontalAlignment EventTitlePosition
+        {
+            get
+            {
+                switch (EventTitleState)
+                {
+                    case TextPositionState.Left:
+                        return Windows.UI.Xaml.HorizontalAlignment.Left;
+                    case TextPositionState.Center:
+                        return Windows.UI.Xaml.HorizontalAlignment.Center;
+                    case TextPositionState.Right:
+                        return Windows.UI.Xaml.HorizontalAlignment.Right;
+                    default:
+                        return Windows.UI.Xaml.HorizontalAlignment.Left;
+                }
+            }
+        }
+
         private ObservableCollection<BrushModel> backgroundBrushModels;
         public ObservableCollection<BrushModel> BackgroundBrushModels { get
             {
@@ -184,12 +235,12 @@ namespace LottoryUWP.DataModel
         {
             List<SettingItemGroup> settingGroups  = new List<SettingItemGroup>();
             List<SettingItem> items = new List<SettingItem>();
-            items.Add(new SettingItem() { Title = "Customize Style", StyleType = Enum.SettingType.DisplayStyleSetting });
+            items.Add(new SettingItem() { StyleType = Enum.SettingType.DisplayStyleSetting });
 
 
             settingGroups.Add(new SettingItemGroup()
             {
-                Title = "Customize Event Style",
+                Title = LottoryUWP.Strings.Resources.SettingTitle_Event_Appearance,
                 Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
             });
             return settingGroups;

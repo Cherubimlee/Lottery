@@ -113,8 +113,10 @@
 
                 <TextBlock x:Name="Header"  Grid.Column="1" 
                            TextAlignment="Center"  FontSize="36" 
-                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}" HorizontalAlignment="Left"
+                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}" HorizontalAlignment="{x:Bind Settings.EventTitlePosition, Mode=OneWay}"
+                           Visibility="{x:Bind Settings.IsEventTitleEnable, Mode=OneWay}"
                            Text="{x:Bind Settings.EventTitle, Mode=OneWay}"
+                           
                            />
 
 

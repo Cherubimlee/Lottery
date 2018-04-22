@@ -104,6 +104,7 @@
     <Compile Include="Common\NullToVisibilityConverter.cs" />
     <Compile Include="Common\OppositeVisibilityConverter.cs" />
     <Compile Include="Common\SettingItemDataTemplateSelector.cs" />
+    <Compile Include="Common\TextPositionStateToIntConverter.cs" />
     <Compile Include="Common\WidthToVisibilityConverter.cs" />
     <Compile Include="Controls\WinnerControl.xaml.cs">
       <DependentUpon>WinnerControl.xaml</DependentUpon>

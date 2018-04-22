@@ -193,8 +193,80 @@
     <value>自定义轮标题</value>
     <comment>Custom Round Title</comment>
   </data>
+  <data name="SettingPanel_BackgroundText.Text" xml:space="preserve">
+    <value>背景样式</value>
+    <comment>Background Style</comment>
+  </data>
+  <data name="SettingPanel_ColorPicker.PlaceholderText" xml:space="preserve">
+    <value>选取一个颜色</value>
+    <comment>Pick a color</comment>
+  </data>
+  <data name="SettingPanel_Context_Apply.Label" xml:space="preserve">
+    <value>应用</value>
+    <comment>Apply</comment>
+  </data>
+  <data name="SettingPanel_Context_Delete.Label" xml:space="preserve">
+    <value>删除</value>
+    <comment>Delete</comment>
+  </data>
+  <data name="SettingPanel_DarkTheme.Text" xml:space="preserve">
+    <value>暗色主题</value>
+    <comment>Dark Theme</comment>
+  </data>
   <data name="SettingPanel_EventTitle.Header" xml:space="preserve">
     <value>活动主题</value>
     <comment>Event Title</comment>
+  </data>
+  <data name="SettingPanel_EventTitle.PlaceholderText" xml:space="preserve">
+    <value>自定义活动主题</value>
+    <comment>Enter your event name</comment>
+  </data>
+  <data name="SettingPanel_EventTitle_AlignCenter.Text" xml:space="preserve">
+    <value>居中</value>
+    <comment>Align Center</comment>
+  </data>
+  <data name="SettingPanel_EventTitle_AlignLeft.Text" xml:space="preserve">
+    <value>左对齐</value>
+    <comment>Align Left</comment>
+  </data>
+  <data name="SettingPanel_EventTitle_AlignRight.Text" xml:space="preserve">
+    <value>右对齐</value>
+    <comment>Align Right</comment>
+  </data>
+  <data name="SettingPanel_EventTitle_None.Text" xml:space="preserve">
+    <value>不显示</value>
+    <comment>Hide Title</comment>
+  </data>
+  <data name="SettingPanel_ForegroundText.Text" xml:space="preserve">
+    <value>主题颜色</value>
+    <comment>Foreground Theme</comment>
+  </data>
+  <data name="SettingPanel_LightTheme.Text" xml:space="preserve">
+    <value>亮色主题</value>
+    <comment>Light Theme</comment>
+  </data>
+  <data name="SettingPanel_RandomColorToggle.Header" xml:space="preserve">
+    <value>获奖者颜色</value>
+    <comment>Color of Winner</comment>
+  </data>
+  <data name="SettingPanel_RandomColorToggle.OffContent" xml:space="preserve">
+    <value>自定义颜色</value>
+    <comment>Custom Color</comment>
+  </data>
+  <data name="SettingPanel_RandomColorToggle.OnContent" xml:space="preserve">
+    <value>随机颜色</value>
+    <comment>Random Color</comment>
+  </data>
+  <data name="SettingPanel_ThemeMsg.Text" xml:space="preserve">
+    <value>*需要重启应用使主题生效*</value>
+    <comment>*Please restart the application to apply this theme!*</comment>
+  </data>
+  <data name="SettingPanel_WinnerControl.MajorValue" xml:space="preserve">
+    <value>案例</value>
+    <comment>Sample</comment>
+  </data>
+  <data name="SettingTitle_Event_Appearance" xml:space="preserve">
+    <value>视觉主题样式</value>
+    <comment>Visual Appearance</comment>
   </data>
 </root>

@@ -18,4 +18,12 @@ namespace LottoryUWP.Enum
         General,
         DisplayStyleSetting
     }
+
+    public enum TextPositionState: int
+    {
+        Left = 0,
+        Center = 1,
+        Right = 2,
+        None = 3,
+    }
 }

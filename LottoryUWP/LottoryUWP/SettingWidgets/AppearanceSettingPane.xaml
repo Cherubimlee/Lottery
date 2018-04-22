@@ -12,7 +12,43 @@
 
     <Grid>
         <StackPanel>
-        <TextBox x:Uid="SettingPanel_EventTitle" Header="Event Title"  Text="{Binding DataContext.EventTitle, Mode=TwoWay}" PlaceholderText="Enter your event name" Height="60"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Uid="SettingPanel_EventTitle" Header="Event Title"  Text="{Binding DataContext.EventTitle, Mode=TwoWay}" PlaceholderText="Enter your event name" Height="60"/>
+
+                <ComboBox x:Name="EventTitleCombobox" Grid.Column="2" VerticalAlignment="Bottom" SelectedIndex="{Binding DataContext.EventTitleState, Mode=TwoWay, Converter={StaticResource TextPositionStateToIntConverter}}">
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="AlignLeft"/>
+                            <TextBlock x:Uid="SettingPanel_EventTitle_AlignLeft" Text="Alien Left" Margin="8,0"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="AlignCenter"/>
+                            <TextBlock x:Uid="SettingPanel_EventTitle_AlignCenter" Text="Alien Center"  Margin="8,0"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="AlignRight"/>
+                            <TextBlock x:Uid="SettingPanel_EventTitle_AlignRight" Text="Alien Right"  Margin="8,0"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Remove"/>
+                            <TextBlock x:Uid="SettingPanel_EventTitle_None" Text="Hide Title"  Margin="8,0"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
+            </Grid>
+       
 
         <Grid Margin="0,8,0,0">
                 <Grid.ColumnDefinitions>
@@ -21,17 +57,19 @@
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
-                <ToggleSwitch x:Name="RandomColorToggle" Header="Color of Winner" OffContent="Custom Color" OnContent="Random Color" IsOn="{Binding DataContext.IsWinnerColorRandom, Mode=TwoWay}" Toggled="RandomColorToggle_Toggled" />
-                <ComboBox  x:Name="ColorPicker" PlaceholderText="Pick a color"  Margin="0,8"  ItemsSource="{Binding ColorList}" Visibility="{Binding IsOn, ElementName=RandomColorToggle, Converter={StaticResource OppositeBooleanToVisibilityConverter}}" SelectionChanged="ComboBox_SelectionChanged">
+                    <ToggleSwitch x:Uid="SettingPanel_RandomColorToggle" x:Name="RandomColorToggle" Header="Color of Winner" OffContent="Custom Color" OnContent="Random Color" IsOn="{Binding DataContext.IsWinnerColorRandom, Mode=TwoWay}" Toggled="RandomColorToggle_Toggled" />
+                <ComboBox  x:Uid="SettingPanel_ColorPicker"  x:Name="ColorPicker" PlaceholderText="Pick a color"  Margin="0,8"  ItemsSource="{Binding ColorList}" Visibility="{Binding IsOn, ElementName=RandomColorToggle, Converter={StaticResource OppositeBooleanToVisibilityConverter}}" SelectionChanged="ComboBox_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Rectangle  Width="16" Height="16">
-                                    <Rectangle.Fill>
-                                        <SolidColorBrush Color="{Binding ColorObj}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock Text="{Binding Name}" Margin="8,0" FontWeight="SemiBold"></TextBlock>
+                      
+                                    <Border  Width="16" Height="16" BorderBrush="{ThemeResource ThumbBorderThemeBrush}" BorderThickness="1" CornerRadius="3">
+                                        <Border.Background>
+                                            <SolidColorBrush Color="{Binding ColorObj}"/>
+                                        </Border.Background>
+                                    </Border>
+
+                                    <TextBlock Text="{Binding Name}" Margin="8,0" ></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -39,20 +77,31 @@
                 </StackPanel>
 
                 <Viewbox Grid.Column="2" >
-                    <controls:WinnerControl x:Name="SampleWinner"  MajorValue="Sample"  HorizontalAlignment="Center" Tapped="SampleWinner_Tapped"/>
+                    <controls:WinnerControl x:Uid="SettingPanel_WinnerControl"  x:Name="SampleWinner"  MajorValue="Sample"  HorizontalAlignment="Center" Tapped="SampleWinner_Tapped"/>
                 </Viewbox>
              
             </Grid>
-            <TextBlock Text="Foreground" Margin="0,8,0,0"/>
+            <TextBlock x:Uid="SettingPanel_ForegroundText"  Text="Foreground Theme" Margin="0,8,0,0"/>
             <Grid  Margin="0,8,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <RadioButton x:Name="LightRadioBtn"  Content="Light Theme" Checked="RadioBtn_Checked"/>
-                <RadioButton Grid.Column="1"  x:Name="DarkRadioBtn"  Content="Dark Theme" Checked="RadioBtn_Checked"/>
+                <RadioButton  x:Name="LightRadioBtn"  Checked="RadioBtn_Checked" >
+                    <StackPanel Orientation="Horizontal">
+                        <Border  Width="16" Height="16" Background="White" BorderBrush="{ThemeResource ThumbBorderThemeBrush}" BorderThickness="1" CornerRadius="3"/>
+                        <TextBlock x:Uid="SettingPanel_LightTheme" Text="Light Theme" Margin="8,0"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Grid.Column="1"  x:Name="DarkRadioBtn"  Checked="RadioBtn_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <Border  Width="16" Height="16" Background="Black" BorderBrush="{ThemeResource ThumbBorderThemeBrush}" BorderThickness="1" CornerRadius="3">
+                        </Border>
+                        <TextBlock  x:Uid="SettingPanel_DarkTheme"   Text="Dark Theme" Margin="8,0"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
             </Grid>
-            <TextBlock x:Name="themeMsg" Text="*Please restart the application to apply this theme!*" 
+            <TextBlock x:Name="themeMsg" x:Uid="SettingPanel_ThemeMsg" Text="*Please restart the application to apply this theme!*" 
                        TextWrapping="WrapWholeWords" Foreground="Red" 
                        FontStyle="Italic" FontWeight="Light"
                        Margin="0,8,0,0" Visibility="Collapsed"/>
@@ -61,17 +110,12 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Background" />
+                <TextBlock x:Uid="SettingPanel_BackgroundText"  Text="Background Style" />
 
                 <Button  Grid.Column="1" Background="Transparent" Width="24" Height="24" Click="AddButton_Click">
                     <Viewbox Margin="-8">
-                        
-                    <Border BorderThickness="2" BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"  CornerRadius="4" Width="32" Height="32">
-
-                        <SymbolIcon  Symbol="Add" Width="24" Height="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-                    </Border>
-                        </Viewbox >
+                        <SymbolIcon  Symbol="BrowsePhotos"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Viewbox >
                 </Button>
 
 
@@ -81,12 +125,12 @@
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Border Height="48" Width="48" BorderBrush="{StaticResource AppBarBorderThemeBrush}" BorderThickness="1" Background="{Binding BrushObj}" CornerRadius="4" >
+                            <Border Height="48" Width="48" BorderBrush="{ThemeResource ThumbBorderThemeBrush}" BorderThickness="1" Background="{Binding BrushObj}" CornerRadius="8" >
                                 <Border.ContextFlyout>
                                     <Flyout>
                                         <StackPanel Orientation="Horizontal">
-                                            <AppBarButton Icon="Accept" Label="Apply"  Click="ApplyAppBarButton_Click"/>
-                                            <AppBarButton Icon="Delete" Label="Delete"  Click="DeleteAppBarButton_Click" IsEnabled="{Binding IsAllowDelete}" />
+                                            <AppBarButton Icon="Accept" x:Uid="SettingPanel_Context_Apply"  Label="Apply"  Click="ApplyAppBarButton_Click"/>
+                                            <AppBarButton Icon="Delete" x:Uid="SettingPanel_Context_Delete" Label="Delete"  Click="DeleteAppBarButton_Click" IsEnabled="{Binding IsAllowDelete}" />
                                         </StackPanel>
                                     </Flyout>
                                 </Border.ContextFlyout>

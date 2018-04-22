@@ -13,6 +13,7 @@
             <common:WidthToVisibilityConverter x:Key="WidthToVisibilityConverter"/>
             <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <common:OppositeBooleanToVisibilityConverter x:Key="OppositeBooleanToVisibilityConverter"/>
+            <common:TextPositionStateToIntConverter x:Key="TextPositionStateToIntConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
