@@ -16,10 +16,35 @@ namespace LottoryUWP.DataModel
 {
     public class SettingData : INotifyPropertyChanged
     {
-    
-        private static SettingData instance = new SettingData();
-       
-        public static SettingData Instance { get { return instance; } }
+        private const string loaclSettingKey = "SettingConfig";
+
+
+        private static Object instanceLock = new Object();
+
+        private static SettingData instance;
+        public static SettingData Instance
+        {
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        object jsonObj = null;
+                        ApplicationData.Current.LocalSettings.Values.TryGetValue(loaclSettingKey, out jsonObj);
+
+                        SettingData obj = SettingData.CreateFromJson(jsonObj as string);
+
+                        if (obj != null)
+                            instance = obj;
+                        else
+                            instance = new SettingData() { backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels())};
+                    
+                    }
+                    return instance;
+                }
+            }
+        }
 
         private String eventTitle = "New Event";
 
@@ -146,11 +171,13 @@ namespace LottoryUWP.DataModel
         }
 
         private ObservableCollection<BrushModel> backgroundBrushModels;
-        public ObservableCollection<BrushModel> BackgroundBrushModels { get
+        public ObservableCollection<BrushModel> BackgroundBrushModels
+        {
+            get
             {
                 if (backgroundBrushModels == null)
                 {
-                    backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels());
+                    backgroundBrushModels = new ObservableCollection<BrushModel>();
                 }
 
                 return backgroundBrushModels;
@@ -249,7 +276,17 @@ namespace LottoryUWP.DataModel
 
         public static SettingData CreateFromJson(string jsonString)
         {
-            return JsonConvert.DeserializeObject<SettingData>(jsonString);
+            try
+            {
+                if (string.IsNullOrWhiteSpace(jsonString))
+                    return null;
+                else
+                    return JsonConvert.DeserializeObject<SettingData>(jsonString);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         #region INotifyPropertyChanged
@@ -259,6 +296,8 @@ namespace LottoryUWP.DataModel
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+
+            ApplicationData.Current.LocalSettings.Values[loaclSettingKey] = this.Serialize(); 
         }
 
         #endregion

@@ -34,10 +34,13 @@ namespace LottoryUWP.SettingWidgets
             else
                 DarkRadioBtn.IsChecked = true;
 
-            
+            this.Loaded += AppearanceSettingPane_Loaded;
         }
 
-
+        private void AppearanceSettingPane_Loaded(object sender, RoutedEventArgs e)
+        {
+          ColorPicker.SelectedIndex = Color.IndexOfColors(SettingData.Instance.WinnerColor);
+        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

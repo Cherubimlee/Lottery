@@ -44,6 +44,27 @@ namespace LottoryUWP.Common
                 
             }
         }
+
+        public static int IndexOfColors(Windows.UI.Color color)
+        {
+            int index = -1;
+
+            for (int i = 0; i < Color.Colors.Count(); i++)
+            {
+                if (Color.Colors.ElementAt(i).ColorObj == color)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        public static int IndexOfColors(Color color)
+        {
+            return IndexOfColors(color.ColorObj);
+        }
     }
     
 }
