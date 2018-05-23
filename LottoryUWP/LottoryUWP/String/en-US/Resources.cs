@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 04/22/2018 23:33:43
+// 	Generated: 05/23/2018 19:37:42
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -170,6 +170,28 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("SettingTitle_Event_Appearance");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Data Source"
+        /// </summary>
+        public static string SettingTitle_Event_Data
+        {
+            get
+            {
+                return resourceLoader.GetString("SettingTitle_Event_Data");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Misc"
+        /// </summary>
+        public static string SettingTitle_Event_Support
+        {
+            get
+            {
+                return resourceLoader.GetString("SettingTitle_Event_Support");
             }
         }
     }

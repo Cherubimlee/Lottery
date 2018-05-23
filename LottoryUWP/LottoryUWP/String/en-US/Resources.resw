@@ -269,4 +269,12 @@
     <value>Visual Appearance</value>
     <comment>Visual Appearance</comment>
   </data>
+  <data name="SettingTitle_Event_Data" xml:space="preserve">
+    <value>Data Source</value>
+    <comment>Data Source</comment>
+  </data>
+  <data name="SettingTitle_Event_Support" xml:space="preserve">
+    <value>Misc</value>
+    <comment>Misc</comment>
+  </data>
 </root>

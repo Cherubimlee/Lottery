@@ -28,11 +28,23 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ZoomedInStyleSettingTemplate" x:DataType="data:SettingItem">
-            <StackPanel  Padding="20,0,20,0" Width="320">
+            <StackPanel  Padding="10,0,10,0" Width="300">
                 <controls:AppearanceSettingPane DataContext="{Binding}"/>
             </StackPanel>
         </DataTemplate>
 
+        <DataTemplate x:Key="ZoomedInSupportSettingTemplate" x:DataType="data:SettingItem">
+            <StackPanel  Padding="10,0,10,0" Width="300">
+                <controls:SupportSettingPane DataContext="{Binding}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedInDataSettingTemplate" x:DataType="data:SettingItem">
+            <StackPanel  Padding="10,0,10,0" Width="300">
+                <controls:DataSettingPane DataContext="{Binding}"/>
+            </StackPanel>
+        </DataTemplate>
+        
         <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="data:SettingItemGroup">
             <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Style="{StaticResource SubtitleTextBlockStyle}"/>
         </DataTemplate>
@@ -44,6 +56,8 @@
         <comm:SettingItemDataTemplateSelector x:Key="SettingItemSelector" 
                                               GeneralSettingTemplate="{StaticResource ZoomedInGeneralTemplate}"
                                               StyleSettingTemplate="{StaticResource ZoomedInStyleSettingTemplate}"
+                                              SupportSettingTemplate="{StaticResource ZoomedInSupportSettingTemplate}"
+                                              DataSettingTemplate="{StaticResource ZoomedInDataSettingTemplate}"
                                               />
 
     </UserControl.Resources>
@@ -59,12 +73,12 @@
 
         <SemanticZoom x:Name="ZoomControl" VerticalAlignment="Top">
             <SemanticZoom.ZoomedInView>
-                <GridView ItemsSource="{x:Bind cvsGroups.View}" ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" GotFocus="List_GotFocus"
+                <ListView ItemsSource="{x:Bind cvsGroups.View}" ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" GotFocus="List_GotFocus"
                         ItemTemplateSelector="{StaticResource SettingItemSelector}">
-                    <GridView.GroupStyle>
+                    <ListView.GroupStyle>
                         <GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" />
-                    </GridView.GroupStyle>
-                </GridView>
+                    </ListView.GroupStyle>
+                </ListView>
             </SemanticZoom.ZoomedInView>
 
             <SemanticZoom.ZoomedOutView>

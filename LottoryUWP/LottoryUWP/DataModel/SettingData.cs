@@ -261,18 +261,28 @@ namespace LottoryUWP.DataModel
         public static List<SettingItemGroup>  BuildSettingList()
         {
             List<SettingItemGroup> settingGroups  = new List<SettingItemGroup>();
-            List<SettingItem> items = new List<SettingItem>();
-            items.Add(new SettingItem() { StyleType = Enum.SettingType.DisplayStyleSetting });
 
+            settingGroups.Add(CreateItemGroup(SettingType.Data, LottoryUWP.Strings.Resources.SettingTitle_Event_Data));
 
-            settingGroups.Add(new SettingItemGroup()
-            {
-                Title = LottoryUWP.Strings.Resources.SettingTitle_Event_Appearance,
-                Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
-            });
+            settingGroups.Add(CreateItemGroup(SettingType.DisplayStyleSetting, LottoryUWP.Strings.Resources.SettingTitle_Event_Appearance));
+
+            settingGroups.Add(CreateItemGroup(SettingType.Support, LottoryUWP.Strings.Resources.SettingTitle_Event_Support));
+
             return settingGroups;
         }
 
+        private static SettingItemGroup CreateItemGroup(SettingType type, String title )
+        {
+            List<SettingItem> items = new List<SettingItem>();
+            items.Add(new SettingItem() { StyleType = type });
+
+            return
+            new SettingItemGroup()
+            {
+                Title = title,
+                Items = new System.Collections.ObjectModel.ObservableCollection<SettingItem>(items)
+            };
+        }
 
         public static SettingData CreateFromJson(string jsonString)
         {
@@ -297,7 +307,11 @@ namespace LottoryUWP.DataModel
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
 
-            ApplicationData.Current.LocalSettings.Values[loaclSettingKey] = this.Serialize(); 
+            if (BackgroundBrushModels.Count != 0)
+            {
+                var str = this.Serialize();
+                ApplicationData.Current.LocalSettings.Values[loaclSettingKey] = str;
+            }
         }
 
         #endregion

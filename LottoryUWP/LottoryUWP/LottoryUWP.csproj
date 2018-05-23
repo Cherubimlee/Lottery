@@ -130,6 +130,12 @@
     <Compile Include="SettingWidgets\AppearanceSettingPane.xaml.cs">
       <DependentUpon>AppearanceSettingPane.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingWidgets\DataSettingPane.xaml.cs">
+      <DependentUpon>DataSettingPane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingWidgets\SupportSettingPane.xaml.cs">
+      <DependentUpon>SupportSettingPane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="String\en-US\Resources.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,6 +201,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingWidgets\AppearanceSettingPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingWidgets\DataSettingPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingWidgets\SupportSettingPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,7 +13,10 @@ namespace LottoryUWP.Common
     {
         public DataTemplate StyleSettingTemplate { get; set; }
         public DataTemplate GeneralSettingTemplate { get; set; }
-       
+        public DataTemplate SupportSettingTemplate { get; set; }
+        public DataTemplate DataSettingTemplate { get; set; }
+
+
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
 
@@ -22,7 +25,10 @@ namespace LottoryUWP.Common
                 {
                     case Enum.SettingType.DisplayStyleSetting:
                         return StyleSettingTemplate;
-                    case Enum.SettingType.General:
+                    case Enum.SettingType.Support:
+                        return SupportSettingTemplate;
+                    case Enum.SettingType.Data:
+                        return DataSettingTemplate;
                     default:
                         return GeneralSettingTemplate;
                 }
