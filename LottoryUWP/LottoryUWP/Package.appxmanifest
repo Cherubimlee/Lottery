@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="39736YifengLi.LetsLuckyDraw" Publisher="CN=B831EE01-DBEA-4596-A4BD-31D05F9EDCA1" Version="1.1.1.0" />
+  <Identity Name="39736YifengLi.LetsLuckyDraw" Publisher="CN=B831EE01-DBEA-4596-A4BD-31D05F9EDCA1" Version="0.9.1.0" />
   <mp:PhoneIdentity PhoneProductId="e2794a1c-3c83-4e06-b662-e1bcdc0a0ce7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Let's Lucky Draw</DisplayName>

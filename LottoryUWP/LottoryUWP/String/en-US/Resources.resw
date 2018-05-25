@@ -157,6 +157,14 @@
     <value>Stop</value>
     <comment>Stop</comment>
   </data>
+  <data name="ContentDialog_ResetAll_NO" xml:space="preserve">
+    <value>Not Now</value>
+    <comment>Not Now</comment>
+  </data>
+  <data name="ContentDialog_ResetAll_OK" xml:space="preserve">
+    <value>Restart</value>
+    <comment>Restart</comment>
+  </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
     <value>Starting {0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
@@ -188,6 +196,10 @@
   <data name="InfoBar_Stopped" xml:space="preserve">
     <value>Next: {0} | {1}</value>
     <comment>Next: {0} | {1}</comment>
+  </data>
+  <data name="Restart_App_Reset" xml:space="preserve">
+    <value>We will restart the application to reset all settings</value>
+    <comment>We will restart the application to reset all settings</comment>
   </data>
   <data name="RoundTitleText.Header" xml:space="preserve">
     <value>Custom Round Title</value>
@@ -276,5 +288,13 @@
   <data name="SettingTitle_Event_Support" xml:space="preserve">
     <value>Misc</value>
     <comment>Misc</comment>
+  </data>
+  <data name="Support_Link_Email.Content" xml:space="preserve">
+    <value>Feedback and Suggestion</value>
+    <comment>Feedback and Suggestion</comment>
+  </data>
+  <data name="Support_Link_Reset.Content" xml:space="preserve">
+    <value>Reset all settings</value>
+    <comment>Reset all settings</comment>
   </data>
 </root>

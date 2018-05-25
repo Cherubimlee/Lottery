@@ -11,8 +11,10 @@
 
     <Grid>
         <StackPanel>
-            <HyperlinkButton Content="Reset All Settings" Click="ResetButton_Click" />
-            <HyperlinkButton Content="Feedback and Suggestion" Click="EmailButton_Click"/>
+
+            <HyperlinkButton x:Name="Support_Link_Reset"  x:Uid="Support_Link_Reset" Content="Reset All Settings" Click="ResetButton_Click" />
+            <HyperlinkButton x:Name="Support_Link_Email" x:Uid="Support_Link_Email" Content="Feedback and Suggestion" Click="EmailButton_Click"/>
+            <TextBlock x:Name="VersionText"/>
             <TextBlock Text="Copyright 2018 Cherubimlee.com"/>
         </StackPanel>
     </Grid>

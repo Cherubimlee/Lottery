@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 05/23/2018 19:37:42
+// 	Generated: 05/25/2018 22:49:43
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -71,6 +71,28 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("AppName");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Not Now"
+        /// </summary>
+        public static string ContentDialog_ResetAll_NO
+        {
+            get
+            {
+                return resourceLoader.GetString("ContentDialog_ResetAll_NO");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Restart"
+        /// </summary>
+        public static string ContentDialog_ResetAll_OK
+        {
+            get
+            {
+                return resourceLoader.GetString("ContentDialog_ResetAll_OK");
             }
         }
         
@@ -159,6 +181,17 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("InfoBar_Stopped");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "We will restart the application to reset all settings"
+        /// </summary>
+        public static string Restart_App_Reset
+        {
+            get
+            {
+                return resourceLoader.GetString("Restart_App_Reset");
             }
         }
         

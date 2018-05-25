@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -256,6 +257,36 @@ namespace LottoryUWP.DataModel
         public String Serialize()
         {
                 return JsonConvert.SerializeObject(this);
+        }
+
+        public async Task ClearImgCache()
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFolder imgFolder = null;
+
+            try
+            {
+                imgFolder = await folder.GetFolderAsync("BackgroundImg");
+            }
+            catch { }
+
+            if (imgFolder != null)
+            {
+              await imgFolder.DeleteAsync();
+            }
+
+            BackgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels());
+        }
+
+        public async Task ResetAllSettingAndReboot()
+        {
+            await ClearImgCache();
+            ApplicationData.Current.LocalSettings.Values[loaclSettingKey] = String.Empty;
+
+            App app = App.Current as App;
+            app.AppTheme = ApplicationTheme.Light;
+
+            await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync("");
         }
 
         public static List<SettingItemGroup>  BuildSettingList()
