@@ -41,7 +41,7 @@ namespace LottoryUWP.DataModel
                         else
                             instance = new SettingData() {
                                 backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels()),
-                                drawDataSource = new DataSourceModel() {Start =0, End=200 }
+                                drawDataSource = new DataSourceModel() {Start = 1, End=200 }
                             };
                     
                     }
