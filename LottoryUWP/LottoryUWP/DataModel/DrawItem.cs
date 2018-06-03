@@ -17,7 +17,7 @@ namespace LottoryUWP.DataModel
         {
             get
             {
-                return string.Format("{0} {1}", MajorColumnValue, SecondaryColumnValue);
+                return string.Format("{0} {1}", MajorColumnValue, SecondaryColumnValue).TrimEnd();
             }
         }
 

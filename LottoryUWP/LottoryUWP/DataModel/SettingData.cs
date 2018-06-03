@@ -39,7 +39,10 @@ namespace LottoryUWP.DataModel
                         if (obj != null)
                             instance = obj;
                         else
-                            instance = new SettingData() { backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels())};
+                            instance = new SettingData() {
+                                backgroundBrushModels = new ObservableCollection<BrushModel>(BrushModel.GetBuiltInModels()),
+                                drawDataSource = new DataSourceModel() {Start =0, End=200 }
+                            };
                     
                     }
                     return instance;
@@ -121,7 +124,18 @@ namespace LottoryUWP.DataModel
             }
         }
 
+        
+        private DataSourceModel drawDataSource;
+        public DataSourceModel DrawDataSource {
+            get { return drawDataSource; }
+            set
+            {
+                this.drawDataSource = value;
+                DrawData.Instance?.InitDrawData();
 
+                OnPropertyChanged("DrawDataSource");
+            }
+        }
 
         private TextPositionState eventTitleState = TextPositionState.Left;
         public TextPositionState EventTitleState

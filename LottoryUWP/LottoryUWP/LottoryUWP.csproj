@@ -110,6 +110,7 @@
       <DependentUpon>WinnerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BrushModel.cs" />
+    <Compile Include="DataModel\DataSourceModel.cs" />
     <Compile Include="DataModel\DrawData.cs" />
     <Compile Include="DataModel\DrawItem.cs" />
     <Compile Include="DataModel\DrawItemGroup.cs" />

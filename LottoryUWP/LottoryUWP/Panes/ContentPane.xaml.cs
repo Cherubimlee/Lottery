@@ -85,8 +85,17 @@ namespace LottoryUWP.Panes
 
             NextRoundSetup();
 
+            DataModel.DrawData.Instance.OnDrawDataSourceUpdate += Instance_OnDrawDataSourceUpdate;
+
         }
 
+        private void Instance_OnDrawDataSourceUpdate(object sender, EventArgs e)
+        {
+            var firstItem = DataModel.DrawData.Instance.DrawItems.FirstOrDefault();
+
+            this.NameBlock.Text = firstItem != null ? firstItem.DisplayName : string.Empty;
+
+        }
 
         public bool IsStopEnabled
         {

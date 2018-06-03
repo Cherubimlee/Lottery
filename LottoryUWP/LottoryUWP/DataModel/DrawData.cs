@@ -12,17 +12,12 @@ namespace LottoryUWP.DataModel
        
         private static DrawData instance = new DrawData();
         private object listLock = new object();
+
+        public event EventHandler OnDrawDataSourceUpdate;
+
         public DrawData()
         {
-
-            for (int i = 0; i < 100; i++)
-            {
-                string N1 = string.Format("Name{0}", i);
-                string N2 = string.Format("Id{0}", i);
-                OrignalDrawItems.Add(new DrawItem() { MajorColumnValue = N1, SecondaryColumnValue = N2 });
-            }
-
-            ResetDrawData();
+            InitDrawData();
         }
 
         public List<DrawItem> OrignalDrawItems { get; set; } = new List<DrawItem>();
@@ -84,6 +79,20 @@ namespace LottoryUWP.DataModel
                 DrawItems.AddRange(OrignalDrawItems);
                 DrawHistory.Clear();
             }
+        }
+
+        public void InitDrawData()
+        {
+            var list = SettingData.Instance.DrawDataSource.GenerateDataItems();
+
+            if (OrignalDrawItems.Count > 0)
+                OrignalDrawItems.Clear();
+
+            OrignalDrawItems.AddRange(list);
+
+            ResetDrawData();
+
+            this.OnDrawDataSourceUpdate?.Invoke(this, null);
         }
 
         public static DrawData Instance { get { return instance; } }
