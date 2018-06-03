@@ -152,6 +152,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\FileTemplate\example.csv" />
     <None Include="LottoryUWP_StoreKey.pfx" />
     <None Include="LottoryUWP_TemporaryKey.pfx" />
     <PRIResource Include="String\zh-CN\Resources.resw" />

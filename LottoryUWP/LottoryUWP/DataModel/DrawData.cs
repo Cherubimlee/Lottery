@@ -81,19 +81,26 @@ namespace LottoryUWP.DataModel
             }
         }
 
-        public void InitDrawData()
+        public async void InitDrawData()
         {
-            var list = SettingData.Instance.DrawDataSource.GenerateDataItems();
+            var r = await SettingData.Instance.DrawDataSource.GenerateDataItems();
+
+            if (r == null)
+                return;
 
             if (OrignalDrawItems.Count > 0)
                 OrignalDrawItems.Clear();
 
-            OrignalDrawItems.AddRange(list);
+            OrignalDrawItems.AddRange(r.ItemList);
+
+            this.ColumnTitles = r.ColumnTitles;
 
             ResetDrawData();
 
             this.OnDrawDataSourceUpdate?.Invoke(this, null);
         }
+
+        public String[] ColumnTitles { get; set; } = new String[2];
 
         public static DrawData Instance { get { return instance; } }
     }

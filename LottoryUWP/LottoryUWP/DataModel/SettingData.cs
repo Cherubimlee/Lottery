@@ -65,35 +65,6 @@ namespace LottoryUWP.DataModel
             }
         }
 
-        private String majorColumnTitle = "Name";
- 
-        public String MajorColumnTitle
-        {
-            get { return majorColumnTitle; }
-            set
-            {
-                if (!majorColumnTitle.Equals(value))
-                {
-                    majorColumnTitle = value;
-                    OnPropertyChanged("MajorColumnTitle");
-                }
-            }
-        }
-        private String secondaryColumnTitle = "Id";
-  
-        public String SecondaryColumnTitle
-        {
-            get { return secondaryColumnTitle; }
-            set
-            {
-                if (!secondaryColumnTitle.Equals(value))
-                {
-                    secondaryColumnTitle = value;
-                    OnPropertyChanged("SecondaryColumnTitle");
-                }
-            }
-        }
-
         private Color winnerColor = Colors.Transparent;
 
         public Color WinnerColor

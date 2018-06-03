@@ -162,7 +162,7 @@
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom"  >
 
             <AppBarButton x:Uid="CommandBarStop" Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
-            <AppBarButton x:Uid="CommandBarPlay" Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" />
+            <AppBarButton x:Uid="CommandBarPlay" Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}"/>
             <AppBarButton x:Uid="CommandBarNext" Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
 
             <AppBarSeparator/>

@@ -18,7 +18,7 @@ namespace LottoryUWP.Utils
 
             foreach(var group in drawData.DrawHistory)
             {
-                tables = buildWinnerTable(group, settingData.MajorColumnTitle, settingData.SecondaryColumnTitle) + tables;
+                tables = buildWinnerTable(group, drawData.ColumnTitles[0], drawData.ColumnTitles[1]) + tables;
             }
 
             var totalWinner = drawData.DrawHistory.Sum((x) => x.Items.Count);

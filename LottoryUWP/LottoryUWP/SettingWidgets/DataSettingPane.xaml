@@ -17,41 +17,66 @@
     
     <Grid>
         <StackPanel>
-        <RadioButton x:Name="NumberSource" IsChecked="True">
+            <RadioButton x:Name="NumberSource" >
+                    <StackPanel>
+                    <TextBlock Text="Import from generated number set"/>
 
-            <StackPanel>
-                <TextBlock Text="From Numbers"/>
+                        <Grid VerticalAlignment="Center"  Margin="0,8"
+              HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Text="{Binding RangeMin, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
+                        <controls:RangeSelector x:Name="RangeSelectorControl"
+                                  Grid.Column="1"
+                                  Minimum="1"
+                                  Maximum="300"                             
+                                  RangeMin="1"
+                                  RangeMax="200"
+                                  ValueChanged="RangeSelectorControl_ValueChanged"            
+                                                />
+                        <TextBlock Grid.Column="2"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Center"
+                     Text="{Binding RangeMax, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
+                    </Grid>
 
-                    <Grid VerticalAlignment="Center"  Margin="0,8"
-          HorizontalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="190"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Text="{Binding RangeMin, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
-                    <controls:RangeSelector x:Name="RangeSelectorControl"
-                              Grid.Column="1"
-                              Minimum="1"
-                              Maximum="300"                             
-                              RangeMin="1"
-                              RangeMax="200"
-                              ValueChanged="RangeSelectorControl_ValueChanged"            
-                                            />
-                    <TextBlock Grid.Column="2"
-                 HorizontalAlignment="Right"
-                 VerticalAlignment="Center"
-                 Text="{Binding RangeMax, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
-                </Grid>
+                    <TextBox x:Name="PrefixLabel" Header="Prefix Label" PlaceholderText="Prefix of number, e.g hero_001" Margin="0,8" LostFocus="PrefixLabel_LostFocus"/>
+                    </StackPanel>
+            </RadioButton>
+        
+            <Border Margin="8,8,0,8" BorderBrush="{StaticResource ButtonBorderThemeBrush}" BorderThickness="1"/>
 
-                <TextBox x:Name="PrefixLabel" Header="Prefix Label" PlaceholderText="Prefix of number, e.g hero_001" Margin="0,8" LostFocus="PrefixLabel_LostFocus"/>
+            <RadioButton x:Name="FileSource" >
+                <StackPanel>
+                    <TextBlock Text="Import from a comma delimited CSV file (UTF-8)" TextWrapping="Wrap"/>
+
+                    <Grid Margin="0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border BorderBrush="{StaticResource TextBoxBorderThemeBrush}" BorderThickness="1" Width="200">
+                            <TextBlock x:Name="FilePathText" />
+                        </Border>
+                       
+                        
+                        <Button  Grid.Column="1" Background="Transparent" Width="32" Height="32" Margin="8,0" Click="FileButton_Click">
+                            <Viewbox Margin="-8">
+                                <SymbolIcon  Symbol="OpenFile"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Viewbox >
+                        </Button>
+                    </Grid>
+
+                    <HyperlinkButton Content="Start from a example file" Click="HyperlinkButton_Click"/>
                 </StackPanel>
-        </RadioButton>
-
-
+            </RadioButton>
         </StackPanel>
     </Grid>
 </UserControl>
