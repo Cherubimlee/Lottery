@@ -165,6 +165,62 @@
     <value>Restart</value>
     <comment>Restart</comment>
   </data>
+  <data name="DataSetting_Dialog_Contiune" xml:space="preserve">
+    <value>Contiune</value>
+    <comment>Contiune</comment>
+  </data>
+  <data name="DataSetting_Dialog_Error" xml:space="preserve">
+    <value>Error</value>
+    <comment>Error</comment>
+  </data>
+  <data name="DataSetting_Dialog_Exceed" xml:space="preserve">
+    <value>This file exceed 200 contents limitation, please check the file again.</value>
+    <comment>This file exceed 200 contents limitation, please check the file again.</comment>
+  </data>
+  <data name="DataSetting_Dialog_FileError" xml:space="preserve">
+    <value>We are unable to read the file, please check the file format!</value>
+    <comment>We are unable to read the file, please check the file format!</comment>
+  </data>
+  <data name="DataSetting_Dialog_No" xml:space="preserve">
+    <value>No</value>
+    <comment>No</comment>
+  </data>
+  <data name="DataSetting_Dialog_Ok" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="DataSetting_Dialog_Reload" xml:space="preserve">
+    <value>The changes will reload data source and clear all current draw history, do you want to continue?</value>
+    <comment>The changes will reload data source and clear all current draw history, do you want to continue?</comment>
+  </data>
+  <data name="DataSetting_Dialog_Warning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Warning</comment>
+  </data>
+  <data name="DataSetting_FileHelper.Content" xml:space="preserve">
+    <value>Start from a example file</value>
+    <comment>Start from a example file</comment>
+  </data>
+  <data name="DataSetting_FileOption.Text" xml:space="preserve">
+    <value>Import from a comma delimited CSV file (UTF-8)</value>
+    <comment>Import from a comma delimited CSV file (UTF-8)</comment>
+  </data>
+  <data name="DataSetting_FileType" xml:space="preserve">
+    <value>Comma delimited CSV (UTF-8)</value>
+    <comment>Comma delimited CSV (UTF-8)</comment>
+  </data>
+  <data name="DataSetting_NumberOption.Text" xml:space="preserve">
+    <value>Import from generated number set</value>
+    <comment>Import from generated number set</comment>
+  </data>
+  <data name="DataSetting_PrefixLabel.Header" xml:space="preserve">
+    <value>Prefix Label</value>
+    <comment>Prefix Label</comment>
+  </data>
+  <data name="DataSetting_PrefixLabel.PlaceholderText" xml:space="preserve">
+    <value>Prefix of number, e.g “Guest 001”</value>
+    <comment>Prefix of number, e.g “Guest 001”</comment>
+  </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
     <value>Starting {0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
@@ -196,6 +252,38 @@
   <data name="InfoBar_Stopped" xml:space="preserve">
     <value>Next: {0} | {1}</value>
     <comment>Next: {0} | {1}</comment>
+  </data>
+  <data name="Report_Date" xml:space="preserve">
+    <value>Report Date</value>
+    <comment>Report Date</comment>
+  </data>
+  <data name="Report_Index" xml:space="preserve">
+    <value>Index</value>
+    <comment>Index</comment>
+  </data>
+  <data name="Report_Ratio" xml:space="preserve">
+    <value>Winner Ratio</value>
+    <comment>Winner Ratio</comment>
+  </data>
+  <data name="Report_TimeStamp" xml:space="preserve">
+    <value>Time Stamp</value>
+    <comment>Time Stamp</comment>
+  </data>
+  <data name="Report_Title" xml:space="preserve">
+    <value>Event Report</value>
+    <comment>Event Report</comment>
+  </data>
+  <data name="Report_Total_Audiance" xml:space="preserve">
+    <value>Total Audiance</value>
+    <comment>Total Audiance</comment>
+  </data>
+  <data name="Report_Total_Round" xml:space="preserve">
+    <value>Total Round</value>
+    <comment>Total Round</comment>
+  </data>
+  <data name="Report_Total_Winner" xml:space="preserve">
+    <value>Total Winner</value>
+    <comment>Total Winner</comment>
   </data>
   <data name="Restart_App_Reset" xml:space="preserve">
     <value>We will restart the application to reset all settings</value>

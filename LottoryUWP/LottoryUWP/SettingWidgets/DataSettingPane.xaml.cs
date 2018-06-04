@@ -62,10 +62,10 @@ namespace LottoryUWP.SettingWidgets
             if (!canProcess)
             {
                 ContentDialog dialog = new ContentDialog();
-                dialog.Title = "Warning!";
-                dialog.Content = "The changes will reload data source and clear all current draw history, do you want to continue?";
-                dialog.PrimaryButtonText = "Contiune";
-                dialog.SecondaryButtonText = "No";
+                dialog.Title = Strings.Resources.DataSetting_Dialog_Warning;
+                dialog.Content = Strings.Resources.DataSetting_Dialog_Reload;
+                dialog.PrimaryButtonText = Strings.Resources.DataSetting_Dialog_Contiune;
+                dialog.SecondaryButtonText = Strings.Resources.DataSetting_Dialog_No;
                 canProcess = await dialog.ShowAsync() == ContentDialogResult.Primary;
             }
 
@@ -140,10 +140,10 @@ namespace LottoryUWP.SettingWidgets
                     if (r.ItemList.Count > 200 || r.ItemList.Count == 0)
                     {
                         ContentDialog dialog = new ContentDialog();
-                        dialog.Title = "File Error";
-                        dialog.Content = "This file exceed 200 contents limitation, please check the file again.";
+                        dialog.Title = Strings.Resources.DataSetting_Dialog_Error;
+                        dialog.Content = Strings.Resources.DataSetting_Dialog_Exceed;
 
-                        dialog.PrimaryButtonText = "OK";
+                        dialog.PrimaryButtonText = Strings.Resources.DataSetting_Dialog_Ok;
                         await dialog.ShowAsync();
                     }
                     else
@@ -155,10 +155,10 @@ namespace LottoryUWP.SettingWidgets
                 else
                 {
                     ContentDialog dialog = new ContentDialog();
-                    dialog.Title = "File Error";
-                    dialog.Content = "We are unable to read the file, please check the file format!";
+                    dialog.Title = Strings.Resources.DataSetting_Dialog_Error;
+                    dialog.Content = Strings.Resources.DataSetting_Dialog_FileError;
 
-                    dialog.PrimaryButtonText = "OK";
+                    dialog.PrimaryButtonText = Strings.Resources.DataSetting_Dialog_Ok;
                     await dialog.ShowAsync();
                 }
 
@@ -193,7 +193,7 @@ namespace LottoryUWP.SettingWidgets
 
             savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
            
-            savePicker.FileTypeChoices.Add("Comma delimited CSV (UTF-8)", new List<string>() { ".csv" });
+            savePicker.FileTypeChoices.Add(Strings.Resources.DataSetting_FileType, new List<string>() { ".csv" });
 
             savePicker.SuggestedFileName = "example";
 

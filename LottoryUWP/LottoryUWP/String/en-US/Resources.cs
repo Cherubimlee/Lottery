@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 05/25/2018 22:49:43
+// 	Generated: 06/04/2018 22:52:27
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -93,6 +93,105 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("ContentDialog_ResetAll_OK");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Contiune"
+        /// </summary>
+        public static string DataSetting_Dialog_Contiune
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Contiune");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Error"
+        /// </summary>
+        public static string DataSetting_Dialog_Error
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Error");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "This file exceed 200 contents limitation, please check the file again."
+        /// </summary>
+        public static string DataSetting_Dialog_Exceed
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Exceed");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "We are unable to read the file, please check the file format!"
+        /// </summary>
+        public static string DataSetting_Dialog_FileError
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_FileError");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "No"
+        /// </summary>
+        public static string DataSetting_Dialog_No
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_No");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "OK"
+        /// </summary>
+        public static string DataSetting_Dialog_Ok
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Ok");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "The changes will reload data source and clear all current draw history, do you want to continue?"
+        /// </summary>
+        public static string DataSetting_Dialog_Reload
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Reload");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Warning"
+        /// </summary>
+        public static string DataSetting_Dialog_Warning
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_Dialog_Warning");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Comma delimited CSV (UTF-8)"
+        /// </summary>
+        public static string DataSetting_FileType
+        {
+            get
+            {
+                return resourceLoader.GetString("DataSetting_FileType");
             }
         }
         
@@ -181,6 +280,94 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("InfoBar_Stopped");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Report Date"
+        /// </summary>
+        public static string Report_Date
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Date");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Index"
+        /// </summary>
+        public static string Report_Index
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Index");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Winner Ratio"
+        /// </summary>
+        public static string Report_Ratio
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Ratio");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Time Stamp"
+        /// </summary>
+        public static string Report_TimeStamp
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_TimeStamp");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Event Report"
+        /// </summary>
+        public static string Report_Title
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Title");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Total Audiance"
+        /// </summary>
+        public static string Report_Total_Audiance
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Total_Audiance");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Total Round"
+        /// </summary>
+        public static string Report_Total_Round
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Total_Round");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Total Winner"
+        /// </summary>
+        public static string Report_Total_Winner
+        {
+            get
+            {
+                return resourceLoader.GetString("Report_Total_Winner");
             }
         }
         

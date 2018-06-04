@@ -165,6 +165,62 @@
     <value>重启</value>
     <comment>Restart</comment>
   </data>
+  <data name="DataSetting_Dialog_Contiune" xml:space="preserve">
+    <value>继续</value>
+    <comment>Contiune</comment>
+  </data>
+  <data name="DataSetting_Dialog_Error" xml:space="preserve">
+    <value>错误</value>
+    <comment>Error</comment>
+  </data>
+  <data name="DataSetting_Dialog_Exceed" xml:space="preserve">
+    <value>这个文件超过了200条记录的限制，请调整后再试一试。</value>
+    <comment>This file exceed 200 contents limitation, please check the file again.</comment>
+  </data>
+  <data name="DataSetting_Dialog_FileError" xml:space="preserve">
+    <value>我们无法读取这个文件，请检查后再试一次。</value>
+    <comment>We are unable to read the file, please check the file format!</comment>
+  </data>
+  <data name="DataSetting_Dialog_No" xml:space="preserve">
+    <value>不</value>
+    <comment>No</comment>
+  </data>
+  <data name="DataSetting_Dialog_Ok" xml:space="preserve">
+    <value>好的</value>
+    <comment>OK</comment>
+  </data>
+  <data name="DataSetting_Dialog_Reload" xml:space="preserve">
+    <value>这些改变会重新加载数据，并且会清除当前的记录，需要继续吗？</value>
+    <comment>The changes will reload data source and clear all current draw history, do you want to continue?</comment>
+  </data>
+  <data name="DataSetting_Dialog_Warning" xml:space="preserve">
+    <value>警告</value>
+    <comment>Warning</comment>
+  </data>
+  <data name="DataSetting_FileHelper.Content" xml:space="preserve">
+    <value>从一个模板文件开始吧</value>
+    <comment>Start from a example file</comment>
+  </data>
+  <data name="DataSetting_FileOption.Text" xml:space="preserve">
+    <value>从文件导入（逗号分隔并且UTF-8编码的CSV文件）</value>
+    <comment>Import from a comma delimited CSV file (UTF-8)</comment>
+  </data>
+  <data name="DataSetting_FileType" xml:space="preserve">
+    <value>逗号分隔并且UTF-8编码的CSV文件</value>
+    <comment>Comma delimited CSV (UTF-8)</comment>
+  </data>
+  <data name="DataSetting_NumberOption.Text" xml:space="preserve">
+    <value>从数字序列生成</value>
+    <comment>Import from generated number set</comment>
+  </data>
+  <data name="DataSetting_PrefixLabel.Header" xml:space="preserve">
+    <value>前缀文字</value>
+    <comment>Prefix Label</comment>
+  </data>
+  <data name="DataSetting_PrefixLabel.PlaceholderText" xml:space="preserve">
+    <value>前缀与数字搭配，如 “来宾001”</value>
+    <comment>Prefix of number, e.g “Guest 001”</comment>
+  </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
     <value>正在准备：{0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
@@ -196,6 +252,38 @@
   <data name="InfoBar_Stopped" xml:space="preserve">
     <value>接下来: {0} | {1}</value>
     <comment>Next: {0} | {1}</comment>
+  </data>
+  <data name="Report_Date" xml:space="preserve">
+    <value>报告时间</value>
+    <comment>Report Date</comment>
+  </data>
+  <data name="Report_Index" xml:space="preserve">
+    <value>序号</value>
+    <comment>Index</comment>
+  </data>
+  <data name="Report_Ratio" xml:space="preserve">
+    <value>获奖比例</value>
+    <comment>Winner Ratio</comment>
+  </data>
+  <data name="Report_TimeStamp" xml:space="preserve">
+    <value>时间戳</value>
+    <comment>Time Stamp</comment>
+  </data>
+  <data name="Report_Title" xml:space="preserve">
+    <value>活动报告</value>
+    <comment>Event Report</comment>
+  </data>
+  <data name="Report_Total_Audiance" xml:space="preserve">
+    <value>总参与人数</value>
+    <comment>Total Audiance</comment>
+  </data>
+  <data name="Report_Total_Round" xml:space="preserve">
+    <value>抽奖轮数</value>
+    <comment>Total Round</comment>
+  </data>
+  <data name="Report_Total_Winner" xml:space="preserve">
+    <value>总获奖人数</value>
+    <comment>Total Winner</comment>
   </data>
   <data name="Restart_App_Reset" xml:space="preserve">
     <value>我们即将重启使重置生效</value>

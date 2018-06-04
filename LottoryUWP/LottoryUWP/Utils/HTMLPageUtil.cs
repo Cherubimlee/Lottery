@@ -23,18 +23,18 @@ namespace LottoryUWP.Utils
 
             var totalWinner = drawData.DrawHistory.Sum((x) => x.Items.Count);
 
-            sb.Append("<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">" +
+            sb.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">" +
                 "<head>" +
                 "   <meta charset=\"utf-8\" />" +
-                "   <title>Report</title>" +
+                "   <title>"+Strings.Resources.Report_Title+"</title>" +
                 "</head>" +
                 "<body>" +
                 " <h1>" + settingData.EventTitle + "</h1>" +
-                "<p>Total Audiance:" + drawData.OrignalDrawItems.Count + "</p>" +
-                "<p>Total Round:" + drawData.DrawHistory.Count + "</p>" +
-                "<p>Total Winner:"+ totalWinner + "</p>" +
-                "<p>Winner Ratio:" + (int)((double)totalWinner/drawData.OrignalDrawItems.Count * 100.0) + "%</p>" +
-                "<p>Report Data:" + DateTime.Now.ToString() + "</p>" +
+                "<p>" + Strings.Resources.Report_Total_Audiance + ":" + drawData.OrignalDrawItems.Count + "</p>" +
+                "<p>" + Strings.Resources.Report_Total_Round + ":" + drawData.DrawHistory.Count + "</p>" +
+                "<p>" + Strings.Resources.Report_Total_Winner + ":" + totalWinner + "</p>" +
+                "<p>" + Strings.Resources.Report_Ratio + ":" + (int)((double)totalWinner/drawData.OrignalDrawItems.Count * 100.0) + "%</p>" +
+                "<p>" + Strings.Resources.Report_Date + ":" + DateTime.Now.ToString() + "</p>" +
                 " <br />" +
                 tables +
                 "</body>" +
@@ -63,7 +63,7 @@ namespace LottoryUWP.Utils
                 "  </TR>" +
                 " <TR>" +
                 " <th width=200>" +
-                " <DIV align=center>"+ "Index" + "</DIV>" +
+                " <DIV align=center>"+ Strings.Resources.Report_Index + "</DIV>" +
                 "</th>" +
                 " <th width=200>" +
                 " <DIV align=center>" + col1Name + "</DIV>" +
@@ -72,7 +72,7 @@ namespace LottoryUWP.Utils
                 " <DIV align=center>" + col2Name + "</DIV>" +
                 "</th>" +
                 " <th width=200>" +
-                " <DIV align=center>" + "Time Stamp" + "</DIV>" +
+                " <DIV align=center>" + Strings.Resources.Report_TimeStamp + "</DIV>" +
                 "</th>" +
                 "</TR>" +
                 columns +

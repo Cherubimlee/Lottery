@@ -19,7 +19,7 @@
         <StackPanel>
             <RadioButton x:Name="NumberSource" >
                     <StackPanel>
-                    <TextBlock Text="Import from generated number set"/>
+                    <TextBlock  x:Uid="DataSetting_NumberOption" Text="Import from generated number set"/>
 
                         <Grid VerticalAlignment="Center"  Margin="0,8"
               HorizontalAlignment="Center">
@@ -46,7 +46,7 @@
                      Text="{Binding RangeMax, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
                     </Grid>
 
-                    <TextBox x:Name="PrefixLabel" Header="Prefix Label" PlaceholderText="Prefix of number, e.g hero_001" Margin="0,8" LostFocus="PrefixLabel_LostFocus"/>
+                    <TextBox x:Name="PrefixLabel" x:Uid="DataSetting_PrefixLabel" Header="Prefix Label" PlaceholderText="Prefix of number, e.g Guest 001" Margin="0,8" LostFocus="PrefixLabel_LostFocus"/>
                     </StackPanel>
             </RadioButton>
         
@@ -54,7 +54,7 @@
 
             <RadioButton x:Name="FileSource" >
                 <StackPanel>
-                    <TextBlock Text="Import from a comma delimited CSV file (UTF-8)" TextWrapping="Wrap"/>
+                    <TextBlock x:Uid="DataSetting_FileOption" Text="Import from a comma delimited CSV file (UTF-8)" TextWrapping="Wrap"/>
 
                     <Grid Margin="0,8">
                         <Grid.ColumnDefinitions>
@@ -74,7 +74,7 @@
                         </Button>
                     </Grid>
 
-                    <HyperlinkButton Content="Start from a example file" Click="HyperlinkButton_Click"/>
+                    <HyperlinkButton x:Uid="DataSetting_FileHelper" Content="Start from a example file" Click="HyperlinkButton_Click"/>
                 </StackPanel>
             </RadioButton>
         </StackPanel>
