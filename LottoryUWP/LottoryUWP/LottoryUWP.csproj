@@ -165,10 +165,10 @@
   <ItemGroup>
     <Content Include="Assets\Add.png" />
     <Content Include="Assets\FileTemplate\Report.html" />
-    <Content Include="Assets\Img\BingImg1.jpg" />
-    <Content Include="Assets\Img\BingImg2.jpg" />
-    <Content Include="Assets\Img\BingImg3.jpg" />
-    <Content Include="Assets\Img\BingImg4.jpg" />
+    <Content Include="Assets\Img\Img1.jpg" />
+    <Content Include="Assets\Img\Img2.jpg" />
+    <Content Include="Assets\Img\Img3.jpg" />
+    <Content Include="Assets\Img\Img4.jpg" />
     <Content Include="Assets\MenuIcon.png" />
     <None Include="Package.xml" />
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />

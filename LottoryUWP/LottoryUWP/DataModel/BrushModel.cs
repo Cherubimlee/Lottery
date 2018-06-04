@@ -43,10 +43,10 @@ namespace LottoryUWP.DataModel
 
             List<BrushModel> backgroundBrushModels = new List<BrushModel>((LottoryUWP.Common.Color.Colors.Select(x => new BrushModel() { SolidBrushColor = x.ColorObj, IsAllowDelete = false })));
 
-            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg1.jpg", IsAllowDelete = false });
-            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg2.jpg", IsAllowDelete = false });
-            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg3.jpg", IsAllowDelete = false });
-            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/BingImg4.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/Img1.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/Img2.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/Img3.jpg", IsAllowDelete = false });
+            backgroundBrushModels.Add(new BrushModel() { URIString = @"ms-appx:///Assets/Img/Img4.jpg", IsAllowDelete = false });
 
             return backgroundBrushModels;
         }
