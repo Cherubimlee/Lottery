@@ -129,14 +129,40 @@ namespace LottoryUWP.SettingWidgets
             {
                 StorageFolder folder = ApplicationData.Current.TemporaryFolder;
 
-                var copiedFile = await file.CopyAsync(folder, file.Name, NameCollisionOption.GenerateUniqueName);
+                var copiedFile = await file.CopyAsync(folder, file.Name, NameCollisionOption.ReplaceExisting);
 
                 this.FilePathText.Text = copiedFile.Name;
 
                 var r = await DataSourceModel.ReadFileForDrawItem(copiedFile);
 
-                if(r != null)
-                    ApplyDataSource();
+                if (r != null)
+                {
+                    if (r.ItemList.Count > 200 || r.ItemList.Count == 0)
+                    {
+                        ContentDialog dialog = new ContentDialog();
+                        dialog.Title = "File Error";
+                        dialog.Content = "This file exceed 200 contents limitation, please check the file again.";
+
+                        dialog.PrimaryButtonText = "OK";
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        ApplyDataSource();
+                        return;
+                    }
+                }
+                else
+                {
+                    ContentDialog dialog = new ContentDialog();
+                    dialog.Title = "File Error";
+                    dialog.Content = "We are unable to read the file, please check the file format!";
+
+                    dialog.PrimaryButtonText = "OK";
+                    await dialog.ShowAsync();
+                }
+
+                SetDataModel();
             }
 
         }
