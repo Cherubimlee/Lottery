@@ -131,8 +131,6 @@ namespace LottoryUWP.SettingWidgets
 
                 var copiedFile = await file.CopyAsync(folder, file.Name, NameCollisionOption.ReplaceExisting);
 
-                this.FilePathText.Text = copiedFile.Name;
-
                 var r = await DataSourceModel.ReadFileForDrawItem(copiedFile);
 
                 if (r != null)
@@ -148,6 +146,7 @@ namespace LottoryUWP.SettingWidgets
                     }
                     else
                     {
+                        this.FilePathText.Text = copiedFile.Name;
                         ApplyDataSource();
                         return;
                     }

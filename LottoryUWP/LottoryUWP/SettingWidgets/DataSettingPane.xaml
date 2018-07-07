@@ -18,8 +18,8 @@
     <Grid>
         <StackPanel>
             <RadioButton x:Name="NumberSource" >
-                    <StackPanel>
-                    <TextBlock  x:Uid="DataSetting_NumberOption" Text="Import from generated number set"/>
+                    <StackPanel  >
+                    <TextBlock x:Uid="DataSetting_NumberOption" Text="Import from generated number set"/>
 
                         <Grid VerticalAlignment="Center"  Margin="0,8"
               HorizontalAlignment="Center">
@@ -38,7 +38,8 @@
                                   Maximum="300"                             
                                   RangeMin="1"
                                   RangeMax="200"
-                                  ValueChanged="RangeSelectorControl_ValueChanged"            
+                                  ValueChanged="RangeSelectorControl_ValueChanged"      
+                                  IsEnabled="{Binding ElementName=NumberSource, Path=IsChecked}"
                                                 />
                         <TextBlock Grid.Column="2"
                      HorizontalAlignment="Right"
@@ -46,7 +47,12 @@
                      Text="{Binding RangeMax, ElementName=RangeSelectorControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##}'}" />
                     </Grid>
 
-                    <TextBox x:Name="PrefixLabel" x:Uid="DataSetting_PrefixLabel" Header="Prefix Label" PlaceholderText="Prefix of number, e.g Guest 001" Margin="0,8" LostFocus="PrefixLabel_LostFocus"/>
+                    <TextBox x:Name="PrefixLabel" 
+                             x:Uid="DataSetting_PrefixLabel" 
+                             Header="Prefix Label" 
+                             PlaceholderText="Prefix of number, e.g Guest 001" Margin="0,8" 
+                             LostFocus="PrefixLabel_LostFocus"
+                             IsEnabled="{Binding ElementName=NumberSource, Path=IsChecked}"/>
                     </StackPanel>
             </RadioButton>
         
@@ -65,16 +71,18 @@
                         <Border BorderBrush="{StaticResource TextBoxBorderThemeBrush}" BorderThickness="1" Width="200">
                             <TextBlock x:Name="FilePathText" Margin="8,0" VerticalAlignment="Center"/>
                         </Border>
-                       
-                        
-                        <Button  Grid.Column="1" Background="Transparent" Width="32" Height="32" Margin="8,0" Click="FileButton_Click">
+
+
+                        <Button  Grid.Column="1" IsEnabled="{Binding ElementName=FileSource, Path=IsChecked}" 
+                                 Background="Transparent" Width="32" Height="32" Margin="8,0" Click="FileButton_Click">
                             <Viewbox Margin="-8">
                                 <SymbolIcon  Symbol="OpenFile"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Viewbox >
                         </Button>
                     </Grid>
 
-                    <HyperlinkButton x:Uid="DataSetting_FileHelper" Content="Start from a example file" Click="HyperlinkButton_Click"/>
+                    <HyperlinkButton x:Uid="DataSetting_FileHelper" IsEnabled="{Binding ElementName=FileSource, Path=IsChecked}"
+                                     Content="Start from a example file" Click="HyperlinkButton_Click"/>
                 </StackPanel>
             </RadioButton>
         </StackPanel>
