@@ -1,4 +1,5 @@
 ﻿using LottoryUWP.DataModel;
+using LottoryUWP.FTUE;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,6 +43,9 @@ namespace LottoryUWP
             formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
+
+            FTUEDialog dialog = new FTUEDialog();
+            dialog.ShowAsync();
         }
 
         private  void Button_Click(object sender, RoutedEventArgs e)

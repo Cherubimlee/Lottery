@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="LottoryUWP.FTUE.AnimatedImage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LottoryUWP.FTUE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Animation">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="Running">
+                    <Storyboard>
+                        <DoubleAnimation  Storyboard.TargetName="StartImage"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="0">
+                        </DoubleAnimation>
+                        <DoubleAnimation  Storyboard.TargetName="EndImage"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0" To="1">
+                        </DoubleAnimation>
+                    </Storyboard>
+                </VisualState>
+         
+
+                <VisualStateGroup.Transitions>
+
+                    <VisualTransition To="Running">
+                        <Storyboard>
+                            <DoubleAnimation  Storyboard.TargetName="StartImage"
+                                                         Storyboard.TargetProperty="Opacity"                                                                                             
+                                                         Duration="0:0:3" From="1"  To="0">
+
+
+                            </DoubleAnimation>
+
+                            <DoubleAnimation  Storyboard.TargetName="EndImage"
+                                                         Storyboard.TargetProperty="Opacity"                                                                                             
+                                                         Duration="0:0:3" From="0" To="1">
+
+
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+
+            </VisualStateGroup>
+
+        </VisualStateManager.VisualStateGroups>
+
+        <Image x:Name="StartImage" Stretch="Uniform" Source="{x:Bind ImageStart}"  Opacity="1"/>
+
+        <Image x:Name="EndImage"  Stretch="Uniform" Source="{x:Bind ImageEnd}" Opacity="0"/>
+    </Grid>
+</UserControl>
