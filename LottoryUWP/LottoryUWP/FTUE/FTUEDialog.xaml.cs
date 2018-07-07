@@ -1,4 +1,5 @@
 ﻿using LottoryUWP.DataModel;
+using LottoryUWP.Enum;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,20 +22,20 @@ namespace LottoryUWP.FTUE
 {
     public sealed partial class FTUEDialog : ContentDialog
     {
-        public FTUEDialog()
+        public FTUEDialog() :this(0)
+        {
+            DoneButton.IsEnabled = true;
+
+            this.Title = LottoryUWP.Strings.Resources.FTUE_Title_Highlights;
+        }
+
+        public FTUEDialog(VersionLevel versionLevel)
         {
             this.InitializeComponent();
 
-            Items = new ObservableCollection<FTUEItem>();
+            Items = new ObservableCollection<FTUEItem>(FTUEItem.Items.TakeWhile(x=>x.RequiredVersionLevel > versionLevel));
 
-            this.Title = "What's New";
-
-            Items.Add(new FTUEItem() { Description = "Hello World", ImagePath = @"ms-appx:///Assets/Img/Img1.jpg" });
-
-            Items.Add(new FTUEItem() { Description = "Hello World", ImagePath= @"ms-appx:///Assets/Img/Img1.jpg", ExtImagePath= @"ms-appx:///Assets/Img/Img2.jpg" });
-
-            Items.Add(new FTUEItem() { Description = "Hello World", ImagePath = @"ms-appx:///Assets/Img/Img2.jpg", ExtImagePath = @"ms-appx:///Assets/Img/Img3.jpg" });
-
+            this.Title = LottoryUWP.Strings.Resources.FTUE_Title_New;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

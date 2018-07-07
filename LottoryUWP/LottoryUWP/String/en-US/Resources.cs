@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 06/04/2018 22:52:27
+// 	Generated: 07/07/2018 20:21:02
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -192,6 +192,28 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("DataSetting_FileType");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "All Highlights"
+        /// </summary>
+        public static string FTUE_Title_Highlights
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Title_Highlights");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "What's new"
+        /// </summary>
+        public static string FTUE_Title_New
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Title_New");
             }
         }
         

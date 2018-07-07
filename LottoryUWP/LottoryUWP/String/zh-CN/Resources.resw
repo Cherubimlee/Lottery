@@ -221,6 +221,14 @@
     <value>前缀与数字搭配，如 “来宾001”</value>
     <comment>Prefix of number, e.g “Guest 001”</comment>
   </data>
+  <data name="FTUE_Title_Highlights" xml:space="preserve">
+    <value>所有亮点</value>
+    <comment>All Highlights</comment>
+  </data>
+  <data name="FTUE_Title_New" xml:space="preserve">
+    <value>最近更新</value>
+    <comment>What's new</comment>
+  </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
     <value>正在准备：{0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
@@ -380,6 +388,10 @@
   <data name="Support_Link_Email.Content" xml:space="preserve">
     <value>建议与意见</value>
     <comment>Feedback and Suggestion</comment>
+  </data>
+  <data name="Support_Link_FTUE.Content" xml:space="preserve">
+    <value>热门亮点及最近更新</value>
+    <comment>What's highlights and new features</comment>
   </data>
   <data name="Support_Link_Reset.Content" xml:space="preserve">
     <value>重置所有设置</value>

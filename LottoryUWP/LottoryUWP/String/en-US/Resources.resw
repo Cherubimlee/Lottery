@@ -221,6 +221,14 @@
     <value>Prefix of number, e.g “Guest 001”</value>
     <comment>Prefix of number, e.g “Guest 001”</comment>
   </data>
+  <data name="FTUE_Title_Highlights" xml:space="preserve">
+    <value>All Highlights</value>
+    <comment>All Highlights</comment>
+  </data>
+  <data name="FTUE_Title_New" xml:space="preserve">
+    <value>What's new</value>
+    <comment>What's new</comment>
+  </data>
   <data name="InfoBaar_Starting" xml:space="preserve">
     <value>Starting {0} | {1}</value>
     <comment>Starting {0} | {1}</comment>
@@ -380,6 +388,10 @@
   <data name="Support_Link_Email.Content" xml:space="preserve">
     <value>Feedback and Suggestion</value>
     <comment>Feedback and Suggestion</comment>
+  </data>
+  <data name="Support_Link_FTUE.Content" xml:space="preserve">
+    <value>What's highlights and new features</value>
+    <comment>What's highlights and new features</comment>
   </data>
   <data name="Support_Link_Reset.Content" xml:space="preserve">
     <value>Reset all settings</value>
