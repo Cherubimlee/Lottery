@@ -63,7 +63,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <Border BorderBrush="{StaticResource TextBoxBorderThemeBrush}" BorderThickness="1" Width="200">
-                            <TextBlock x:Name="FilePathText" />
+                            <TextBlock x:Name="FilePathText" Margin="8,0" VerticalAlignment="Center"/>
                         </Border>
                        
                         

@@ -18,10 +18,10 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>LottoryUWP_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>67F56EF6912C50B983E8C43FC769F56CBF28121B</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>16CD0A77D5B64499A3D4D67BE5F26F977CBFA30F</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -172,6 +172,7 @@
     <Content Include="Assets\MenuIcon.png" />
     <None Include="Package.xml" />
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
