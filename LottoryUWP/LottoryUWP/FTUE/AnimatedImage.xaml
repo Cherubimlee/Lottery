@@ -53,8 +53,8 @@
 
         </VisualStateManager.VisualStateGroups>
 
-        <Image x:Name="StartImage" Stretch="Uniform" Source="{x:Bind ImageStart}"  Opacity="1"/>
+        <Image x:Name="StartImage" Stretch="Uniform" Source="{x:Bind ImageStart}"  Opacity="1" CacheMode="BitmapCache" />
 
-        <Image x:Name="EndImage"  Stretch="Uniform" Source="{x:Bind ImageEnd}" Opacity="0"/>
+        <Image x:Name="EndImage"  Stretch="Uniform" Source="{x:Bind ImageEnd}" Opacity="0" CacheMode="BitmapCache" />
     </Grid>
 </UserControl>

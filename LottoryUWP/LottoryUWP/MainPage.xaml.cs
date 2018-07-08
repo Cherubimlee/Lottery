@@ -52,10 +52,10 @@ namespace LottoryUWP
             var lastVersion = System.Enum.GetValues(typeof(VersionLevel)).Cast<VersionLevel>().LastOrDefault();
 
             object versionLevelObj;
-            VersionLevel versionLevel;
+            VersionLevel versionLevel = VersionLevel.Ver_1_1;
 
             ApplicationData.Current.LocalSettings.Values.TryGetValue(versionLevelKey, out versionLevelObj);
-            System.Enum.TryParse<VersionLevel>(versionLevelObj.ToString(), out versionLevel);
+            System.Enum.TryParse<VersionLevel>(versionLevelObj?.ToString(), out versionLevel);
 
             if (versionLevel < lastVersion)
             {

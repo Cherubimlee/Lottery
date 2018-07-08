@@ -15,25 +15,37 @@
         </Grid.RowDefinitions>
 
         <FlipView SelectionChanged="FlipView_SelectionChanged"
-                  Width="500" Height="500"
+                  Width="500" Height="600"
                   ItemsSource="{x:Bind Items, Mode=OneWay}">
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <local:AnimatedImage Height="440" 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <local:AnimatedImage Height="500" Width="500"
                                              ImageStart="{Binding ImagePath}"  
                                              ImageEnd="{Binding ExtImagePath}"
-                                             VerticalAlignment="Top"
+                                             VerticalAlignment="Stretch"
+                                             HorizontalAlignment="Stretch"
                                              Tag="{Binding}"
                                              Loaded="AnimatedImage_Loaded"
                                              />
-                        <Border Background="{StaticResource SystemControlChromeMediumLowAcrylicElementMediumBrush}" Height="60" VerticalAlignment="Bottom">
-                                            <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextBoxForegroundThemeBrush}" Padding="12,12" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center"/>
+                        <Border Grid.Row="1" 
+                            Background="{StaticResource SystemControlChromeMediumLowAcrylicElementMediumBrush}" Height="100" VerticalAlignment="Bottom" >
+                                            <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextBoxForegroundThemeBrush}" Padding="12,12" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
                                         </Border>
                         </Grid>
     </DataTemplate>
     </FlipView.ItemTemplate>
-    </FlipView>
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--ToDo: virtulization -->
+                    <StackPanel Orientation="Horizontal"/> 
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+        </FlipView>
 
         <Button x:Name="DoneButton" IsEnabled="False"
                 Background="#FF42A214" Foreground="White" FontFamily="Segoe Print" FontSize="22"
@@ -54,7 +66,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <SymbolIcon Symbol="Accept" Margin="0,0,10,0" />
-                <TextBlock Text="I got it" />
+                <TextBlock x:Uid="FTUE_OK" Text="I got it" />
             </StackPanel>
 
         </Button>

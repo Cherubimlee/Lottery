@@ -31,7 +31,9 @@ namespace LottoryUWP.Enum
 
     public enum VersionLevel : int
     {
-        Ver_1_1 = 0,
-        Ver_1_2 = 1,
+        Ver_all = 0,
+        Ver_1_1 = 1,
+        Ver_1_2 = 2,
+      
     }
 }

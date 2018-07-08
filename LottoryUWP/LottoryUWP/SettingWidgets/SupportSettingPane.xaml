@@ -11,7 +11,7 @@
 
     <Grid>
         <StackPanel>
-            <HyperlinkButton x:Name="Support_Link_FTUE"  x:Uid="Support_Link_FTUE" Content="What's highlights and new features" Click="Support_Link_FTUE_Click" />
+            <HyperlinkButton x:Name="Support_Link_FTUE"  x:Uid="Support_Link_FTUE" Content="What's highlights, tips and new features" Click="Support_Link_FTUE_Click" />
             <HyperlinkButton x:Name="Support_Link_Reset"  x:Uid="Support_Link_Reset" Content="Reset All Settings" Click="ResetButton_Click" />
             <HyperlinkButton x:Name="Support_Link_Email" x:Uid="Support_Link_Email" Content="Feedback and Suggestion" Click="EmailButton_Click"/>
             <TextBlock x:Name="VersionText"/>

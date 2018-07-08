@@ -221,6 +221,26 @@
     <value>前缀与数字搭配，如 “来宾001”</value>
     <comment>Prefix of number, e.g “Guest 001”</comment>
   </data>
+  <data name="FTUE_Intro_Img" xml:space="preserve">
+    <value>选择心仪的壁纸。
+可以从电脑中导入更多图片。</value>
+    <comment>Pick your favorite wallpaper. 
+You can import any image from your PC.</comment>
+  </data>
+  <data name="FTUE_Intro_Menu" xml:space="preserve">
+    <value>点击菜单开启设。 
+创建属于你自己的活动。</value>
+    <comment>Access the settings from menu. 
+Make your own lucky draw event.</comment>
+  </data>
+  <data name="FTUE_Intro_Report" xml:space="preserve">
+    <value>不要忘记生成结果报告哦。</value>
+    <comment>Don't miss your report.</comment>
+  </data>
+  <data name="FTUE_Intro_Round" xml:space="preserve">
+    <value>为每一轮制定规则。</value>
+    <comment>Rule your round.</comment>
+  </data>
   <data name="FTUE_Title_Highlights" xml:space="preserve">
     <value>所有亮点</value>
     <comment>All Highlights</comment>
@@ -390,8 +410,8 @@
     <comment>Feedback and Suggestion</comment>
   </data>
   <data name="Support_Link_FTUE.Content" xml:space="preserve">
-    <value>热门亮点及最近更新</value>
-    <comment>What's highlights and new features</comment>
+    <value>热门亮点，技巧及最近更新</value>
+    <comment>What's highlights ,tips and new features</comment>
   </data>
   <data name="Support_Link_Reset.Content" xml:space="preserve">
     <value>重置所有设置</value>

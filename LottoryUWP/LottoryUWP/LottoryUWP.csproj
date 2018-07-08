@@ -172,8 +172,14 @@
   <ItemGroup>
     <Content Include="Assets\Add.png" />
     <Content Include="Assets\FileTemplate\Report.html" />
-    <Content Include="Assets\FTUE\Img1.jpg" />
-    <Content Include="Assets\FTUE\Img2.jpg" />
+    <Content Include="Assets\FTUE\FTUE1.jpg" />
+    <Content Include="Assets\FTUE\FTUE2.jpg" />
+    <Content Include="Assets\FTUE\FTUE3.jpg" />
+    <Content Include="Assets\FTUE\FTUE4.jpg" />
+    <Content Include="Assets\FTUE\FTUE5.jpg" />
+    <Content Include="Assets\FTUE\FTUE6.jpg" />
+    <Content Include="Assets\FTUE\FTUE7.jpg" />
+    <Content Include="Assets\FTUE\FTUE8.jpg" />
     <Content Include="Assets\Img\Img1.jpg" />
     <Content Include="Assets\Img\Img2.jpg" />
     <Content Include="Assets\Img\Img3.jpg" />

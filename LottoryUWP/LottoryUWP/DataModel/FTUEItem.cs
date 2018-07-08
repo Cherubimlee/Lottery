@@ -13,6 +13,7 @@ namespace LottoryUWP.DataModel
         public string ExtImagePath { get; set; }
         public string Description { get; set; }
         public VersionLevel RequiredVersionLevel { get; set; }
+        public bool IsUpgradeOnly { get; set; }
 
         public Action ActiveAnimation { get; set; }
 
@@ -21,11 +22,10 @@ namespace LottoryUWP.DataModel
             {
                 var Items = new List<FTUEItem>();
 
-                Items.Add(new FTUEItem() { Description = "Hello World 0", ImagePath = @"ms-appx:///Assets/Img/Img1.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2 });
-
-                Items.Add(new FTUEItem() { Description = "Hello World 1", ImagePath = @"ms-appx:///Assets/Img/Img1.jpg", ExtImagePath = @"ms-appx:///Assets/Img/Img2.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2 });
-
-                Items.Add(new FTUEItem() { Description = "Hello World 2", ImagePath = @"ms-appx:///Assets/Img/Img2.jpg", ExtImagePath = @"ms-appx:///Assets/Img/Img3.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2 });
+                Items.Add(new FTUEItem() { Description = LottoryUWP.Strings.Resources.FTUE_Intro_Menu, ImagePath = @"ms-appx:///Assets/FTUE/FTUE1.jpg", ExtImagePath = @"ms-appx:///Assets/FTUE/FTUE2.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2, IsUpgradeOnly = false });
+                Items.Add(new FTUEItem() { Description = LottoryUWP.Strings.Resources.FTUE_Intro_Img, ImagePath = @"ms-appx:///Assets/FTUE/FTUE3.jpg", ExtImagePath = @"ms-appx:///Assets/FTUE/FTUE4.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2, IsUpgradeOnly = false });
+                Items.Add(new FTUEItem() { Description = LottoryUWP.Strings.Resources.FTUE_Intro_Round, ImagePath = @"ms-appx:///Assets/FTUE/FTUE5.jpg", ExtImagePath = @"ms-appx:///Assets/FTUE/FTUE6.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2, IsUpgradeOnly = false });
+                Items.Add(new FTUEItem() { Description = LottoryUWP.Strings.Resources.FTUE_Intro_Report, ImagePath = @"ms-appx:///Assets/FTUE/FTUE7.jpg", ExtImagePath = @"ms-appx:///Assets/FTUE/FTUE8.jpg", RequiredVersionLevel = VersionLevel.Ver_1_2, IsUpgradeOnly = false });
 
                 return Items;
             }

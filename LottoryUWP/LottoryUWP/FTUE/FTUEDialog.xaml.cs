@@ -22,7 +22,7 @@ namespace LottoryUWP.FTUE
 {
     public sealed partial class FTUEDialog : ContentDialog
     {
-        public FTUEDialog() :this(0)
+        public FTUEDialog() :this(VersionLevel.Ver_all)
         {
             DoneButton.IsEnabled = true;
 
@@ -33,7 +33,10 @@ namespace LottoryUWP.FTUE
         {
             this.InitializeComponent();
 
-            Items = new ObservableCollection<FTUEItem>(FTUEItem.Items.TakeWhile(x=>x.RequiredVersionLevel > versionLevel));
+            var items =  versionLevel == VersionLevel.Ver_1_1 ? FTUEItem.Items.TakeWhile(x=>!x.IsUpgradeOnly) : // FTUE items
+                        FTUEItem.Items.TakeWhile(x=>x.RequiredVersionLevel > versionLevel); // Upgrade items
+
+            Items = new ObservableCollection<FTUEItem>(items.ToList());
 
             this.Title = LottoryUWP.Strings.Resources.FTUE_Title_New;
         }
