@@ -28,4 +28,12 @@ namespace LottoryUWP.Enum
         Right = 2,
         None = 3,
     }
+
+    public enum VersionLevel : int
+    {
+        Ver_all = 0,
+        Ver_1_1 = 1,
+        Ver_1_2 = 2,
+      
+    }
 }

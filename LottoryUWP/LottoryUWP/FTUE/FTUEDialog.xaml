@@ -1,0 +1,74 @@
+﻿<ContentDialog
+    x:Class="LottoryUWP.FTUE.FTUEDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LottoryUWP.FTUE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource SystemControlChromeHighAcrylicElementMediumBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <FlipView SelectionChanged="FlipView_SelectionChanged"
+                  Width="500" Height="600"
+                  ItemsSource="{x:Bind Items, Mode=OneWay}">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <local:AnimatedImage Height="500" Width="500"
+                                             ImageStart="{Binding ImagePath}"  
+                                             ImageEnd="{Binding ExtImagePath}"
+                                             VerticalAlignment="Stretch"
+                                             HorizontalAlignment="Stretch"
+                                             Tag="{Binding}"
+                                             Loaded="AnimatedImage_Loaded"
+                                             />
+                        <Border Grid.Row="1" 
+                            Background="{StaticResource SystemControlChromeMediumLowAcrylicElementMediumBrush}" Height="100" VerticalAlignment="Bottom" >
+                                            <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextBoxForegroundThemeBrush}" Padding="12,12" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                        </Grid>
+    </DataTemplate>
+    </FlipView.ItemTemplate>
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--ToDo: virtulization -->
+                    <StackPanel Orientation="Horizontal"/> 
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+        </FlipView>
+
+        <Button x:Name="DoneButton" IsEnabled="False"
+                Background="#FF42A214" Foreground="White" FontFamily="Segoe Print" FontSize="22"
+                Grid.Row="1"
+                Click="Button_Click"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+>
+
+            <Button.Resources>
+                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#FF42A214</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed">#FF359308</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonForegroundPointerOver">white</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonForegroundPressed">white</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#FF267600</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonBorderBrushPressed">#FF267600</SolidColorBrush>
+            </Button.Resources>
+
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Accept" Margin="0,0,10,0" />
+                <TextBlock x:Uid="FTUE_OK" Text="I got it" />
+            </StackPanel>
+
+        </Button>
+    </Grid>
+</ContentDialog>

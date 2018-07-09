@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel;
 using LottoryUWP.DataModel;
+using LottoryUWP.FTUE;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -56,6 +57,13 @@ namespace LottoryUWP.SettingWidgets
 
             await Windows.ApplicationModel.Email.EmailManager.ShowComposeNewEmailAsync(emailMessage);
 
+        }
+
+        private async void Support_Link_FTUE_Click(object sender, RoutedEventArgs e)
+        {
+            FTUEDialog dialog = new FTUEDialog();
+
+            await dialog.ShowAsync();
         }
     }
 }

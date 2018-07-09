@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 06/04/2018 22:52:27
+// 	Generated: 07/08/2018 16:06:05
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -192,6 +192,74 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("DataSetting_FileType");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Pick your favorite wallpaper. 
+        ///You can import any image from your PC."
+        /// </summary>
+        public static string FTUE_Intro_Img
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Intro_Img");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Access the settings from menu.
+        ///Make your own lucky draw event."
+        /// </summary>
+        public static string FTUE_Intro_Menu
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Intro_Menu");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Don't miss your report."
+        /// </summary>
+        public static string FTUE_Intro_Report
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Intro_Report");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Rule your round."
+        /// </summary>
+        public static string FTUE_Intro_Round
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Intro_Round");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "All Highlights"
+        /// </summary>
+        public static string FTUE_Title_Highlights
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Title_Highlights");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "What's new"
+        /// </summary>
+        public static string FTUE_Title_New
+        {
+            get
+            {
+                return resourceLoader.GetString("FTUE_Title_New");
             }
         }
         
