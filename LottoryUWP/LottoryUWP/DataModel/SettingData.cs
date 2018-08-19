@@ -95,7 +95,9 @@ namespace LottoryUWP.DataModel
             }
         }
 
-        
+        public bool IsAdFree { get; set; } = false;
+
+
         private DataSourceModel drawDataSource;
         public DataSourceModel DrawDataSource {
             get { return drawDataSource; }

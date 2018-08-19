@@ -1,6 +1,7 @@
 ﻿using LottoryUWP.DataModel;
 using LottoryUWP.Enum;
 using LottoryUWP.FTUE;
+using LottoryUWP.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,13 +34,17 @@ namespace LottoryUWP
 
         private const string versionLevelKey = "VersionLevel";
 
+
+
         public MainPage()
         {
             this.InitializeComponent();
 
             this.Loaded += MainPage_Loaded;
-
+            
         }
+
+ 
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -62,24 +67,32 @@ namespace LottoryUWP
                 FTUEDialog dialog = new FTUEDialog(versionLevel);
                 await dialog.ShowAsync();
                 ApplicationData.Current.LocalSettings.Values[versionLevelKey] = lastVersion.ToString();
-            }          
+            }
+
         }
 
-        private  void Button_Click(object sender, RoutedEventArgs e)
+        private async  void Button_Click(object sender, RoutedEventArgs e)
         {
 
             if (Menu.Visibility == Visibility.Collapsed)
             {
                 Menu.Visibility = Visibility.Visible;
                 VisualStateManager.GoToState(this, "MenuShow", true);
+
+                await Task.Delay(500);
+                ADUtils.AdInstance.RandomShowAd(0.3);
             }
             else
             {
                 VisualStateManager.GoToState(this, "MenuHide", false);
                 Menu.Visibility = Visibility.Collapsed;
+                ADUtils.AdInstance.RandomShowAd(0.6);
             }
-               
+
+          
         }
+
+
 
         public SettingData Settings { get { return SettingData.Instance; } }
     }

@@ -24,6 +24,11 @@ namespace LottoryUWP.Panes
         {
             this.InitializeComponent();
             Groups = DataModel.SettingData.BuildSettingList();
+
+            if (SettingData.Instance.IsAdFree)
+            {
+                adControl.Visibility = Visibility.Collapsed;
+            }
         }
       
         public IEnumerable<SettingItemGroup> Groups
@@ -37,5 +42,17 @@ namespace LottoryUWP.Panes
             ZoomControl.StartBringIntoView();
         }
 
+
+        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
+        {
+            if(e.ErrorCode == Microsoft.Advertising.ErrorCode.NoAdAvailable)
+            {
+                adControl.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                adControl.Resume();
+            }
+        }
     }
 }

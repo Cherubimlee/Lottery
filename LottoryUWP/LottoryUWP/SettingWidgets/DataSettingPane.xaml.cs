@@ -1,4 +1,5 @@
 ﻿using LottoryUWP.DataModel;
+using LottoryUWP.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -119,6 +120,7 @@ namespace LottoryUWP.SettingWidgets
 
         private async void FileButton_Click(object sender, RoutedEventArgs e)
         {
+         
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
@@ -161,9 +163,9 @@ namespace LottoryUWP.SettingWidgets
                     await dialog.ShowAsync();
                 }
 
-                SetDataModel();
+                SetDataModel();        
             }
-
+            ADUtils.AdInstance.RandomShowAd(0.3);
         }
 
         private void Radio_Checked(object sender, RoutedEventArgs e)

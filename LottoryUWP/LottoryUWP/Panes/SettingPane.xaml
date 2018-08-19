@@ -86,10 +86,14 @@
             </SemanticZoom.ZoomedOutView>
         </SemanticZoom>
 
-        <ad:AdControl Grid.Row="1"  
+        <ad:AdControl 
+              x:Name="adControl"
+              Grid.Row="1"  
               ApplicationId="9nppsdm8nddl"
               AdUnitId="1100018414"
-              Height="100"/>
-
+              Height="100"
+              ErrorOccurred="AdControl_ErrorOccurred"
+            />
+ 
     </Grid>
 </UserControl>

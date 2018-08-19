@@ -149,6 +149,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resw</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ADUtils.cs" />
     <Compile Include="Utils\ColorUtil.cs" />
     <Compile Include="Utils\FileUtil.cs" />
     <Compile Include="Utils\HTMLPageUtil.cs" />

@@ -134,12 +134,8 @@ namespace LottoryUWP.SettingWidgets
             {
                 await SettingData.Instance.InsertBackgroundColor(file);
             }
-           
-        }
 
-        private void TitleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
+            ADUtils.AdInstance.RandomShowAd(0.3);
         }
     }
 }

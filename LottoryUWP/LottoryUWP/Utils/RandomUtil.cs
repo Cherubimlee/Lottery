@@ -92,5 +92,10 @@ namespace LottoryUWP.Utils
 
             return Utils.ColorUtil.HsvToRgb(H*360.0, 0.5, 0.9);
         }
+
+        public double RandomDouble()
+        {
+            return random.NextDouble();
+        }
     }
 }
