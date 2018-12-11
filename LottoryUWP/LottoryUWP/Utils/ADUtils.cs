@@ -55,7 +55,7 @@ namespace LottoryUWP.Utils
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            await Task.Delay(TimeSpan.FromMinutes(5)); //No more Ad in 5 mins
+            await Task.Delay(TimeSpan.FromMinutes(10)); //No more Ad in 5 mins
 
             AdErrorEventArgs arg = e as AdErrorEventArgs;
 

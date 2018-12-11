@@ -134,8 +134,6 @@ namespace LottoryUWP.SettingWidgets
             {
                 await SettingData.Instance.InsertBackgroundColor(file);
             }
-
-            ADUtils.AdInstance.RandomShowAd(0.3);
         }
     }
 }

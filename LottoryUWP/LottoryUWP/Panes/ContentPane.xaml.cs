@@ -257,7 +257,7 @@ namespace LottoryUWP.Panes
 
             NextRoundSetup();
 
-            ADUtils.AdInstance.RandomShowAd(0.5);
+            ADUtils.AdInstance.RandomShowAd(1);
         }
         private async void AppBarButtonReport_Click(object sender, RoutedEventArgs e)
         {
@@ -268,8 +268,6 @@ namespace LottoryUWP.Panes
             {
                 await Windows.System.Launcher.LaunchFileAsync(file);
             }
-
-            ADUtils.AdInstance.RandomShowAd(0.5);
         }
 
         private void Element_Tapped(object sender, TappedRoutedEventArgs e)

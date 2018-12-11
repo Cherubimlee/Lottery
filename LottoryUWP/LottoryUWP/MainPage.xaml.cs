@@ -71,22 +71,21 @@ namespace LottoryUWP
 
         }
 
-        private async  void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             if (Menu.Visibility == Visibility.Collapsed)
             {
                 Menu.Visibility = Visibility.Visible;
                 VisualStateManager.GoToState(this, "MenuShow", true);
-
-                await Task.Delay(500);
-                ADUtils.AdInstance.RandomShowAd(0.3);
             }
             else
             {
                 VisualStateManager.GoToState(this, "MenuHide", false);
                 Menu.Visibility = Visibility.Collapsed;
-                ADUtils.AdInstance.RandomShowAd(0.6);
+
+                if(DrawData.Instance.DrawHistory.Count == 0)
+                        ADUtils.AdInstance.RandomShowAd(0.5);
             }
 
           

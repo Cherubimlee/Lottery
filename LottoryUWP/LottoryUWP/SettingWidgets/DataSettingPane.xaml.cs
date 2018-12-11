@@ -165,7 +165,7 @@ namespace LottoryUWP.SettingWidgets
 
                 SetDataModel();        
             }
-            ADUtils.AdInstance.RandomShowAd(0.3);
+          
         }
 
         private void Radio_Checked(object sender, RoutedEventArgs e)
