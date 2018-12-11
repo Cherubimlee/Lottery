@@ -66,17 +66,25 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         
-                        <Border BorderBrush="{StaticResource TextBoxBorderThemeBrush}" BorderThickness="1" Width="200">
+                        <Border BorderBrush="{StaticResource TextBoxBorderThemeBrush}" BorderThickness="1" >
                             <TextBlock x:Name="FilePathText" Margin="8,0" VerticalAlignment="Center"/>
                         </Border>
 
 
                         <Button  Grid.Column="1" IsEnabled="{Binding ElementName=FileSource, Path=IsChecked}" 
-                                 Background="Transparent" Width="32" Height="32" Margin="8,0" Click="FileButton_Click">
+                                 Background="Transparent" Width="24" Height="24" Margin="4,0" Click="FileButton_Click">
                             <Viewbox Margin="-8">
                                 <SymbolIcon  Symbol="OpenFile"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Viewbox >
+                        </Button>
+
+                        <Button  Grid.Column="2" IsEnabled="{Binding ElementName=FileSource, Path=IsChecked}" 
+                                 Background="Transparent" Width="24" Height="24" Margin="4,0" Click="ReviewButton_Click">
+                            <Viewbox Margin="-8">
+                                <SymbolIcon  Symbol="ZoomIn"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Viewbox >
                         </Button>
                     </Grid>

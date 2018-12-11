@@ -1,4 +1,5 @@
-﻿using LottoryUWP.DataModel;
+﻿using LottoryUWP.Controls;
+using LottoryUWP.DataModel;
 using LottoryUWP.Utils;
 using System;
 using System.Collections.Generic;
@@ -203,6 +204,12 @@ namespace LottoryUWP.SettingWidgets
             await file.CopyAndReplaceAsync(newfile);
 
             await Windows.System.Launcher.LaunchFileAsync(newfile);
+        }
+
+        private async void ReviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            ItemPreviewDialog dialog = new ItemPreviewDialog();
+            await dialog.ShowAsync();
         }
     }
 }

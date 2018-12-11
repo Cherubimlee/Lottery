@@ -106,6 +106,9 @@
     <Compile Include="Common\SettingItemDataTemplateSelector.cs" />
     <Compile Include="Common\TextPositionStateToIntConverter.cs" />
     <Compile Include="Common\WidthToVisibilityConverter.cs" />
+    <Compile Include="Controls\ItemPreviewDialog.xaml.cs">
+      <DependentUpon>ItemPreviewDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WinnerControl.xaml.cs">
       <DependentUpon>WinnerControl.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ItemPreviewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\WinnerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
