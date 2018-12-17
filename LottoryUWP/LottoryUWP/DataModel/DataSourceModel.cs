@@ -71,11 +71,16 @@ namespace LottoryUWP.DataModel
 
                     var patten = line.Split(new[] { ',' });
 
-                        r.ItemList.Add(new DrawItem()
-                        {
-                            MajorColumnValue = patten.FirstOrDefault(),
-                            SecondaryColumnValue = patten.ElementAtOrDefault(1)
-                        });
+                    DrawItem drawItem = new DrawItem()
+                    {
+                        MajorColumnValue = patten.FirstOrDefault(),
+                        SecondaryColumnValue = patten.ElementAtOrDefault(1)
+                    };
+
+                    if (String.IsNullOrEmpty(drawItem.MajorColumnValue) && String.IsNullOrEmpty(drawItem.SecondaryColumnValue))
+                        continue;
+                    else
+                        r.ItemList.Add(drawItem);
                     
                 }
 
