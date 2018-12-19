@@ -41,7 +41,9 @@ namespace LottoryUWP
             this.InitializeComponent();
 
             this.Loaded += MainPage_Loaded;
-            
+
+            this.KeyUp += MainPage_KeyUp;
+
         }
 
  
@@ -69,6 +71,11 @@ namespace LottoryUWP
                 ApplicationData.Current.LocalSettings.Values[versionLevelKey] = lastVersion.ToString();
             }
 
+        }
+
+        private void MainPage_KeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            MainContentPane.KeyUpHandling(sender, e);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

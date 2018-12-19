@@ -11,8 +11,8 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
-    x:Name="local">
-
+    x:Name="local"
+    >
     <Grid>
 
         <VisualStateManager.VisualStateGroups>
@@ -159,12 +159,11 @@
 
 
 
-        <CommandBar Grid.Row="2" VerticalAlignment="Bottom"  >
+        <CommandBar Grid.Row="2" VerticalAlignment="Bottom" Background="{StaticResource  SystemControlAcrylicElementMediumHighBrush}" >
 
             <AppBarButton x:Uid="CommandBarStop" Icon="Stop" Label="Stop" Click="AppBarButtonStop_Click"  IsEnabled="{Binding ElementName=local, Path=IsStopEnabled}"/>
             <AppBarButton x:Uid="CommandBarPlay" Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}"/>
             <AppBarButton x:Uid="CommandBarNext" Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
-
             <AppBarSeparator/>
             <AppBarButton x:Uid="CommandBarCapacity" Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" >
                 <AppBarButton.Flyout>
@@ -182,13 +181,15 @@
             <AppBarButton x:Uid="CommandBarReset" Icon="Refresh" Label="Reset" Click="AppBarButton_Click"/>
             
             <CommandBar.Content>
-                <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14" Tapped="Element_Tapped">
-                     <FlyoutBase.AttachedFlyout>
-                                <Flyout>
-                                    <TextBox x:Uid="RoundTitleText" x:Name="RoundTitleText" Text="Round 1" Header="Customize Round Title" IsTextPredictionEnabled="True" LostFocus="RoundTitleText_LostFocus"/>
-                                </Flyout>
-                                </FlyoutBase.AttachedFlyout>
-                </TextBlock>
+                <StackPanel x:Name="RoundInfoPanel" Tapped="Element_Tapped" Background="Transparent">
+                    <TextBlock Text="{Binding RoundInfo, ElementName=local}" Margin="12,14"/>
+                    <TextBlock Text="{Binding RoundInfoDesc, ElementName=local}" FontSize="12" Margin="12,0" />
+                    <FlyoutBase.AttachedFlyout>
+                        <Flyout>
+                            <TextBox x:Uid="RoundTitleText" x:Name="RoundTitleText" Text="Round 1" Header="Customize Round Title" IsTextPredictionEnabled="True" LostFocus="RoundTitleText_LostFocus"/>
+                        </Flyout>
+                    </FlyoutBase.AttachedFlyout>
+                </StackPanel>
             </CommandBar.Content>
             </CommandBar>
         

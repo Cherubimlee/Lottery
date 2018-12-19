@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 07/08/2018 16:06:05
+// 	Generated: 12/19/2018 17:15:57
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -53,7 +53,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "Let¡®s Lucky Draw, who is the next winner?"
+        /// Localized resource similar to "Let‘s Lucky Draw, who is the next winner?"
         /// </summary>
         public static string AppDescription
         {
@@ -64,7 +64,7 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "Let¡®s Lucky Draw"
+        /// Localized resource similar to "Let‘s Lucky Draw"
         /// </summary>
         public static string AppName
         {
@@ -264,17 +264,6 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
-        /// Localized resource similar to "Starting {0} | {1}"
-        /// </summary>
-        public static string InfoBaar_Starting
-        {
-            get
-            {
-                return resourceLoader.GetString("InfoBaar_Starting");
-            }
-        }
-        
-        /// <summary>
         /// Localized resource similar to "Applied Group Capacity {0}"
         /// </summary>
         public static string InfoBar_Capacity_Applied
@@ -330,6 +319,17 @@ namespace LottoryUWP.Strings
         }
         
         /// <summary>
+        /// Localized resource similar to "Customize Round Title (F2)"
+        /// </summary>
+        public static string InfoBar_EventTitle_Desc
+        {
+            get
+            {
+                return resourceLoader.GetString("InfoBar_EventTitle_Desc");
+            }
+        }
+        
+        /// <summary>
         /// Localized resource similar to "{0} | {1} | {2}"
         /// </summary>
         public static string InfoBar_Running
@@ -337,6 +337,17 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("InfoBar_Running");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Starting {0} | {1}"
+        /// </summary>
+        public static string InfoBar_Starting
+        {
+            get
+            {
+                return resourceLoader.GetString("InfoBar_Starting");
             }
         }
         

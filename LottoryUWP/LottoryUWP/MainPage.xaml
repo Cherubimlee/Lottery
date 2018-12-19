@@ -123,7 +123,7 @@
 
             </Grid>
 
-            <panes:ContentPane Grid.Row="1" >
+            <panes:ContentPane Grid.Row="1"  x:Name="MainContentPane">
                 
             </panes:ContentPane>
         </Grid>

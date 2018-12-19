@@ -60,6 +60,7 @@ namespace LottoryUWP.Panes
                     OnPropertyChanged("IsStartEnabled");
                     OnPropertyChanged("IsNextEnabled");
                     OnPropertyChanged("RoundInfo");
+                    OnPropertyChanged("RoundInfoDesc");
                 }
             }
         }
@@ -74,6 +75,7 @@ namespace LottoryUWP.Panes
             this.DataContext = DrawData.Instance;
 
             this.Loaded += ContentPane_Loaded;
+
         }
 
 
@@ -138,7 +140,7 @@ namespace LottoryUWP.Panes
                     case RunningState.Stopped:
                         return string.Format(Strings.Resources.InfoBar_Stopped, this.RoundTitleText.Text, capacity);
                     case RunningState.Starting:
-                        return string.Format(Strings.Resources.InfoBaar_Starting, this.RoundTitleText.Text, capacity);
+                        return string.Format(Strings.Resources.InfoBar_Starting, this.RoundTitleText.Text, capacity);
                     case RunningState.Running:
                         {
                             var group = DrawData.Instance.RecentGroup;
@@ -151,6 +153,15 @@ namespace LottoryUWP.Panes
                         return string.Format(Strings.Resources.InfoBar_Default, this.RoundTitleText.Text, capacity);
 
                 }
+            }
+        }
+
+        public string RoundInfoDesc { get
+            {
+                if (DrawRunningState == RunningState.Stopped)
+                    return LottoryUWP.Strings.Resources.InfoBar_EventTitle_Desc;
+                else
+                    return string.Empty;
             }
         }
 
@@ -355,7 +366,34 @@ namespace LottoryUWP.Panes
             }
         }
 
+        public void KeyUpHandling(object sender, KeyRoutedEventArgs e)
+        {
 
+            if(e.Key == Windows.System.VirtualKey.F5)
+            {
+                if (this.DrawRunningState == RunningState.Stopped)
+                {
+                    Start();
+                }              
+            }
+
+            if(e.Key == Windows.System.VirtualKey.F10)
+            {
+                if (this.DrawRunningState == RunningState.Running)
+                {
+                    NextDraw();
+                }
+            }
+
+            if (e.Key == Windows.System.VirtualKey.F2)
+            {
+                if (this.DrawRunningState == RunningState.Stopped)
+                {
+                    FlyoutBase.ShowAttachedFlyout(RoundInfoPanel);
+                }
+            }
+
+        }
     }
 }
 

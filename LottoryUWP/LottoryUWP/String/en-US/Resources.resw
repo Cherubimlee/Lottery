@@ -138,11 +138,11 @@
     <comment>Apply Round Capacity</comment>
   </data>
   <data name="CommandBarNext.Label" xml:space="preserve">
-    <value>Next</value>
+    <value>Next(F10)</value>
     <comment>Next</comment>
   </data>
   <data name="CommandBarPlay.Label" xml:space="preserve">
-    <value>Start</value>
+    <value>Start(F5)</value>
     <comment>Start</comment>
   </data>
   <data name="CommandBarReset.Label" xml:space="preserve">
@@ -253,10 +253,6 @@ Make your own lucky draw event.</comment>
     <value>What's new</value>
     <comment>What's new</comment>
   </data>
-  <data name="InfoBaar_Starting" xml:space="preserve">
-    <value>Starting {0} | {1}</value>
-    <comment>Starting {0} | {1}</comment>
-  </data>
   <data name="InfoBar_Capacity_Applied" xml:space="preserve">
     <value>Applied Group Capacity {0}</value>
     <comment>Applied Group Capacity {0}</comment>
@@ -277,9 +273,17 @@ Make your own lucky draw event.</comment>
     <value>{0} Lucky Winner(s)</value>
     <comment>{0} Lucky Winner(s)</comment>
   </data>
+  <data name="InfoBar_EventTitle_Desc" xml:space="preserve">
+    <value>Customize Round Title (F2)</value>
+    <comment>Customize Round Title (F2)</comment>
+  </data>
   <data name="InfoBar_Running" xml:space="preserve">
     <value>{0} | {1} | {2}</value>
     <comment>{0} | {1} | {2}</comment>
+  </data>
+  <data name="InfoBar_Starting" xml:space="preserve">
+    <value>Starting {0} | {1}</value>
+    <comment>Starting {0} | {1}</comment>
   </data>
   <data name="InfoBar_Stopped" xml:space="preserve">
     <value>Next: {0} | {1}</value>
