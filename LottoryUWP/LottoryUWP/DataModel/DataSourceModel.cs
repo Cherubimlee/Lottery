@@ -22,29 +22,35 @@ namespace LottoryUWP.DataModel
 
         public async Task<DataSourceResult> GenerateDataItems()
         {
-         
-            if (this.IsNumberSource)
+            try
             {
-                DataSourceResult r = new DataSourceResult();
-                string format = (End < 10 ? "{0:0}" : End < 100 ? "{0:00}" : "{0:000}");
+                if (this.IsNumberSource)
+                {
+                    DataSourceResult r = new DataSourceResult();
+                    string format = (End < 10 ? "{0:0}" : End < 100 ? "{0:00}" : "{0:000}");
 
-                for (int i = Start; i <= End; i++)
-                    r.ItemList.Add(new DrawItem() { MajorColumnValue = Prefix + String.Format(format, i) });
+                    for (int i = Start; i <= End; i++)
+                        r.ItemList.Add(new DrawItem() { MajorColumnValue = Prefix + String.Format(format, i) });
 
-                r.ColumnTitles[0] = "ID";
-                return r;
+                    r.ColumnTitles[0] = "ID";
+                    return r;
+                }
+                else
+                {
+                    StorageFolder folder = ApplicationData.Current.TemporaryFolder;
+
+                    var file = await folder.GetFileAsync(this.FilePath);
+
+                    if (file != null)
+                        return await ReadFileForDrawItem(file);
+                }
+
+                return null;
             }
-            else
+            catch(Exception)
             {
-                StorageFolder folder = ApplicationData.Current.TemporaryFolder;
-
-                var file = await folder.GetFileAsync(this.FilePath);
-
-                if (file != null)
-                    return await ReadFileForDrawItem(file);
+                return null;
             }
-
-            return null;
         }
 
         public static async Task<DataSourceResult> ReadFileForDrawItem(StorageFile file)
