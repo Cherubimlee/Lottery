@@ -146,8 +146,8 @@
     <comment>Start</comment>
   </data>
   <data name="CommandBarReset.Label" xml:space="preserve">
-    <value>Reset</value>
-    <comment>Reset</comment>
+    <value>Start Over</value>
+    <comment>Start Over</comment>
   </data>
   <data name="CommandBarShare.Label" xml:space="preserve">
     <value>Report</value>
@@ -164,6 +164,14 @@
   <data name="ContentDialog_ResetAll_OK" xml:space="preserve">
     <value>Restart</value>
     <comment>Restart</comment>
+  </data>
+  <data name="ContentDialog_Restart" xml:space="preserve">
+    <value>Start Over</value>
+    <comment>Start Over</comment>
+  </data>
+  <data name="ContentDialog_Restart_content" xml:space="preserve">
+    <value>The draw will start over, all histroy will be lost, do you want to continue?</value>
+    <comment>The draw will start over, all histroy will be lost, do you want to continue?</comment>
   </data>
   <data name="DataSetting_Dialog_Contiune" xml:space="preserve">
     <value>Contiune</value>

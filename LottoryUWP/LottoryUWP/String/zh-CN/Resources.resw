@@ -146,8 +146,8 @@
     <comment>Start</comment>
   </data>
   <data name="CommandBarReset.Label" xml:space="preserve">
-    <value>重置</value>
-    <comment>Reset</comment>
+    <value>重新开始</value>
+    <comment>Start Over</comment>
   </data>
   <data name="CommandBarShare.Label" xml:space="preserve">
     <value>导出结果</value>
@@ -164,6 +164,14 @@
   <data name="ContentDialog_ResetAll_OK" xml:space="preserve">
     <value>重启</value>
     <comment>Restart</comment>
+  </data>
+  <data name="ContentDialog_Restart" xml:space="preserve">
+    <value>重新开始</value>
+    <comment>Start Over</comment>
+  </data>
+  <data name="ContentDialog_Restart_content" xml:space="preserve">
+    <value>抽奖将重新开始，所有现有记录都会丢失，需要继续吗？</value>
+    <comment>The draw will start over, all histroy will be lost, do you want to continue?</comment>
   </data>
   <data name="DataSetting_Dialog_Contiune" xml:space="preserve">
     <value>继续</value>

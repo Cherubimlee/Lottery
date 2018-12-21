@@ -259,8 +259,18 @@ namespace LottoryUWP.Panes
             OnPropertyChanged("RoundInfo");
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
+            ContentDialog dialog = new ContentDialog();
+
+            dialog.Title = LottoryUWP.Strings.Resources.ContentDialog_Restart;
+            dialog.Content = LottoryUWP.Strings.Resources.ContentDialog_Restart_content;
+            dialog.PrimaryButtonText = LottoryUWP.Strings.Resources.ContentDialog_ResetAll_NO;
+            dialog.SecondaryButtonText = LottoryUWP.Strings.Resources.DataSetting_Dialog_Ok;
+
+            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+                return;
+
             if (DrawRunningState != RunningState.Stopped)
                 Stop();
 

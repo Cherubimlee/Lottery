@@ -17,7 +17,7 @@
 // 	This code contains a helper class exposing property representations
 // 	of the string resources defined in the specified .ResW file
 // 
-// 	Generated: 12/19/2018 17:15:57
+// 	Generated: 12/21/2018 15:22:18
 // </auto-generatedInfo>
 // --------------------------------------------------------------------------------------------------
 namespace LottoryUWP.Strings
@@ -93,6 +93,28 @@ namespace LottoryUWP.Strings
             get
             {
                 return resourceLoader.GetString("ContentDialog_ResetAll_OK");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "Start Over"
+        /// </summary>
+        public static string ContentDialog_Restart
+        {
+            get
+            {
+                return resourceLoader.GetString("ContentDialog_Restart");
+            }
+        }
+        
+        /// <summary>
+        /// Localized resource similar to "The draw will start over, all histroy will be lost, do you want to continue?"
+        /// </summary>
+        public static string ContentDialog_Restart_content
+        {
+            get
+            {
+                return resourceLoader.GetString("ContentDialog_Restart_content");
             }
         }
         
