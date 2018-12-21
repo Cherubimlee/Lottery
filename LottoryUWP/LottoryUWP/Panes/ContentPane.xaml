@@ -165,13 +165,23 @@
             <AppBarButton x:Uid="CommandBarPlay" Icon="Play" Label="Start" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}"/>
             <AppBarButton x:Uid="CommandBarNext" Icon="Next" Label="Next" Click="AppBarButtonStart_Click" IsEnabled="{Binding ElementName=local, Path=IsNextEnabled}" />
             <AppBarSeparator/>
-            <AppBarButton x:Uid="CommandBarCapacity" Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" >
+            <AppBarButton x:Uid="CommandBarCapacity" Icon="Filter"  Label="Round Capacity" IsEnabled="{Binding ElementName=local, Path=IsStartEnabled}" AllowFocusOnInteraction="True" >
                 <AppBarButton.Flyout>
                     <Flyout>
                         <StackPanel>
                             <ToggleSwitch  x:Uid="CommandBarCapacitySwitch" OffContent="Don't Apply Round Capacity" OnContent="Apply Round Capacity" IsOn="False" x:Name="CapacityToggle" Toggled="CapacityToggle_Toggled"/>
-                            <Slider  Minimum="1" Maximum="100" TickPlacement="Outside" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged"/>
-                        </StackPanel>
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                          
+                                <Slider  Minimum="1" Maximum="50" TickPlacement="Outside" 
+                                         IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}" x:Name="CapacitySilder" ValueChanged="CapacitySilder_ValueChanged" />
+                                <TextBox Grid.Column="1" Text="{Binding ElementName=CapacitySilder, Path=Value, Mode=TwoWay}" InputScope="Number" IsEnabled="{Binding ElementName=CapacityToggle, Path=IsOn}"
+                                         Margin="6" VerticalAlignment="Center" />
+                            </Grid>
+                            </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
